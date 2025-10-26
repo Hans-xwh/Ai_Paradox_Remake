@@ -4,7 +4,7 @@ using namespace System;
 using namespace  System::Windows::Forms;
 
 [STAThread]
-void main() //se pueden eliminar los argumentos del main
+void main()
 {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
