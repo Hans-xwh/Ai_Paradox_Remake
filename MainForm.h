@@ -23,6 +23,7 @@ namespace AiParadoxRemake {
 		   Bitmap^ spriteRobot;
 		   int contadorTiempo;
 		   int tiempoSiguienteRobot;
+	private: System::Windows::Forms::Label^ label3;
 		   Random^ random;
 		  
 		
@@ -78,6 +79,7 @@ namespace AiParadoxRemake {
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -104,11 +106,21 @@ namespace AiParadoxRemake {
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"label2";
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(38, 429);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(264, 16);
+			this->label3->TabIndex = 2;
+			this->label3->Text = L"ACABA CON TODAS TUS VIDAS Y GANA!";
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(925, 519);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Margin = System::Windows::Forms::Padding(4);
