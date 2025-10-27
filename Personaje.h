@@ -19,7 +19,7 @@ public:
 
 	void dibujarPersonaje(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		ancho = bmp->Width / 13;
-		alto = bmp->Height / 55;
+		alto = bmp->Height / 54;
 
 		dibujarEntidad(buffer, bmp);
 
