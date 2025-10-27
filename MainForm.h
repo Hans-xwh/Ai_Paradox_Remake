@@ -72,16 +72,16 @@ namespace AiParadoxRemake {
 			// 
 			// textBox1
 			// 
-			this->textBox1->BackColor = System::Drawing::SystemColors::HotTrack;
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox1->ForeColor = System::Drawing::Color::Navy;
-			this->textBox1->Location = System::Drawing::Point(542, 210);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(145, 21);
-			this->textBox1->TabIndex = 1;
-			this->textBox1->Text = L"AI PARADOX";
-			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			//this->textBox1->BackColor = System::Drawing::SystemColors::HotTrack;
+			//this->textBox1->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				//static_cast<System::Byte>(0)));
+			//this->textBox1->ForeColor = System::Drawing::Color::Navy;
+			//this->textBox1->Location = System::Drawing::Point(542, 210);
+			//this->textBox1->Name = L"textBox1";
+			//this->textBox1->Size = System::Drawing::Size(145, 21);
+			//this->textBox1->TabIndex = 1;
+			//this->textBox1->Text = L"AI PARADOX";
+			//this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// MainForm
 			// 
