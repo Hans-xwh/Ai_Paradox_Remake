@@ -83,6 +83,15 @@ public:
 
 		}
 
+		if (x + dx < 0 || x + dx + ancho > buffer->Graphics->VisibleClipBounds.Width) {
+			dx = 0;
+		}
+		if (y + dy < 0 || y + dy + ancho > buffer->Graphics->VisibleClipBounds.Height) {
+			dy = 0;
+		}
+		x += dx;
+		y += dy;
+
 		dibujarPersonaje(buffer, bmp);
 	}
 
