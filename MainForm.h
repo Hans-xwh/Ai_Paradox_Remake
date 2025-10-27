@@ -1,6 +1,6 @@
 #pragma once
 #include "Controladora.h"
-
+#include "SegundoForm.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -144,21 +144,27 @@ namespace AiParadoxRemake {
 		buffer->Graphics->DrawImage(fondo, 0, 0, ancho, alto);
 		controladora->moverPersonajeControladora(buffer, sprite);
 		controladora->moverRobotControladora(buffer, spriteRobot);
-		
+
 		controladora->colision(buffer);
-		
+
 		label2->Text = Convert::ToString(controladora->getPersonaje()->getVidas());
-		
+
 		contadorTiempo += timer1->Interval;
 		if (contadorTiempo >= tiempoSiguienteRobot) {
 			int ancho = this->ClientSize.Width;
 			int alto = this->ClientSize.Height;
 			int x = rand() % ancho;
 			int y = rand() % alto;
-			
+
 			controladora->agregarRobotPosicion(x, y);
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
+		}
+		if (controladora->getPersonaje()->getVidas() == 0) {
+			SegundoForm^ miForm = gcnew SegundoForm();
+			miForm->Show();
+			//XD
+
 		}
 
 		buffer->Render(g);
