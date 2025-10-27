@@ -1,5 +1,6 @@
 #pragma once
-
+#include "Personaje.h"
+#include "Entidad.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -14,6 +15,9 @@ namespace AiParadoxRemake {
 	/// </summary>
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
+		Personaje* personaji;
+		Bitmap^ fondo;
+		Bitmap^ sprite;
 	public:
 		MainForm(void)
 		{
@@ -21,6 +25,9 @@ namespace AiParadoxRemake {
 			//
 			//TODO: Add the constructor code here
 			//
+			personaji = new Personaje(5, 5);
+			fondo = gcnew Bitmap("Imagenes/fondo.png");
+			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
 		}
 
 	protected:
@@ -34,8 +41,9 @@ namespace AiParadoxRemake {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ btn_sexo;
-	private: System::Windows::Forms::TextBox^ textBox1;
+
+	private: System::Windows::Forms::Timer^ timer1;
+	private: System::ComponentModel::IContainer^ components;
 	protected:
 
 	protected:
@@ -44,7 +52,7 @@ namespace AiParadoxRemake {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -53,20 +61,14 @@ namespace AiParadoxRemake {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
-			this->btn_sexo = (gcnew System::Windows::Forms::Button());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->components = (gcnew System::ComponentModel::Container());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
-			// btn_sexo
+			// timer1
 			// 
-			this->btn_sexo->Location = System::Drawing::Point(467, 282);
-			this->btn_sexo->Name = L"btn_sexo";
-			this->btn_sexo->Size = System::Drawing::Size(268, 117);
-			this->btn_sexo->TabIndex = 0;
-			this->btn_sexo->Text = L"Sexo\?";
-			this->btn_sexo->UseVisualStyleBackColor = true;
-			this->btn_sexo->Click += gcnew System::EventHandler(this, &MainForm::btn_sexo_Click);
+			this->timer1->Enabled = true;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MainForm::timer1_Tick);
 			// 
 			// textBox1
 			// 
@@ -83,22 +85,53 @@ namespace AiParadoxRemake {
 			// 
 			// MainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1385, 607);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->btn_sexo);
+			this->ClientSize = System::Drawing::Size(925, 519);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
-			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyUp);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void btn_sexo_Click(System::Object^ sender, System::EventArgs^ e) {
-		MessageBox::Show("Sexo.");
+
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Graphics^ g = this->CreateGraphics();
+		BufferedGraphicsContext^ space = BufferedGraphicsManager::Current;
+		BufferedGraphics^ buffer = space->Allocate(g, this->ClientRectangle);
+
+		int ancho = buffer->Graphics->VisibleClipBounds.Width;
+		int alto = buffer->Graphics->VisibleClipBounds.Height;
+		buffer->Graphics->DrawImage(fondo, 0, 0, ancho, alto);
+		personaji->moverPersonaje(buffer, sprite);
+		buffer->Render(g);
+		delete buffer, space, g;
+	
+	}
+
+	private: System::Void MainForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		personaji->direccion = Direcciones::Ninguna;
+	}
+	private: System::Void MainForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		switch (e->KeyCode) {
+		case Keys::Left:
+			personaji->direccion = Direcciones::Izquierda;
+			break;
+		case Keys::Right:
+			personaji->direccion = Direcciones::Derecha;
+			break;
+		case Keys::Up:
+			personaji->direccion = Direcciones::Arriba;
+			break;
+		case Keys::Down:
+			personaji->direccion = Direcciones::Abajo;
+			break;
+		}
+
 	}
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
