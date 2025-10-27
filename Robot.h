@@ -10,8 +10,11 @@ class Robot : public Entidad
 
 public:
 	Robot(int x, int y) : Entidad(x, y) {
-		this->x = 0;
-		this->y = 0;
+		this->x = x;
+		this->y =y;
+		direccion = getDireccionRandom();
+		iteraX = 0;
+		iteraY = 3;
 	}
 	void setDireccionRobot(Direcciones dix){
 		this->direccion = dix;
@@ -23,10 +26,10 @@ public:
 		int valor = r.Next(1, 5);
 		switch (valor) {
 		case 1: 
-			return Direcciones::Arriba;
+			return Direcciones::Abajo;
 			break;
 		case 2:
-			return Direcciones::Abajo;
+			return Direcciones::Arriba;
 			break;
 		case 3:
 			return Direcciones::Izquierda;
@@ -38,14 +41,14 @@ public:
 	}
 
 	void dibujarRobot(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		ancho = bmp->Width / 4;
-		alto = bmp->Height / 4;
+		ancho = bmp->Width / 13;
+		alto = bmp->Height / 54;
 
 		dibujarEntidad(buffer, bmp);
 	}
 
 	void moverRobot(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		if (iteraX >= 0 && iteraX < 3) iteraX++;
+		if (iteraX >= 0 && iteraX < 6) iteraX++;
 		else iteraX = 0;
 
 		switch (direccion) {

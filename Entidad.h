@@ -10,6 +10,7 @@ protected:
 	int ancho, alto;
 	int iteraX, iteraY;
 	Direcciones direccion;
+	bool visibilidad;
 public:
 	Entidad() {}
 	~Entidad() {}
@@ -32,5 +33,14 @@ public:
 		y += dy;
 	}
 
+	Rectangle getRectangle() {
+		return Rectangle(x, y, ancho, alto);
+	}
 
+	bool getVisibilidad() {
+		return this->visibilidad; 
+	}
+	void setVisibilidad(bool v) {
+		this->visibilidad = v;
+	}
 };

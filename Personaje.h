@@ -5,6 +5,7 @@ class Personaje : public Entidad {
 
 private:
 	Direcciones ultTecla;
+	int vidas;
 public:
 	Personaje(int x, int y) : Entidad(x, y) {
 		this->x = x;
@@ -13,6 +14,7 @@ public:
 		iteraY = 1;
 		dx = 0;
 		dy = 0;
+		vidas = 10;
 	}
 	~Personaje() { }
 	Direcciones direccion;
@@ -94,6 +96,10 @@ public:
 
 		dibujarPersonaje(buffer, bmp);
 	}
-
-
+	void setVidas(int val) {
+		this->vidas += val;
+	}
+	int getVidas() {
+		return this->vidas;
+	}
 };

@@ -1,7 +1,5 @@
 #pragma once
-#include "Personaje.h"
-#include "Entidad.h"
-#include "Robot.h"
+#include "Controladora.h"
 
 namespace AiParadoxRemake {
 
@@ -17,11 +15,13 @@ namespace AiParadoxRemake {
 	/// </summary>
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
-		Personaje* personaji;
-		Robot* robotin;
+		Controladora* controladora;
 		Bitmap^ fondo;
 		Bitmap^ sprite;
-		Bitmap^ spriteRobot;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+		   Bitmap^ spriteRobot;
+		  
 		
 	public:
 		MainForm(void)
@@ -31,11 +31,10 @@ namespace AiParadoxRemake {
 			//TODO: Add the constructor code here
 			//
 		
-			personaji = new Personaje(5, 5);
-			//robotin = new Robot(10, 10);
+			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondo.png");
 			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
-			//spriteRobot = gcnew Bitmap("Imagenes/robot.png");
+		    spriteRobot = gcnew Bitmap("Imagenes/Reymundo.png");
 		}
 
 	protected:
@@ -71,6 +70,8 @@ namespace AiParadoxRemake {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -78,24 +79,32 @@ namespace AiParadoxRemake {
 			this->timer1->Enabled = true;
 			this->timer1->Tick += gcnew System::EventHandler(this, &MainForm::timer1_Tick);
 			// 
-			// textBox1
+			// label1
 			// 
-			//this->textBox1->BackColor = System::Drawing::SystemColors::HotTrack;
-			//this->textBox1->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				//static_cast<System::Byte>(0)));
-			//this->textBox1->ForeColor = System::Drawing::Color::Navy;
-			//this->textBox1->Location = System::Drawing::Point(542, 210);
-			//this->textBox1->Name = L"textBox1";
-			//this->textBox1->Size = System::Drawing::Size(145, 21);
-			//this->textBox1->TabIndex = 1;
-			//this->textBox1->Text = L"AI PARADOX";
-			//this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(38, 34);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(45, 16);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"Vidas:";
+			this->label1->Click += gcnew System::EventHandler(this, &MainForm::label1_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(102, 34);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(44, 16);
+			this->label2->TabIndex = 1;
+			this->label2->Text = L"label2";
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(925, 519);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
@@ -115,9 +124,13 @@ namespace AiParadoxRemake {
 		int ancho = buffer->Graphics->VisibleClipBounds.Width;
 		int alto = buffer->Graphics->VisibleClipBounds.Height;
 		buffer->Graphics->DrawImage(fondo, 0, 0, ancho, alto);
-		personaji->moverPersonaje(buffer, sprite);
-
-		robotin->moverRobot(buffer, spriteRobot);
+		controladora->moverPersonajeControladora(buffer, sprite);
+		controladora->moverRobotControladora(buffer, spriteRobot);
+		
+		controladora->colision(buffer);
+		
+		label2->Text = Convert::ToString(controladora->getPersonaje()->getVidas());
+		
 		buffer->Render(g);
 		delete buffer, space, g;
 
@@ -126,26 +139,32 @@ namespace AiParadoxRemake {
 	}
 
 	private: System::Void MainForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		personaji->direccion = Direcciones::Ninguna;
+		controladora->getPersonaje()->direccion = Direcciones::Ninguna;
 	}
 	private: System::Void MainForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		switch (e->KeyCode) {
 		case Keys::Left:
-			personaji->direccion = Direcciones::Izquierda;
+			controladora->getPersonaje()->direccion = Direcciones::Izquierda;
 			break;
 		case Keys::Right:
-			personaji->direccion = Direcciones::Derecha;
+			controladora->getPersonaje()->direccion = Direcciones::Derecha;
 			break;
 		case Keys::Up:
-			personaji->direccion = Direcciones::Arriba;
+			controladora->getPersonaje()->direccion = Direcciones::Arriba;
 			break;
 		case Keys::Down:
-			personaji->direccion = Direcciones::Abajo;
+			controladora->getPersonaje()->direccion = Direcciones::Abajo;
+			break;
+		case Keys::X:
+			controladora->agregarRobots(1);
 			break;
 		}
+	
 
 	}
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
