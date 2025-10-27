@@ -1,6 +1,8 @@
 #pragma once
 #include "Personaje.h"
 #include "Entidad.h"
+#include "Robot.h"
+
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -16,8 +18,11 @@ namespace AiParadoxRemake {
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
 		Personaje* personaji;
+		Robot* robotin;
 		Bitmap^ fondo;
 		Bitmap^ sprite;
+		Bitmap^ spriteRobot;
+		
 	public:
 		MainForm(void)
 		{
@@ -25,9 +30,12 @@ namespace AiParadoxRemake {
 			//
 			//TODO: Add the constructor code here
 			//
+		
 			personaji = new Personaje(5, 5);
+			//robotin = new Robot(10, 10);
 			fondo = gcnew Bitmap("Imagenes/fondo.png");
 			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
+			//spriteRobot = gcnew Bitmap("Imagenes/robot.png");
 		}
 
 	protected:
@@ -108,8 +116,12 @@ namespace AiParadoxRemake {
 		int alto = buffer->Graphics->VisibleClipBounds.Height;
 		buffer->Graphics->DrawImage(fondo, 0, 0, ancho, alto);
 		personaji->moverPersonaje(buffer, sprite);
+
+		robotin->moverRobot(buffer, spriteRobot);
 		buffer->Render(g);
 		delete buffer, space, g;
+
+
 	
 	}
 
