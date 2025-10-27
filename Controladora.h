@@ -29,12 +29,8 @@ public:
 		return personaji;
 	}
 
-	void agregarRobots(int cant) {
-		Robot* robotines;
-		for (size_t i = 0; i < cant; i++) {
-			robotines = new Robot(rand() % 250, rand() % 250);
-			robotin.push_back(robotines);
-		}
+	void agregarRobotPosicion(int x, int y) {
+		robotin.push_back(new Robot(x, y));
 	}
 	void moverRobotControladora(BufferedGraphics ^ buffer, Bitmap ^ bmp) {
 			for (size_t i = 0; i < robotin.size(); i++) {

@@ -21,6 +21,9 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 		   Bitmap^ spriteRobot;
+		   int contadorTiempo;
+		   int tiempoSiguienteRobot;
+		   Random^ random;
 		  
 		
 	public:
@@ -30,6 +33,9 @@ namespace AiParadoxRemake {
 			//
 			//TODO: Add the constructor code here
 			//
+			random = gcnew Random();
+			contadorTiempo = 0;
+			tiempoSiguienteRobot = random->Next(1000, 5000);
 		
 			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondo.png");
@@ -131,6 +137,18 @@ namespace AiParadoxRemake {
 		
 		label2->Text = Convert::ToString(controladora->getPersonaje()->getVidas());
 		
+		contadorTiempo += timer1->Interval;
+		if (contadorTiempo >= tiempoSiguienteRobot) {
+			int ancho = this->ClientSize.Width;
+			int alto = this->ClientSize.Height;
+			int x = rand() % ancho;
+			int y = rand() % alto;
+			
+			controladora->agregarRobotPosicion(x, y);
+			contadorTiempo = 0;
+			tiempoSiguienteRobot = random->Next(1000, 5000);
+		}
+
 		buffer->Render(g);
 		delete buffer, space, g;
 
@@ -154,9 +172,6 @@ namespace AiParadoxRemake {
 			break;
 		case Keys::Down:
 			controladora->getPersonaje()->direccion = Direcciones::Abajo;
-			break;
-		case Keys::X:
-			controladora->agregarRobots(1);
 			break;
 		}
 	
