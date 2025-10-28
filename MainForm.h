@@ -126,11 +126,12 @@ namespace AiParadoxRemake {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(38, 418);
+			this->label3->Location = System::Drawing::Point(29, 473);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(224, 16);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"RECOLECTA 10 DE AGUA Y GANA!";
+			this->label3->Click += gcnew System::EventHandler(this, &MainForm::label3_Click);
 			// 
 			// pictureBox1
 			// 
@@ -182,7 +183,7 @@ namespace AiParadoxRemake {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(925, 519);
+			this->ClientSize = System::Drawing::Size(990, 545);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
@@ -260,21 +261,10 @@ namespace AiParadoxRemake {
 			int y = rand() % alto;
 
 			controladora->agregarRobotPosicion(x, y);
-			contadorTiempo = 0;
-			tiempoSiguienteRobot = random->Next(1000, 5000);
-		}
-		contadorTiempo += timer1->Interval;
-
-		if (contadorTiempo >= tiempoSiguienteRoca) {
-			int ancho = this->ClientSize.Width;
-			int alto = this->ClientSize.Height;
-			int x = rand() % ancho;
-			int y = rand() % alto;
-
 			controladora->agregarRocaPosicion(x, y);
 			contadorTiempo = 0;
+			tiempoSiguienteRobot = random->Next(1000, 5000);
 			tiempoSiguienteRoca = random->Next(1000, 6000);
-
 		}
 		///
 
@@ -310,5 +300,7 @@ namespace AiParadoxRemake {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
