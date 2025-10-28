@@ -26,7 +26,9 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 		   Random^ random;
-		  
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
+		   int tiempo;
 		
 	public:
 		MainForm(void)
@@ -42,7 +44,9 @@ namespace AiParadoxRemake {
 			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondo.png");
 			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
-		    spriteRobot = gcnew Bitmap("Imagenes/Agua.png");
+		    
+			spriteRobot = gcnew Bitmap("Imagenes/Agua.png");
+			tiempo = 0;
 		}
 
 	protected:
@@ -83,6 +87,8 @@ namespace AiParadoxRemake {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -129,11 +135,31 @@ namespace AiParadoxRemake {
 			this->pictureBox1->TabIndex = 3;
 			this->pictureBox1->TabStop = false;
 			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(246, 34);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(57, 16);
+			this->label4->TabIndex = 4;
+			this->label4->Text = L"Tiempo:";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(325, 34);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(44, 16);
+			this->label5->TabIndex = 5;
+			this->label5->Text = L"label5";
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(925, 519);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -162,8 +188,19 @@ namespace AiParadoxRemake {
 		controladora->moverRobotControladora(buffer, spriteRobot);
 
 		controladora->colision(buffer);
-
-		label2->Text = Convert::ToString(controladora->getPersonaje()->getVidas());
+		tiempo++;
+		if (tiempo / 6 == 60) {
+			timer1->Enabled = false;
+			MessageBox::Show("NO PUDISTE AGARRARLO A TIEMPO!");
+			this->Close();
+		}
+		if (controladora->getPersonaje()->getAgua() == 0) {
+			timer1->Enabled = false;
+			MessageBox::Show("SI PUDISTE!!!");
+			this->Close();
+		}
+		label2->Text = Convert::ToString(controladora->getPersonaje()->getAgua());
+		label5->Text = Convert::ToString(tiempo/6);
 
 		contadorTiempo += timer1->Interval;
 		if (contadorTiempo >= tiempoSiguienteRobot) {
@@ -175,12 +212,6 @@ namespace AiParadoxRemake {
 			controladora->agregarRobotPosicion(x, y);
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
-		}
-		if (controladora->getPersonaje()->getVidas() == 0) {
-			SegundoForm^ miForm = gcnew SegundoForm();
-			miForm->Show();
-			//XD
-
 		}
 
 		buffer->Render(g);

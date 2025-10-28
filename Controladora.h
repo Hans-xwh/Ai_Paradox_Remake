@@ -41,7 +41,7 @@ public:
 	void colision(BufferedGraphics^ buffer) {
 		for (size_t i = 0; i < awita.size(); i++) {
 			if (awita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
-				personaji->setVidas(-1);
+				personaji->setAgua(-1);
 				awita[i]->setVisibilidad(false);
 			}
 		}
