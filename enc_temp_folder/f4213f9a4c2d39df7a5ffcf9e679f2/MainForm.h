@@ -203,8 +203,6 @@ namespace AiParadoxRemake {
 			MessageBox::Show("SI PUDISTE!!!");
 			this->Hide();
 
-			//conexion para la segunda parte del segundo nivel
-
 			SegundoForm^ segundoForm = gcnew SegundoForm();
 			segundoForm->ShowDialog();
 
