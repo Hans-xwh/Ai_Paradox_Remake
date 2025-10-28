@@ -5,11 +5,11 @@
 
 using namespace System;
 
-class Robot : public Entidad
+class Agua : public Entidad
 {
 
 public:
-	Robot(int x, int y) : Entidad(x, y) {
+	Agua(int x, int y) : Entidad(x, y) {
 		this->x = x;
 		this->y =y;
 		direccion = getDireccionRandom();
@@ -20,7 +20,7 @@ public:
 		this->direccion = dix;
 		}
 
-	~Robot() { }
+	~Agua() { }
 	Direcciones getDireccionRandom() {
 		Random r;
 		int valor = r.Next(1, 5);
@@ -40,14 +40,14 @@ public:
 		}
 	}
 
-	void dibujarRobot(BufferedGraphics^ buffer, Bitmap^ bmp) {
+	void dibujarAgua(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		ancho = bmp->Width / 13;
 		alto = bmp->Height / 54;
 
 		dibujarEntidad(buffer, bmp);
 	}
 
-	void moverRobot(BufferedGraphics^ buffer, Bitmap^ bmp) {
+	void moverAgua(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		if (iteraX >= 0 && iteraX < 6) iteraX++;
 		else iteraX = 0;
 
@@ -79,7 +79,7 @@ public:
 		x += dx;
 		y += dy;
 
-		dibujarRobot(buffer, bmp);
+		dibujarAgua(buffer, bmp);
 
 	}
 

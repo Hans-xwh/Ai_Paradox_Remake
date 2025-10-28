@@ -24,6 +24,7 @@ namespace AiParadoxRemake {
 		   int contadorTiempo;
 		   int tiempoSiguienteRobot;
 	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 		   Random^ random;
 		  
 		
@@ -41,7 +42,7 @@ namespace AiParadoxRemake {
 			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondo.png");
 			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
-		    spriteRobot = gcnew Bitmap("Imagenes/Reymundo.png");
+		    spriteRobot = gcnew Bitmap("Imagenes/Agua.png");
 		}
 
 	protected:
@@ -76,10 +77,13 @@ namespace AiParadoxRemake {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -90,17 +94,17 @@ namespace AiParadoxRemake {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(38, 34);
+			this->label1->Location = System::Drawing::Point(96, 34);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(45, 16);
+			this->label1->Size = System::Drawing::Size(47, 16);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Vidas:";
+			this->label1->Text = L"Faltan:";
 			this->label1->Click += gcnew System::EventHandler(this, &MainForm::label1_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(102, 34);
+			this->label2->Location = System::Drawing::Point(167, 34);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(44, 16);
 			this->label2->TabIndex = 1;
@@ -109,17 +113,28 @@ namespace AiParadoxRemake {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(38, 429);
+			this->label3->Location = System::Drawing::Point(38, 418);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(264, 16);
+			this->label3->Size = System::Drawing::Size(224, 16);
 			this->label3->TabIndex = 2;
-			this->label3->Text = L"ACABA CON TODAS TUS VIDAS Y GANA!";
+			this->label3->Text = L"RECOLECTA 10 DE AGUA Y GANA!";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(12, 12);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(50, 50);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->pictureBox1->TabIndex = 3;
+			this->pictureBox1->TabStop = false;
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(925, 519);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -128,6 +143,7 @@ namespace AiParadoxRemake {
 			this->Text = L"MainForm";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyUp);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

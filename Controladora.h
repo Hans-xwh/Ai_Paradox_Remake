@@ -9,7 +9,7 @@ class Controladora
 {
 
 private:
-	vector<Robot*>robotin;
+	vector<Agua*>awita;
 	Personaje* personaji;
 
 
@@ -30,25 +30,25 @@ public:
 	}
 
 	void agregarRobotPosicion(int x, int y) {
-		robotin.push_back(new Robot(x, y));
+		awita.push_back(new Agua(x, y));
 	}
 	void moverRobotControladora(BufferedGraphics ^ buffer, Bitmap ^ bmp) {
-			for (size_t i = 0; i < robotin.size(); i++) {
-				robotin[i]->moverRobot(buffer, bmp);
+			for (size_t i = 0; i < awita.size(); i++) {
+				awita[i]->moverAgua(buffer, bmp);
 			}
     }
 
 	void colision(BufferedGraphics^ buffer) {
-		for (size_t i = 0; i < robotin.size(); i++) {
-			if (robotin[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
+		for (size_t i = 0; i < awita.size(); i++) {
+			if (awita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
 				personaji->setVidas(-1);
-				robotin[i]->setVisibilidad(false);
+				awita[i]->setVisibilidad(false);
 			}
 		}
 
-		for (size_t i = 0; i < robotin.size(); i++) {
-			if (!robotin[i]->getVisibilidad()) {
-				robotin.erase(robotin.begin() + i);
+		for (size_t i = 0; i < awita.size(); i++) {
+			if (!awita[i]->getVisibilidad()) {
+				awita.erase(awita.begin() + i);
 
 			}
 		}
