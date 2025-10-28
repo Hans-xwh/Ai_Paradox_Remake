@@ -4,6 +4,8 @@
 #include <vector>
 #include <time.h>
 #include "Rocas.h"
+#include "Reymundo.h"
+
 using namespace std;
 
 class Controladora
@@ -12,18 +14,24 @@ class Controladora
 private:
 	vector<Agua*>awita;
 	Personaje* personaji;
+	Reymundo* reymundo;
 	vector<Rocas*>roquita;
 
 public:
 	Controladora() {
 		srand(time(NULL));
 		personaji = new Personaje(rand() % 250, rand() % 250);
+		reymundo = new Reymundo(630, 325);
 
 	}
 
 	~Controladora() { }
 	void moverPersonajeControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		personaji->moverPersonaje(buffer, bmp);
+	}
+	
+	void aparecerReymundoControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
+		reymundo->dibujarReymundo(buffer, bmp);
 	}
 
 	Personaje* getPersonaje() {
@@ -48,6 +56,7 @@ public:
 			roquita[i]->moverRocas(buffer, bmp);
 		}
 	}
+
 	void colision(BufferedGraphics^ buffer) {
 		for (size_t i = 0; i < awita.size(); i++) {
 			if (awita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {

@@ -22,6 +22,7 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Label^ label2;
 		   Bitmap^ spriteRobot;
 		   Bitmap^ spriteRoca;
+		   Bitmap^ spriteReymundo;
 		   int contadorTiempo;
 		   int tiempoSiguienteRobot;
 		   int tiempoSiguienteRoca;
@@ -32,6 +33,8 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::Label^ label9;
 		   int tiempo;
 		
 	public:
@@ -51,6 +54,7 @@ namespace AiParadoxRemake {
 			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
 			spriteRoca = gcnew Bitmap("Imagenes/Roca.png");
 			spriteRobot = gcnew Bitmap("Imagenes/Agua.png");
+			spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
 			tiempo = 0;
 		}
 
@@ -96,6 +100,8 @@ namespace AiParadoxRemake {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -179,11 +185,31 @@ namespace AiParadoxRemake {
 			this->label7->TabIndex = 7;
 			this->label7->Text = L"label7";
 			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Location = System::Drawing::Point(808, 400);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(170, 16);
+			this->label8->TabIndex = 8;
+			this->label8->Text = L"PARA HABLAR CONMIGO!";
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Location = System::Drawing::Point(825, 384);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(129, 16);
+			this->label9->TabIndex = 9;
+			this->label9->Text = L"PASA ESTE NIVEL..";
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(990, 545);
+			this->Controls->Add(this->label9);
+			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
@@ -215,7 +241,7 @@ namespace AiParadoxRemake {
 		controladora->moverPersonajeControladora(buffer, sprite);
 		controladora->moverRobotControladora(buffer, spriteRobot);
 		controladora->moverRocaControladora(buffer, spriteRoca);
-
+		controladora->aparecerReymundoControladora(buffer, spriteReymundo);
 		controladora->colision(buffer);
 		tiempo++;
 
