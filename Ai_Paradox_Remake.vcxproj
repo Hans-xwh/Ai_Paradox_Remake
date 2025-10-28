@@ -131,6 +131,7 @@
     </ClInclude>
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Agua.h" />
+    <ClInclude Include="Rocas.h" />
     <ClInclude Include="SegundoForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

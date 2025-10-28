@@ -3,6 +3,7 @@
 #include "Agua.h"
 #include <vector>
 #include <time.h>
+#include "Rocas.h"
 using namespace std;
 
 class Controladora
@@ -11,7 +12,7 @@ class Controladora
 private:
 	vector<Agua*>awita;
 	Personaje* personaji;
-
+	vector<Rocas*>roquita;
 
 public:
 	Controladora() {
@@ -32,12 +33,21 @@ public:
 	void agregarRobotPosicion(int x, int y) {
 		awita.push_back(new Agua(x, y));
 	}
+
+	void agregarRocaPosicion(int x, int y) {
+		roquita.push_back(new Rocas(x, y));
+	}
 	void moverRobotControladora(BufferedGraphics ^ buffer, Bitmap ^ bmp) {
 			for (size_t i = 0; i < awita.size(); i++) {
 				awita[i]->moverAgua(buffer, bmp);
 			}
     }
-
+	void moverRocaControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
+		for (size_t i = 0; i < roquita.size(); i++)
+		{
+			roquita[i]->moverRocas(buffer, bmp);
+		}
+	}
 	void colision(BufferedGraphics^ buffer) {
 		for (size_t i = 0; i < awita.size(); i++) {
 			if (awita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
@@ -52,6 +62,27 @@ public:
 
 			}
 		}
+
+		//////
+
+		for (size_t i = 0; i < roquita.size(); i++) {
+			if (roquita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
+				personaji->setVidas(-1);
+				roquita[i]->setVisibilidad(false);
+			}
+		}
+
+		for (size_t i = 0; i < roquita.size(); i++) {
+			if (!roquita[i]->getVisibilidad()) {
+				roquita.erase(roquita.begin() + i);
+
+			}
+		}
+
+		//
+
+
+
 	}
 };
 

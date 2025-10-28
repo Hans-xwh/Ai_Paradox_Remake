@@ -41,5 +41,8 @@
     <ClInclude Include="SegundoForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Rocas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

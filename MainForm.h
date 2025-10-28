@@ -21,13 +21,17 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 		   Bitmap^ spriteRobot;
+		   Bitmap^ spriteRoca;
 		   int contadorTiempo;
 		   int tiempoSiguienteRobot;
+		   int tiempoSiguienteRoca;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 		   Random^ random;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label7;
 		   int tiempo;
 		
 	public:
@@ -40,11 +44,12 @@ namespace AiParadoxRemake {
 			random = gcnew Random();
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
+			tiempoSiguienteRoca = random->Next(1000, 6000);
 		
 			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondo.png");
 			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
-		    
+			spriteRoca = gcnew Bitmap("Imagenes/Roca.png");
 			spriteRobot = gcnew Bitmap("Imagenes/Agua.png");
 			tiempo = 0;
 		}
@@ -89,6 +94,8 @@ namespace AiParadoxRemake {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -153,11 +160,31 @@ namespace AiParadoxRemake {
 			this->label5->TabIndex = 5;
 			this->label5->Text = L"label5";
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(413, 34);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(45, 16);
+			this->label6->TabIndex = 6;
+			this->label6->Text = L"Vidas:";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(498, 34);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(44, 16);
+			this->label7->TabIndex = 7;
+			this->label7->Text = L"label7";
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(925, 519);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->pictureBox1);
@@ -186,13 +213,17 @@ namespace AiParadoxRemake {
 		buffer->Graphics->DrawImage(fondo, 0, 0, ancho, alto);
 		controladora->moverPersonajeControladora(buffer, sprite);
 		controladora->moverRobotControladora(buffer, spriteRobot);
+		controladora->moverRocaControladora(buffer, spriteRoca);
 
 		controladora->colision(buffer);
 		tiempo++;
 
 		label2->Text = Convert::ToString(controladora->getPersonaje()->getAgua());
 		label5->Text = Convert::ToString(tiempo / 6);
+		label7->Text = Convert::ToString(controladora->getPersonaje()->getVidas());
 
+
+		///
 		if (tiempo / 6 == 60) {
 			timer1->Enabled = false;
 			MessageBox::Show("NO PUDISTE AGARRARLO A TIEMPO!");
@@ -210,7 +241,17 @@ namespace AiParadoxRemake {
 
 			this->Close();
 		}
+		///
 
+		///
+		if (controladora->getPersonaje()->getVidas() == 0) {
+			timer1->Enabled = false;
+			MessageBox::Show("PERDISTE TODAS TUS VIDAS!!");
+			this -> Close();
+		}
+		///
+
+		///
 		contadorTiempo += timer1->Interval;
 		if (contadorTiempo >= tiempoSiguienteRobot) {
 			int ancho = this->ClientSize.Width;
@@ -222,6 +263,20 @@ namespace AiParadoxRemake {
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
 		}
+		contadorTiempo += timer1->Interval;
+
+		if (contadorTiempo >= tiempoSiguienteRoca) {
+			int ancho = this->ClientSize.Width;
+			int alto = this->ClientSize.Height;
+			int x = rand() % ancho;
+			int y = rand() % alto;
+
+			controladora->agregarRocaPosicion(x, y);
+			contadorTiempo = 0;
+			tiempoSiguienteRoca = random->Next(1000, 6000);
+
+		}
+		///
 
 		buffer->Render(g);
 		delete buffer, space, g;

@@ -6,6 +6,7 @@ class Personaje : public Entidad {
 private:
 	Direcciones ultTecla;
 	int agua;
+	int vidas;
 public:
 	Personaje(int x, int y) : Entidad(x, y) {
 		this->x = x;
@@ -15,6 +16,7 @@ public:
 		dx = 0;
 		dy = 0;
 		agua = 10;
+		vidas = 5;
 	}
 	~Personaje() { }
 	Direcciones direccion;
@@ -101,5 +103,12 @@ public:
 	}
 	int getAgua() {
 		return this->agua;
+	}
+
+	void setVidas(int valu) {
+		this->vidas += valu;
+	}
+	int getVidas() {
+		return this->vidas;
 	}
 };
