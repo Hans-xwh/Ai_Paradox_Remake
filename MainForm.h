@@ -189,6 +189,10 @@ namespace AiParadoxRemake {
 
 		controladora->colision(buffer);
 		tiempo++;
+
+		label2->Text = Convert::ToString(controladora->getPersonaje()->getAgua());
+		label5->Text = Convert::ToString(tiempo / 6);
+
 		if (tiempo / 6 == 60) {
 			timer1->Enabled = false;
 			MessageBox::Show("NO PUDISTE AGARRARLO A TIEMPO!");
@@ -199,8 +203,6 @@ namespace AiParadoxRemake {
 			MessageBox::Show("SI PUDISTE!!!");
 			this->Close();
 		}
-		label2->Text = Convert::ToString(controladora->getPersonaje()->getAgua());
-		label5->Text = Convert::ToString(tiempo/6);
 
 		contadorTiempo += timer1->Interval;
 		if (contadorTiempo >= tiempoSiguienteRobot) {
