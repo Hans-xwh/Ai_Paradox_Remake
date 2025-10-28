@@ -130,7 +130,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Personaje.h" />
-    <ClInclude Include="Robot.h" />
+    <ClInclude Include="Agua.h" />
     <ClInclude Include="SegundoForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
