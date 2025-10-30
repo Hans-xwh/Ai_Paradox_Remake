@@ -318,7 +318,10 @@ namespace AiParadoxRemake {
 		case Keys::Down:
 			controladora->getPersonaje()->direccion = Direcciones::Abajo;
 			break;
+		case Keys::Space:
+			controladora->getPersonaje()->direccion = Direcciones::Salto;
 		}
+
 	
 
 	}

@@ -30,7 +30,7 @@ public:
 	}
 
 	void moverPersonaje(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		if (iteraX >= 0 && iteraX < 6) iteraX++;
+		if (iteraX >= 0 && iteraX < 4) iteraX++;
 		else iteraX = 0;
 
 		switch (direccion)
@@ -82,6 +82,35 @@ public:
 				iteraY = 1;
 				break;
 
+			}
+			break;
+		case Salto:
+			dy = 0;
+			dx = 0;
+			if (ultTecla == Arriba) {
+				dy = -10;
+				dx = 0;
+				iteraY = 26;
+				ultTecla = Arriba;
+			}
+			else if (ultTecla == Abajo) {
+				dy = 10;
+				dx = 0;
+				iteraY = 28;
+				ultTecla = Abajo;
+			}
+			else if (ultTecla == Derecha) {
+				dy = 0;
+				dx = 10;
+				iteraY = 29;
+				ultTecla = Derecha;
+			}
+			else if (ultTecla == Izquierda) {
+				dy = 0;
+				dx = -10;
+				iteraY = 27;
+				ultTecla = Izquierda;
+				
 			}
 			break;
 

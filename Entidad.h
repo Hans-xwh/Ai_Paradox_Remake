@@ -1,7 +1,7 @@
 #pragma once
 using namespace System::Drawing;
 
-enum Direcciones{Arriba, Abajo, Derecha, Izquierda, Ninguna};
+enum Direcciones{Arriba, Abajo, Derecha, Izquierda, Ninguna, Salto};
 
 class Entidad {
 protected:
