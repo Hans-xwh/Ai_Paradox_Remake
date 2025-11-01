@@ -5,6 +5,7 @@
 #include <time.h>
 #include "Rocas.h"
 #include "Reymundo.h"
+#include "arbol.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ private:
 	Personaje* personaji;
 	Reymundo* reymundo;
 	vector<Rocas*>roquita;
+	vector<Arbol*> arbolitos;
 
 public:
 	Controladora() {
@@ -45,6 +47,10 @@ public:
 	void agregarRocaPosicion(int x, int y) {
 		roquita.push_back(new Rocas(x, y));
 	}
+
+	void agregarArbolPosicion(int x, int y) {
+		arbolitos.push_back(new Arbol(x, y));
+	}
 	void moverRobotControladora(BufferedGraphics ^ buffer, Bitmap ^ bmp) {
 			for (size_t i = 0; i < awita.size(); i++) {
 				awita[i]->moverAgua(buffer, bmp);
@@ -54,6 +60,12 @@ public:
 		for (size_t i = 0; i < roquita.size(); i++)
 		{
 			roquita[i]->moverRocas(buffer, bmp);
+		}
+	}
+
+	void dibujarArbolesControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
+		for (size_t i = 0; i < arbolitos.size(); i++) {
+			arbolitos[i]->dibujarArbol(buffer, bmp);
 		}
 	}
 

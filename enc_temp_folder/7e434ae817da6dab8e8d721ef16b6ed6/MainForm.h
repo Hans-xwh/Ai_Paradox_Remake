@@ -339,9 +339,9 @@ namespace AiParadoxRemake {
 			// para el segundo nivel parte dos
 		case Keys::H:
 			controladora->getPersonaje()->direccion = Direcciones::Plantar;
-			int MAXIMOW = this->ClientSize.Width - spriteArbol->Width;
-			int MAXIMOH = this->ClientSize.Height - spriteArbol->Height;
-			controladora->agregarArbolPosicion(random->Next(0, MAXIMOW), random->Next(0, MAXIMOH));
+			int maxW = this->ClientSize.Width - spriteArbol->Width;
+			int maxH = this->ClientSize.Height - spriteArbol->Height;
+			controladora->agregarArbolPosicion(random->Next(0, maxW), random->Next(0, maxH));
 		}
 		    //
 		
