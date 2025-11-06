@@ -16,7 +16,7 @@ public:
 		dx = 0;
 		dy = 0;
 		agua = 10;
-		vidas = 5;
+		vidas = 10;
 	}
 	~Personaje() { }
 	Direcciones direccion;
