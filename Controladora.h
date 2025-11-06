@@ -6,7 +6,7 @@
 #include "Rocas.h"
 #include "Reymundo.h"
 #include "arbol.h"
-//hola
+//holad
 using namespace std;
 
 class Controladora
