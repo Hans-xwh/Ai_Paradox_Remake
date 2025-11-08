@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Controladora.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -14,6 +14,7 @@ namespace AiParadoxRemake {
 	/// </summary>
 	public ref class SegundoForm : public System::Windows::Forms::Form
 	{
+		Bitmap^ fondo2;
 	public:
 		SegundoForm(void)
 		{
@@ -21,6 +22,8 @@ namespace AiParadoxRemake {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			fondo2 = gcnew Bitmap("Imagenes/fondoSegundoSegundo.png");
+
 		}
 
 	protected:
@@ -34,12 +37,15 @@ namespace AiParadoxRemake {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Timer^ timer1;
+	protected:
+	private: System::ComponentModel::IContainer^ components;
 
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -48,13 +54,20 @@ namespace AiParadoxRemake {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
+			// 
+			// timer1
+			// 
+			this->timer1->Enabled = true;
+			this->timer1->Tick += gcnew System::EventHandler(this, &SegundoForm::timer1_Tick);
 			// 
 			// SegundoForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(282, 253);
+			this->ClientSize = System::Drawing::Size(990, 545);
 			this->Name = L"SegundoForm";
 			this->Text = L"SegundoForm";
 			this->Load += gcnew System::EventHandler(this, &SegundoForm::SegundoForm_Load);
@@ -63,6 +76,18 @@ namespace AiParadoxRemake {
 		}
 #pragma endregion
 	private: System::Void SegundoForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Graphics^ g = this->CreateGraphics();
+		BufferedGraphicsContext^ space = BufferedGraphicsManager::Current;
+		BufferedGraphics^ buffer = space->Allocate(g, this->ClientRectangle);
+		int ancho = buffer->Graphics->VisibleClipBounds.Width;
+		int alto = buffer->Graphics->VisibleClipBounds.Height;
+		buffer->Graphics->DrawImage(fondo2, 0, 0, ancho, alto);
+
+		buffer->Render(g);
+		delete buffer, space, g;
 	}
 	};
 }

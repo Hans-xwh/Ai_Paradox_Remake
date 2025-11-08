@@ -52,7 +52,7 @@ namespace AiParadoxRemake {
 			random = gcnew Random();
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
-			tiempoSiguienteRoca = random->Next(1000, 6000);
+			tiempoSiguienteRoca = random->Next(1000, 5000);
 		
 			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondoSegundo.png");
@@ -123,7 +123,8 @@ namespace AiParadoxRemake {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(96, 34);
+			this->label1->BackColor = System::Drawing::Color::Transparent;
+			this->label1->Location = System::Drawing::Point(225, 36);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(47, 16);
 			this->label1->TabIndex = 0;
@@ -133,7 +134,7 @@ namespace AiParadoxRemake {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(167, 34);
+			this->label2->Location = System::Drawing::Point(296, 36);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(44, 16);
 			this->label2->TabIndex = 1;
@@ -144,15 +145,15 @@ namespace AiParadoxRemake {
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(29, 473);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(224, 16);
+			this->label3->Size = System::Drawing::Size(298, 16);
 			this->label3->TabIndex = 2;
-			this->label3->Text = L"RECOLECTA 10 DE AGUA Y GANA!";
+			this->label3->Text = L"RECOLECTA 10 ESPIRITUS DE AGUA Y GANA!";
 			this->label3->Click += gcnew System::EventHandler(this, &MainForm::label3_Click);
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(12, 12);
+			this->pictureBox1->Location = System::Drawing::Point(100, 12);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(50, 50);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
@@ -162,7 +163,7 @@ namespace AiParadoxRemake {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(246, 34);
+			this->label4->Location = System::Drawing::Point(375, 36);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(57, 16);
 			this->label4->TabIndex = 4;
@@ -171,7 +172,7 @@ namespace AiParadoxRemake {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(325, 34);
+			this->label5->Location = System::Drawing::Point(454, 36);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(44, 16);
 			this->label5->TabIndex = 5;
@@ -180,7 +181,7 @@ namespace AiParadoxRemake {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(413, 34);
+			this->label6->Location = System::Drawing::Point(542, 36);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(45, 16);
 			this->label6->TabIndex = 6;
@@ -189,7 +190,7 @@ namespace AiParadoxRemake {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(498, 34);
+			this->label7->Location = System::Drawing::Point(627, 36);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(44, 16);
 			this->label7->TabIndex = 7;
@@ -305,7 +306,7 @@ namespace AiParadoxRemake {
 			controladora->agregarRocaPosicion(x, y);
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
-			tiempoSiguienteRoca = random->Next(1000, 6000);
+			tiempoSiguienteRoca = random->Next(1000, 5000);
 		}
 		///
 
