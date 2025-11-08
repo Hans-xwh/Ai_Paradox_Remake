@@ -88,26 +88,26 @@ public:
 			dy = 0;
 			dx = 0;
 			if (ultTecla == Arriba) {
-				dy = -10;
+				dy = -25;
 				dx = 0;
 				iteraY = 26;
 				ultTecla = Arriba;
 			}
 			else if (ultTecla == Abajo) {
-				dy = 10;
+				dy = 25;
 				dx = 0;
 				iteraY = 28;
 				ultTecla = Abajo;
 			}
 			else if (ultTecla == Derecha) {
 				dy = 0;
-				dx = 10;
+				dx = 25;
 				iteraY = 29;
 				ultTecla = Derecha;
 			}
 			else if (ultTecla == Izquierda) {
 				dy = 0;
-				dx = -10;
+				dx = -25;
 				iteraY = 27;
 				ultTecla = Izquierda;
 				

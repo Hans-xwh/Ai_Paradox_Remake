@@ -55,7 +55,7 @@ namespace AiParadoxRemake {
 			tiempoSiguienteRoca = random->Next(1000, 6000);
 		
 			controladora = new Controladora();
-			fondo = gcnew Bitmap("Imagenes/fondo.png");
+			fondo = gcnew Bitmap("Imagenes/fondoSegundo.png");
 			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
 			spriteRoca = gcnew Bitmap("Imagenes/Roca.png");
 			spriteRobot = gcnew Bitmap("Imagenes/Agua.png");
@@ -337,11 +337,11 @@ namespace AiParadoxRemake {
 			controladora->getPersonaje()->direccion = Direcciones::Salto;
 
 			// para el segundo nivel parte dos
-		case Keys::H:
+		/*case Keys::H:
 			controladora->getPersonaje()->direccion = Direcciones::Plantar;
 			int MAXIMOW = this->ClientSize.Width - spriteArbol->Width;
 			int MAXIMOH = this->ClientSize.Height - spriteArbol->Height;
-			controladora->agregarArbolPosicion(random->Next(0, MAXIMOW), random->Next(0, MAXIMOH));
+			controladora->agregarArbolPosicion(random->Next(0, MAXIMOW), random->Next(0, MAXIMOH));*/
 		}
 		    //
 		
