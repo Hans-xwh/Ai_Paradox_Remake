@@ -16,36 +16,45 @@ namespace AiParadoxRemake {
 	/// </summary>
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
-		Controladora* controladora;
-		Bitmap^ fondo;
-		Bitmap^ sprite;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
+		   Controladora* controladora;
+		   Random^ random;
+		   Bitmap^ fondo;
+		   Bitmap^ sprite;
 		   Bitmap^ spriteRobot;
 		   Bitmap^ spriteRoca;
 		   Bitmap^ spriteReymundo;
 
-		   //para el segndo nivel parte 2
-		   Bitmap^ spriteArbol;
-		   //
 		   bool SoundCamino = false;
 		   int contadorTiempo;
 		   int tiempoSiguienteRobot;
 		   int tiempoSiguienteRoca;
+		   int tiempo;
+
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-		   Random^ random;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label9;
-		   int tiempo;
 		
 	public:
 
+		// AUDIOS DEL SEGUNDO NIVEL
+
+		SoundPlayer^ nivelTwoSound = gcnew SoundPlayer("Audio/SoundNivel2.wav");
 		SoundPlayer^ caminando = gcnew SoundPlayer("Audio/SoundCaminando.wav");
+		SoundPlayer^ aguita = gcnew SoundPlayer("Audio/SoundWater.wav");
+		SoundPlayer^ roquita = gcnew SoundPlayer("Audio/SoundRoca.wav");
+
+
+	private: System::Windows::Forms::Timer^ timer2;
+	public:
+
+		//
 
 		MainForm(void)
 		{
@@ -54,10 +63,6 @@ namespace AiParadoxRemake {
 			//TODO: Add the constructor code here
 			//
 			random = gcnew Random();
-			contadorTiempo = 0;
-			tiempoSiguienteRobot = random->Next(1000, 5000);
-			tiempoSiguienteRoca = random->Next(1000, 5000);
-		
 			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondoSegundo.png");
 			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
@@ -65,9 +70,10 @@ namespace AiParadoxRemake {
 			spriteRobot = gcnew Bitmap("Imagenes/Agua.png");
 			spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
 
-			//para el segndo nivel parte 2
-			spriteArbol = gcnew Bitmap("Imagenes/arbol.png");
-			//
+			contadorTiempo = 0;
+			tiempoSiguienteRobot = random->Next(1000, 5000);
+			tiempoSiguienteRoca = random->Next(1000, 5000);
+	
 
 			tiempo = 0;
 		}
@@ -116,6 +122,7 @@ namespace AiParadoxRemake {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -218,6 +225,10 @@ namespace AiParadoxRemake {
 			this->label9->TabIndex = 9;
 			this->label9->Text = L"PASA ESTE NIVEL..";
 			// 
+			// timer2
+			// 
+			this->timer2->Tick += gcnew System::EventHandler(this, &MainForm::timer2_Tick);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -259,9 +270,6 @@ namespace AiParadoxRemake {
 		controladora->moverRocaControladora(buffer, spriteRoca);
 		controladora->aparecerReymundoControladora(buffer, spriteReymundo);
 
-		//para el segndo nivel parte 2
-		controladora->dibujarArbolesControladora(buffer, spriteArbol);
-		//
 
 		controladora->colision(buffer);
 		tiempo++;
@@ -313,13 +321,11 @@ namespace AiParadoxRemake {
 			tiempoSiguienteRobot = random->Next(1000, 5000);
 			tiempoSiguienteRoca = random->Next(1000, 5000);
 		}
-		///
+
 
 		buffer->Render(g);
 		delete buffer, space, g;
 
-
-	
 	}
 
 	private: System::Void MainForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -329,7 +335,6 @@ namespace AiParadoxRemake {
 			caminando->Stop();
 			SoundCamino = false;
 	    }
-	
 	
 	}
 	private: System::Void MainForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -354,26 +359,19 @@ namespace AiParadoxRemake {
 			break;
 		case Keys::Space:
 			controladora->getPersonaje()->direccion = Direcciones::Salto;
-
-			// para el segundo nivel parte dos
-		/*case Keys::H:
-			controladora->getPersonaje()->direccion = Direcciones::Plantar;
-			int MAXIMOW = this->ClientSize.Width - spriteArbol->Width;
-			int MAXIMOH = this->ClientSize.Height - spriteArbol->Height;
-			controladora->agregarArbolPosicion(random->Next(0, MAXIMOW), random->Next(0, MAXIMOH));*/
 		}
-		    //
-		
-	
-
 	}
+
+
 	private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void MainForm_Load_1(System::Object^ sender, System::EventArgs^ e) {
-}
+    private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+    }
+    private: System::Void MainForm_Load_1(System::Object^ sender, System::EventArgs^ e) {
+    }
+   private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
+    }
 };
 }

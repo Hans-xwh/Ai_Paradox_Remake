@@ -19,6 +19,10 @@ private:
 	vector<Rocas*>roquita;
 	vector<Arbol*> arbolitos;
 
+	// sonidos
+	bool SoundWater;
+	bool SoundRoca;
+
 public:
 	Controladora() {
 		srand(time(NULL));
@@ -72,13 +76,17 @@ public:
 	void colision(BufferedGraphics^ buffer) {
 		for (size_t i = 0; i < awita.size(); i++) {
 			if (awita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
+				
 				personaji->setAgua(-1);
 				awita[i]->setVisibilidad(false);
+				SoundWater = true;
+				
 			}
 		}
 
 		for (size_t i = 0; i < awita.size(); i++) {
 			if (!awita[i]->getVisibilidad()) {
+				delete awita[i];
 				awita.erase(awita.begin() + i);
 
 			}
@@ -90,11 +98,13 @@ public:
 			if (roquita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
 				personaji->setVidas(-1);
 				roquita[i]->setVisibilidad(false);
+				SoundRoca = true;
 			}
 		}
 
 		for (size_t i = 0; i < roquita.size(); i++) {
 			if (!roquita[i]->getVisibilidad()) {
+				delete roquita[i];
 				roquita.erase(roquita.begin() + i);
 
 			}
@@ -104,6 +114,16 @@ public:
 
 
 
+	}
+
+	bool getSoundWater() {
+		return SoundWater;
+	}
+	bool getSoundRoca() {
+		return SoundRoca;
+	}
+	void resetSounds() {
+		SoundRoca = SoundWater = false;
 	}
 };
 
