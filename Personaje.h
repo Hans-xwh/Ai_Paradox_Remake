@@ -30,7 +30,7 @@ public:
 	}
 
 	void moverPersonaje(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		if (iteraX >= 0 && iteraX < 4) iteraX++;
+		if (iteraX >= 0 && iteraX < 3) iteraX++;
 		else iteraX = 0;
 
 		switch (direccion)

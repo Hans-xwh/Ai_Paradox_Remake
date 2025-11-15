@@ -9,6 +9,7 @@ namespace AiParadoxRemake {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Media;
 
 	/// <summary>
 	/// Summary for MainForm
@@ -27,7 +28,7 @@ namespace AiParadoxRemake {
 		   //para el segndo nivel parte 2
 		   Bitmap^ spriteArbol;
 		   //
-
+		   bool SoundCamino = false;
 		   int contadorTiempo;
 		   int tiempoSiguienteRobot;
 		   int tiempoSiguienteRoca;
@@ -43,6 +44,9 @@ namespace AiParadoxRemake {
 		   int tiempo;
 		
 	public:
+
+		SoundPlayer^ caminando = gcnew SoundPlayer("Audio/SoundCaminando.wav");
+
 		MainForm(void)
 		{
 			InitializeComponent();
@@ -232,6 +236,7 @@ namespace AiParadoxRemake {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
+			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load_1);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyUp);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -319,8 +324,21 @@ namespace AiParadoxRemake {
 
 	private: System::Void MainForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		controladora->getPersonaje()->direccion = Direcciones::Ninguna;
+	
+		if (e->KeyCode == Keys::Left || e->KeyCode == Keys::Right || e->KeyCode == Keys::Up || e->KeyCode == Keys::Down) {
+			caminando->Stop();
+			SoundCamino = false;
+	    }
+	
+	
 	}
 	private: System::Void MainForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		
+		if (!SoundCamino) {
+			caminando->PlayLooping();
+			SoundCamino = true;
+		}
+		
 		switch (e->KeyCode) {
 		case Keys::Left:
 			controladora->getPersonaje()->direccion = Direcciones::Izquierda;
@@ -354,6 +372,8 @@ namespace AiParadoxRemake {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void MainForm_Load_1(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
