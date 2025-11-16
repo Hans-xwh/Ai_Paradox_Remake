@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="SegundoForm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +129,9 @@
     <ClInclude Include="Controladora.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="MainForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MenuInicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Personaje.h" />
@@ -141,6 +145,9 @@
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuInicio.resx">
+      <DependentUpon>MenuInicio.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SegundoForm.resx">
       <DependentUpon>SegundoForm.h</DependentUpon>
