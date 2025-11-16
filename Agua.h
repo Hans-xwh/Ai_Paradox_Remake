@@ -15,6 +15,7 @@ public:
 		direccion = getDireccionRandom();
 		iteraX = 0;
 		iteraY = 3;
+		setTiling(13, 54);
 	}
 	void setDireccionRobot(Direcciones dix){
 		this->direccion = dix;
@@ -38,13 +39,14 @@ public:
 			return Direcciones::Derecha;
 			break;
 		}
+		return Direcciones::Ninguna;
 	}
 
 	void dibujarAgua(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		ancho = bmp->Width / 13;
-		alto = bmp->Height / 54;
+		//ancho = bmp->Width / 13;
+		//alto = bmp->Height / 54;
 
-		dibujarEntidad(buffer, bmp);
+		dibujar(buffer, bmp);
 	}
 
 	void moverAgua(BufferedGraphics^ buffer, Bitmap^ bmp) {
@@ -79,8 +81,6 @@ public:
 		x += dx;
 		y += dy;
 
-		dibujarAgua(buffer, bmp);
-
+		dibujar(buffer, bmp);
 	}
-
 };

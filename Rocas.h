@@ -13,6 +13,7 @@ public:
 		direccion = getDireccionRandom();
 		iteraX = 0;
 		iteraY = 3;
+		setTiling(13, 54);
 	}
 	void setDireccionRobot(Direcciones dix) {
 		this->direccion = dix;
@@ -42,7 +43,7 @@ public:
 		ancho = bmp->Width / 13;
 		alto = bmp->Height / 54;
 
-		dibujarEntidad(buffer, bmp);
+		dibujar(buffer, bmp);
 	}
 
 	void moverRocas(BufferedGraphics^ buffer, Bitmap^ bmp) {
@@ -77,7 +78,7 @@ public:
 		x += dx;
 		y += dy;
 
-		dibujarRocas(buffer, bmp);
+		dibujar(buffer, bmp);
 
 	}
 

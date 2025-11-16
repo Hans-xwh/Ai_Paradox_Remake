@@ -17,6 +17,7 @@ public:
 		dy = 0;
 		agua = 10;
 		vidas = 10;
+		setTiling(13, 54);
 	}
 	~Personaje() { }
 	Direcciones direccion;
@@ -25,7 +26,7 @@ public:
 		ancho = bmp->Width / 13;
 		alto = bmp->Height / 54;
 
-		dibujarEntidad(buffer, bmp);
+		dibujar(buffer, bmp);
 
 	}
 
@@ -125,7 +126,7 @@ public:
 		x += dx;
 		y += dy;
 
-		dibujarPersonaje(buffer, bmp);
+		dibujar(buffer, bmp);
 	}
 	void setAgua(int val) {
 		this->agua += val;

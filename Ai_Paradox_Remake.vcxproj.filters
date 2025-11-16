@@ -50,9 +50,6 @@
     <ClInclude Include="Reymundo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="arbol.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MenuInicio.h">
       <Filter>Header Files</Filter>
     </ClInclude>

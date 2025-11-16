@@ -5,7 +5,7 @@
 #include <time.h>
 #include "Rocas.h"
 #include "Reymundo.h"
-#include "arbol.h"
+//#include "arbol.h"
 //holad
 using namespace std;
 
@@ -15,9 +15,9 @@ class Controladora
 private:
 	vector<Agua*>awita;
 	Personaje* personaji;
-	Reymundo* reymundo;
+	Entidad* reymundo;
 	vector<Rocas*>roquita;
-	vector<Arbol*> arbolitos;
+	vector<Entidad*> arbolitos;
 
 	// sonidos
 	bool SoundWater;
@@ -27,7 +27,8 @@ public:
 	Controladora() {
 		srand(time(NULL));
 		personaji = new Personaje(rand() % 250, rand() % 250);
-		reymundo = new Reymundo(630, 325);
+		reymundo = new Entidad(630, 325); 
+		reymundo->setTiling(13, 54); reymundo->setIteraY(2);
 
 	}
 
@@ -37,7 +38,7 @@ public:
 	}
 
 	void aparecerReymundoControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		reymundo->dibujarReymundo(buffer, bmp);
+		reymundo->dibujar(buffer, bmp);
 	}
 
 	Personaje* getPersonaje() {
@@ -53,7 +54,7 @@ public:
 	}
 
 	void agregarArbolPosicion(int x, int y) {
-		arbolitos.push_back(new Arbol(x, y));
+		arbolitos.push_back(new Entidad(x, y));
 	}
 	void moverRobotControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		for (size_t i = 0; i < awita.size(); i++) {
@@ -69,7 +70,7 @@ public:
 
 	void dibujarArbolesControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		for (size_t i = 0; i < arbolitos.size(); i++) {
-			arbolitos[i]->dibujarArbol(buffer, bmp);
+			arbolitos[i]->dibujar(buffer, bmp);
 		}
 	}
 
@@ -78,14 +79,14 @@ public:
 			if (awita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
 				
 				personaji->setAgua(-1);
-				awita[i]->setVisibilidad(false);
+				awita[i]->setVisible(false);
 				SoundWater = true;
 				
 			}
 		}
 
 		for (size_t i = 0; i < awita.size(); i++) {
-			if (!awita[i]->getVisibilidad()) {
+			if (!awita[i]->getVisible()) {
 				delete awita[i];
 				awita.erase(awita.begin() + i);
 
@@ -97,23 +98,18 @@ public:
 		for (size_t i = 0; i < roquita.size(); i++) {
 			if (roquita[i]->getRectangle().IntersectsWith(personaji->getRectangle())) {
 				personaji->setVidas(-1);
-				roquita[i]->setVisibilidad(false);
+				roquita[i]->setVisible(false);
 				SoundRoca = true;
 			}
 		}
 
 		for (size_t i = 0; i < roquita.size(); i++) {
-			if (!roquita[i]->getVisibilidad()) {
+			if (!roquita[i]->getVisible()) {
 				delete roquita[i];
 				roquita.erase(roquita.begin() + i);
 
 			}
 		}
-
-		//
-
-
-
 	}
 
 	bool getSoundWater() {

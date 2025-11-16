@@ -1,13 +1,16 @@
 #pragma once
 #include "Entidad.h"
 
+//PENDIENTE ELIMINAR ESTA CLAS
+//Es lo mismo que entidad
+
 using namespace std;
 
-class Reymundo : public Entidad
+class ReymundoS : public Entidad
 {
 
 public:
-	Reymundo(int x, int y)  : Entidad(x, y)
+	ReymundoS(int x, int y)  : Entidad(x, y)
 	{
 		this->x = x;
 		this->y = y;
@@ -15,14 +18,14 @@ public:
 		iteraY = 2;
 	
 	}
-	~Reymundo() { }
+	~ReymundoS() { }
 
 
 	void dibujarReymundo(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		ancho = bmp->Width / 13;
 		alto = bmp->Height / 54;
 
-		dibujarEntidad(buffer, bmp);
+		dibujar(buffer, bmp);
 	}
 
 };

@@ -16,6 +16,8 @@ namespace AiParadoxRemake {
 	/// </summary>
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
+		//Todo esto es public, consideren hacerlas private
+	private:
 		   Controladora* controladora;
 		   Random^ random;
 		   Bitmap^ fondo;
@@ -41,7 +43,7 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::Label^ label9;
 		
-	public:
+	public:	//Seguros que tienen que ser public?
 
 		// AUDIOS DEL SEGUNDO NIVEL
 
@@ -135,9 +137,10 @@ namespace AiParadoxRemake {
 			// 
 			this->label1->AutoSize = true;
 			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Location = System::Drawing::Point(225, 36);
+			this->label1->Location = System::Drawing::Point(169, 29);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(47, 16);
+			this->label1->Size = System::Drawing::Size(39, 13);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Faltan:";
 			this->label1->Click += gcnew System::EventHandler(this, &MainForm::label1_Click);
@@ -145,18 +148,20 @@ namespace AiParadoxRemake {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(296, 36);
+			this->label2->Location = System::Drawing::Point(222, 29);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(44, 16);
+			this->label2->Size = System::Drawing::Size(35, 13);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"label2";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(29, 473);
+			this->label3->Location = System::Drawing::Point(22, 384);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(298, 16);
+			this->label3->Size = System::Drawing::Size(243, 13);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"RECOLECTA 10 ESPIRITUS DE AGUA Y GANA!";
 			this->label3->Click += gcnew System::EventHandler(this, &MainForm::label3_Click);
@@ -164,7 +169,8 @@ namespace AiParadoxRemake {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(100, 12);
+			this->pictureBox1->Location = System::Drawing::Point(75, 10);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(50, 50);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
@@ -174,54 +180,60 @@ namespace AiParadoxRemake {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(375, 36);
+			this->label4->Location = System::Drawing::Point(281, 29);
+			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(57, 16);
+			this->label4->Size = System::Drawing::Size(45, 13);
 			this->label4->TabIndex = 4;
 			this->label4->Text = L"Tiempo:";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(454, 36);
+			this->label5->Location = System::Drawing::Point(340, 29);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(44, 16);
+			this->label5->Size = System::Drawing::Size(35, 13);
 			this->label5->TabIndex = 5;
 			this->label5->Text = L"label5";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(542, 36);
+			this->label6->Location = System::Drawing::Point(406, 29);
+			this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(45, 16);
+			this->label6->Size = System::Drawing::Size(36, 13);
 			this->label6->TabIndex = 6;
 			this->label6->Text = L"Vidas:";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(627, 36);
+			this->label7->Location = System::Drawing::Point(470, 29);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(44, 16);
+			this->label7->Size = System::Drawing::Size(35, 13);
 			this->label7->TabIndex = 7;
 			this->label7->Text = L"label7";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(808, 400);
+			this->label8->Location = System::Drawing::Point(606, 325);
+			this->label8->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(170, 16);
+			this->label8->Size = System::Drawing::Size(139, 13);
 			this->label8->TabIndex = 8;
 			this->label8->Text = L"PARA HABLAR CONMIGO!";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Location = System::Drawing::Point(825, 384);
+			this->label9->Location = System::Drawing::Point(619, 312);
+			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(129, 16);
+			this->label9->Size = System::Drawing::Size(106, 13);
 			this->label9->TabIndex = 9;
 			this->label9->Text = L"PASA ESTE NIVEL..";
 			// 
@@ -231,9 +243,9 @@ namespace AiParadoxRemake {
 			// 
 			// MainForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(990, 545);
+			this->ClientSize = System::Drawing::Size(742, 443);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
@@ -244,7 +256,6 @@ namespace AiParadoxRemake {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
 			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load_1);

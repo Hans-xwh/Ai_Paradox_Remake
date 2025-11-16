@@ -125,7 +125,6 @@
     <ClCompile Include="SegundoForm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="arbol.h" />
     <ClInclude Include="Controladora.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="MainForm.h">
