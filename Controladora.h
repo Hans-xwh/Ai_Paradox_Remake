@@ -20,8 +20,8 @@ private:
 	vector<Entidad*> arbolitos;
 
 	// sonidos
-	bool SoundWater;
-	bool SoundRoca;
+	bool SoundWater = false;
+	bool SoundRoca = false;
 
 public:
 	Controladora() {
