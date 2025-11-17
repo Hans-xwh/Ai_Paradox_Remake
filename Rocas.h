@@ -39,7 +39,7 @@ public:
 		}
 	}
 
-	void dibujarRocas(BufferedGraphics^ buffer, Bitmap^ bmp) {
+	void dibujarRocas(BufferedGraphics^ buffer, Bitmap^ bmp) {	//DEPRECADA, USAR DIBUJAR DE LA CLASE PADRE
 		ancho = bmp->Width / 13;
 		alto = bmp->Height / 54;
 

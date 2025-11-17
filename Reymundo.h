@@ -1,7 +1,7 @@
 #pragma once
 #include "Entidad.h"
 
-//PENDIENTE ELIMINAR ESTA CLAS
+//PENDIENTE ELIMINAR ESTA CLASE
 //Es lo mismo que entidad
 
 using namespace std;
