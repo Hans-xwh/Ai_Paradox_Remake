@@ -74,7 +74,7 @@ namespace AiParadoxRemake {
 			spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");
 			spriteRobot = gcnew Bitmap("Imagenes/espirituAgua.png");
 			spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
-			dialogo = new Dialogo("Sexo Sexo");		// Debug
+			dialogo = new Dialogo("Bayonneta es el mejor juego");		// Debug
 			dialogo->setHeight(100);
 
 
