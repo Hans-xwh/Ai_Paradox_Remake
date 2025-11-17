@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controladora.h" />
+    <ClInclude Include="Dialogo.hpp" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>

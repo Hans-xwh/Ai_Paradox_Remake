@@ -1,6 +1,7 @@
 #pragma once
 #include "Controladora.h"
 #include "SegundoForm.h"
+#include "Dialogo.hpp"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -25,6 +26,7 @@ namespace AiParadoxRemake {
 		   Bitmap^ spriteRobot;
 		   Bitmap^ spriteRoca;
 		   Bitmap^ spriteReymundo;
+		   Dialogo* dialogo;		//debug
 
 		   bool SoundCamino = false;
 		   bool SoundWaterYRocaActive = false;
@@ -72,6 +74,9 @@ namespace AiParadoxRemake {
 			spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");
 			spriteRobot = gcnew Bitmap("Imagenes/espirituAgua.png");
 			spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
+			dialogo = new Dialogo("Sexo Sexo");		// Debug
+			dialogo->setHeight(100);
+
 
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
@@ -162,6 +167,7 @@ namespace AiParadoxRemake {
 			this->label3->Size = System::Drawing::Size(298, 16);
 			this->label3->TabIndex = 2;
 			this->label3->Text = L"RECOLECTA 10 ESPIRITUS DE AGUA Y GANA!";
+			this->label3->Visible = false;
 			this->label3->Click += gcnew System::EventHandler(this, &MainForm::label3_Click);
 			// 
 			// pictureBox1
@@ -350,6 +356,7 @@ namespace AiParadoxRemake {
 			tiempoSiguienteRoca = random->Next(1000, 5000);
 		}
 
+		dialogo->dibujar(buffer->Graphics);
 
 		buffer->Render(g);
 		delete buffer, space, g;
