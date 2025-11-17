@@ -11,11 +11,12 @@ class Agua : public Entidad
 public:
 	Agua(int x, int y) : Entidad(x, y) {
 		this->x = x;
-		this->y =y;
+		this->y = y;
 		direccion = getDireccionRandom();
 		iteraX = 0;
-		iteraY = 3;
-		setTiling(13, 54);
+		iteraY = 0;
+		setTiling(10, 2);
+		escala = 1;
 	}
 	void setDireccionRobot(Direcciones dix){
 		this->direccion = dix;
