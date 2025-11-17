@@ -14,7 +14,7 @@ public:
 		iteraX = 0;
 		iteraY = 0;
 		setTiling(6, 1);
-		escala = 1.25;
+		escala = 1;
 	}
 	void setDireccionRobot(Direcciones dix) {
 		this->direccion = dix;
