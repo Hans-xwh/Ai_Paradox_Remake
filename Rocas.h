@@ -12,8 +12,9 @@ public:
 		this->y = y;
 		direccion = getDireccionRandom();
 		iteraX = 0;
-		iteraY = 3;
-		setTiling(13, 54);
+		iteraY = 0;
+		setTiling(6, 1);
+		escala = 1.25;
 	}
 	void setDireccionRobot(Direcciones dix) {
 		this->direccion = dix;
@@ -39,15 +40,15 @@ public:
 		}
 	}
 
-	void dibujarRocas(BufferedGraphics^ buffer, Bitmap^ bmp) {	//DEPRECADA, USAR DIBUJAR DE LA CLASE PADRE
-		ancho = bmp->Width / 13;
-		alto = bmp->Height / 54;
+	void dibujarRocas(BufferedGraphics^ buffer, Bitmap^ bmp) {
+		ancho = bmp->Width / 6;
+		alto = bmp->Height / 1;
 
 		dibujar(buffer, bmp);
 	}
 
 	void moverRocas(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		if (iteraX >= 0 && iteraX < 6) iteraX++;
+		if (iteraX >= 0 && iteraX < 5) iteraX++;
 		else iteraX = 0;
 
 		switch (direccion) {

@@ -87,6 +87,7 @@ namespace AiParadoxRemake {
 			this->label1->Size = System::Drawing::Size(351, 52);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Menu preliminar";
+			this->label1->Click += gcnew System::EventHandler(this, &MenuInicio::label1_Click);
 			// 
 			// MenuInicio
 			// 
@@ -95,7 +96,7 @@ namespace AiParadoxRemake {
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1168, 741);
+			this->ClientSize = System::Drawing::Size(1172, 741);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
 			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
@@ -112,6 +113,8 @@ namespace AiParadoxRemake {
 		mundo2->ShowDialog();
 		delete mundo2;
 		this->Show();
+	}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
