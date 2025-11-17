@@ -27,6 +27,7 @@ namespace AiParadoxRemake {
 		   Bitmap^ spriteReymundo;
 
 		   bool SoundCamino = false;
+		   bool SoundWaterYRocaActive = false;
 		   int contadorTiempo;
 		   int tiempoSiguienteRobot;
 		   int tiempoSiguienteRoca;
@@ -231,6 +232,7 @@ namespace AiParadoxRemake {
 			// 
 			// timer2
 			// 
+			this->timer2->Interval = 2000;
 			this->timer2->Tick += gcnew System::EventHandler(this, &MainForm::timer2_Tick);
 			// 
 			// MainForm
@@ -277,6 +279,27 @@ namespace AiParadoxRemake {
 
 
 		controladora->colision(buffer);
+
+		// part sound
+		if (controladora->getSoundWater() && !SoundWaterYRocaActive) {
+			SoundWaterYRocaActive = true;
+			caminando->Stop();
+			aguita->Play();
+			SoundCamino = false;
+			controladora->resetSoundWater();
+			timer2->Start();
+		}
+
+		if (controladora->getSoundRoca() && !SoundWaterYRocaActive) {
+			SoundWaterYRocaActive = true;
+			caminando->Stop();
+			roquita->Play();
+			SoundCamino = false;
+			controladora->resetSoundRoca();
+			timer2->Start();
+		}
+		//
+
 		tiempo++;
 
 		label2->Text = Convert::ToString(controladora->getPersonaje()->getAgua());
@@ -337,14 +360,16 @@ namespace AiParadoxRemake {
 		controladora->getPersonaje()->direccion = Direcciones::Ninguna;
 	
 		if (e->KeyCode == Keys::Left || e->KeyCode == Keys::Right || e->KeyCode == Keys::Up || e->KeyCode == Keys::Down) {
-			caminando->Stop();
-			SoundCamino = false;
+			if (!SoundWaterYRocaActive) {
+				caminando->Stop();
+				SoundCamino = false;
+			}
 	    }
 	
 	}
 	private: System::Void MainForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		
-		if (!SoundCamino) {
+		if (!SoundCamino && !SoundWaterYRocaActive) {
 			caminando->PlayLooping();
 			SoundCamino = true;
 		}
@@ -377,12 +402,17 @@ namespace AiParadoxRemake {
     private: System::Void MainForm_Load_1(System::Object^ sender, System::EventArgs^ e) {
     }
    private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
+	   SoundWaterYRocaActive = false;
+	   timer2->Stop();
+
     }
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void MainForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
 	nivelTwoSound->Stop();
 	caminando->Stop();
+	aguita->Stop();
+	roquita->Stop();
 }
 };
 }

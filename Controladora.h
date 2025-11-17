@@ -118,6 +118,12 @@ public:
 	bool getSoundRoca() {
 		return SoundRoca;
 	}
+	void resetSoundWater() {
+	    SoundWater = false;
+	}
+	void resetSoundRoca() { 
+		SoundRoca = false; 
+	}
 	void resetSounds() {
 		SoundRoca = SoundWater = false;
 	}
