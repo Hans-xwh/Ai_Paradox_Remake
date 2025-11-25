@@ -54,6 +54,8 @@ namespace AiParadoxRemake {
 		SoundPlayer^ caminando = gcnew SoundPlayer("Audio/SoundCaminando.wav");
 		SoundPlayer^ aguita = gcnew SoundPlayer("Audio/SoundWater.wav");
 		SoundPlayer^ roquita = gcnew SoundPlayer("Audio/SoundRoca.wav");
+	private: System::Windows::Forms::Timer^ timer3;
+	public:
 
 
 	private: System::Windows::Forms::Timer^ timer2;
@@ -131,6 +133,7 @@ namespace AiParadoxRemake {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer3 = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -241,6 +244,10 @@ namespace AiParadoxRemake {
 			this->timer2->Interval = 2000;
 			this->timer2->Tick += gcnew System::EventHandler(this, &MainForm::timer2_Tick);
 			// 
+			// timer3
+			// 
+			this->timer3->Tick += gcnew System::EventHandler(this, &MainForm::timer3_Tick);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -314,7 +321,7 @@ namespace AiParadoxRemake {
 
 
 		///
-		if (tiempo / 6 == 60) {
+		if (tiempo >= 1200) {
 			timer1->Enabled = false;
 			MessageBox::Show("NO PUDISTE AGARRARLO A TIEMPO!");
 			this->Close();
@@ -420,6 +427,8 @@ private: System::Void MainForm_FormClosing(System::Object^ sender, System::Windo
 	caminando->Stop();
 	aguita->Stop();
 	roquita->Stop();
+}
+private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

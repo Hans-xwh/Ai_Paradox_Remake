@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MainForm.h"
+#include "SegundoForm.h"
 
 namespace AiParadoxRemake {
 
@@ -25,8 +26,12 @@ namespace AiParadoxRemake {
 			//
 		}
 
+	public:
+	private: System::Windows::Forms::Button^ button3;
+
 	private:
 		MainForm^ mundo2;
+		SegundoForm^ mundo2parte2;
 
 	protected:
 		/// <summary>
@@ -59,6 +64,7 @@ namespace AiParadoxRemake {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MenuInicio::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
@@ -68,7 +74,7 @@ namespace AiParadoxRemake {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Snap ITC", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->Location = System::Drawing::Point(334, 266);
-			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(511, 80);
 			this->button1->TabIndex = 0;
@@ -89,6 +95,20 @@ namespace AiParadoxRemake {
 			this->label1->Text = L"Menu preliminar";
 			this->label1->Click += gcnew System::EventHandler(this, &MenuInicio::label1_Click);
 			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button3->Font = (gcnew System::Drawing::Font(L"Snap ITC", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(334, 445);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(505, 72);
+			this->button3->TabIndex = 3;
+			this->button3->Text = L"mundo 2 parte 2";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &MenuInicio::button3_Click);
+			// 
 			// MenuInicio
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -97,11 +117,13 @@ namespace AiParadoxRemake {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1172, 741);
+			this->Controls->Add(this->button3);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MenuInicio";
 			this->Text = L"MenuInicio";
+			this->Load += gcnew System::EventHandler(this, &MenuInicio::MenuInicio_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -116,5 +138,15 @@ namespace AiParadoxRemake {
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void MenuInicio_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {//Boton mundo 2  parte 2
+	mundo2parte2 = gcnew SegundoForm();
+	this->Hide();
+	mundo2parte2->ShowDialog();
+	delete mundo2parte2;
+	this->Show();
+
+}
+};
 }

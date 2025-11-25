@@ -71,4 +71,10 @@ public:
 	void useNearestNeighbour(bool N) { useNN = N; }
 	void setIteraX(int ix) { iteraX = ix; }
 	void setIteraY(int iy) { iteraY = iy; }
+	int getIteraX() { return iteraX; }
+	int getIteraY() { return iteraY; }
+	int getX() { return x; }
+	int getY() { return y; }
+	void setX(int nx) { x = nx; }
+	void setY(int ny) { y = ny; }
 };

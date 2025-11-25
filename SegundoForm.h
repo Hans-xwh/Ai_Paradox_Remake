@@ -1,5 +1,6 @@
 #pragma once
 #include "Controladora.h"
+#include "Entidad.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -15,6 +16,8 @@ namespace AiParadoxRemake {
 	public ref class SegundoForm : public System::Windows::Forms::Form
 	{
 		Bitmap^ fondo2;
+		Entidad* arbol;
+		Bitmap^ spriteArbol;
 	public:
 		SegundoForm(void)
 		{
@@ -23,7 +26,12 @@ namespace AiParadoxRemake {
 			//TODO: agregar código de constructor aquí
 			//
 			fondo2 = gcnew Bitmap("Imagenes/fondoSegundoSegundo.png");
+			spriteArbol = gcnew Bitmap("Imagenes/ArbolSprite.png");
 
+			arbol = new Entidad(0, 0);
+			arbol->setTiling(5, 1);
+			arbol->setEscala(0.3);
+			arbol->setVisible(true);
 		}
 
 	protected:
@@ -72,6 +80,8 @@ namespace AiParadoxRemake {
 			this->Text = L"SegundoForm";
 			this->Load += gcnew System::EventHandler(this, &SegundoForm::SegundoForm_Load);
 			this->ResumeLayout(false);
+			this->KeyPreview = true;
+			this->KeyDown += gcnew KeyEventHandler(this, &SegundoForm::OnKeyDown);
 
 		}
 #pragma endregion
@@ -86,8 +96,24 @@ namespace AiParadoxRemake {
 		int alto = buffer->Graphics->VisibleClipBounds.Height;
 		buffer->Graphics->DrawImage(fondo2, 0, 0, ancho, alto);
 
+		int anchoFrame = spriteArbol->Width / 5;
+		int altoFrame = spriteArbol->Height;
+		float scale = arbol->getEscala();
+
+		arbol->setX(ancho / 2);
+		arbol->setY(alto / 2);
+
+		arbol->dibujar(buffer, spriteArbol);
+
+
 		buffer->Render(g);
 		delete buffer, space, g;
+	}
+	private: System::Void OnKeyDown(System::Object^ sender, KeyEventArgs^ e) {
+		if (e->KeyCode == Keys::F) {
+			if (arbol->getIteraX() < 4)
+				arbol->setIteraX(arbol->getIteraX() + 1);
+		}
 	}
 	};
 }
