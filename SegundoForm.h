@@ -17,7 +17,7 @@ namespace AiParadoxRemake {
 	{
 		Bitmap^ fondo2;
 		Entidad* arbol;
-		Bitmap^ spriteArbol; //Borrar
+		//Bitmap^ spriteArbol; //Borrar
 	public:
 		SegundoForm(void)
 		{
@@ -26,7 +26,7 @@ namespace AiParadoxRemake {
 			//TODO: agregar código de constructor aquí
 			//
 			fondo2 = gcnew Bitmap("Imagenes/fondoSegundoSegundo.png");
-			spriteArbol = gcnew Bitmap("Imagenes/ArbolSprite.png"); //Borrar
+			//spriteArbol = gcnew Bitmap("Imagenes/ArbolSprite.png"); //Borrar
 
 			arbol = new Entidad(0, 0);
 			arbol->setTiling(5, 1);
@@ -99,8 +99,8 @@ namespace AiParadoxRemake {
 		int alto = buffer->Graphics->VisibleClipBounds.Height;
 		buffer->Graphics->DrawImage(fondo2, 0, 0, ancho, alto);
 
-		int anchoFrame = spriteArbol->Width / 5;
-		int altoFrame = spriteArbol->Height;
+		//int anchoFrame = spriteArbol->Width / 5;
+		//int altoFrame = spriteArbol->Height;
 		float scale = arbol->getEscala();
 
 		arbol->setX(ancho / 2);
