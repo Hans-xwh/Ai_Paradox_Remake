@@ -1,9 +1,10 @@
 #pragma once
-#include "Controladora.h"
+#include "Controladora.h"	//Aqui se importa "Sprite_DB.h"
+#include "Sprite_DB.h"
 #include "SegundoForm.h"
 #include "Dialogo.hpp"
-namespace AiParadoxRemake {
 
+namespace AiParadoxRemake {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -19,21 +20,24 @@ namespace AiParadoxRemake {
 	{
 		//Todo esto es public, consideren hacerlas private
 	private:
-		   Controladora* controladora;
-		   Random^ random;
-		   Bitmap^ fondo;
-		   Bitmap^ sprite;
-		   Bitmap^ spriteRobot;
-		   Bitmap^ spriteRoca;
-		   Bitmap^ spriteReymundo;
-		   Dialogo* dialogo;		//debug
-
-		   bool SoundCamino = false;
-		   bool SoundWaterYRocaActive = false;
-		   int contadorTiempo;
-		   int tiempoSiguienteRobot;
-		   int tiempoSiguienteRoca;
-		   int tiempo;
+		
+		Sprite_DB^ spriteDB;
+		Controladora* controladora;
+		Random^ random;
+		Bitmap^ fondo;
+		//Bitmap^ sprite;
+		//Borrar
+		//Bitmap^ spriteRobot;
+		//Bitmap^ spriteRoca;
+		//Bitmap^ spriteReymundo;
+		Dialogo* dialogo;		//debug
+		
+		bool SoundCamino = false;
+		bool SoundWaterYRocaActive = false;
+		int contadorTiempo;
+		int tiempoSiguienteRobot;
+		int tiempoSiguienteRoca;
+		int tiempo;
 
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
@@ -69,13 +73,14 @@ namespace AiParadoxRemake {
 			//
 			//TODO: Add the constructor code here
 			//
+			spriteDB = gcnew Sprite_DB(2);
 			random = gcnew Random();
 			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondoSegundoNivel.png");
-			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
-			spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");
-			spriteRobot = gcnew Bitmap("Imagenes/espirituAgua.png");
-			spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
+			//sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
+			//spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");
+			//spriteRobot = gcnew Bitmap("Imagenes/espirituAgua.png");
+			//spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
 			dialogo = new Dialogo("Bayonneta es el mejor juego");		// Debug
 			dialogo->setHeight(100);
 
@@ -285,10 +290,13 @@ namespace AiParadoxRemake {
 		int ancho = buffer->Graphics->VisibleClipBounds.Width;
 		int alto = buffer->Graphics->VisibleClipBounds.Height;
 		buffer->Graphics->DrawImage(fondo, 0, 0, ancho, alto);
-		controladora->moverPersonajeControladora(buffer, sprite);
-		controladora->moverRobotControladora(buffer, spriteRobot);
-		controladora->moverRocaControladora(buffer, spriteRoca);
-		controladora->aparecerReymundoControladora(buffer, spriteReymundo);
+		//controladora->moverPersonajeControladora(buffer);
+		//controladora->moverRobotControladora(buffer);
+		//controladora->moverRocaControladora(buffer);
+		//controladora->aparecerReymundoControladora(buffer);
+		controladora->updateAll(buffer);
+		buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
+		controladora->drawAll(buffer, spriteDB);
 
 
 		controladora->colision(buffer);

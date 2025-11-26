@@ -16,16 +16,17 @@ public:
 		this->y = y;
 		iteraX = 0;
 		iteraY = 2;
+		sprite = Sprites::Reymundo;
 	
 	}
 	~ReymundoS() { }
 
 
-	void dibujarReymundo(BufferedGraphics^ buffer, Bitmap^ bmp) {
+	/*void dibujarReymundo(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		ancho = bmp->Width / 13;
 		alto = bmp->Height / 54;
 
 		dibujar(buffer, bmp);
-	}
+	}*/
 
 };

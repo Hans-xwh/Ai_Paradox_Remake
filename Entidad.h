@@ -1,4 +1,9 @@
 #pragma once
+
+#include "Sprite_DB.h"
+using nmspc_SpriteDB::Sprite_DB;	//clase Sprite_DB
+using nmspc_SpriteDB::Sprites;	//enum Sprites
+//using namespace nmspc_SpriteDB;
 using namespace System::Drawing;
 
 enum Direcciones{Arriba, Abajo, Derecha, Izquierda, Ninguna, Salto, Plantar};
@@ -15,6 +20,7 @@ protected:
 	bool visible;
 	int tilingX;
 	int tilingY;
+	Sprites sprite;
 
 public:
 	Entidad() {}
@@ -42,7 +48,9 @@ public:
 		y += dy;
 	}*/
 
-	virtual void dibujar(BufferedGraphics^ buffer, Bitmap^ bmp){		
+	virtual void draw (BufferedGraphics^ buffer, Sprite_DB^ db){		
+		Bitmap^ bmp = db->getSprite(sprite);
+
 		if (visible) {
 			if (useNN) {
 				buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
@@ -55,6 +63,14 @@ public:
 			Rectangle zoom = Rectangle(x, y, ancho * escala, alto * escala);
 			buffer->Graphics->DrawImage(bmp, zoom, sprite, GraphicsUnit::Pixel);
 		}
+	}
+
+	void setSprite(Sprites s, Sprite_DB^ db) {
+		sprite = s;
+
+		Bitmap^ tmp_bmp = db->getSprite(s);
+		ancho = tmp_bmp->Width / tilingX;
+		alto = tmp_bmp->Height / tilingY;
 	}
 
 	Rectangle getRectangle() {
