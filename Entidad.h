@@ -18,6 +18,7 @@ protected:
 	Direcciones direccion;
 	bool useNN;
 	bool visible;
+	bool showHitbox;
 	int tilingX;
 	int tilingY;
 	Sprites sprite;
@@ -39,6 +40,7 @@ public:
 		iteraX = 0;
 		iteraY = 0;
 		useNN = true;
+		showHitbox = true;
 	}
 	/*void dibujarEntidad(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		Rectangle sprite = Rectangle(ancho * iteraX, alto * iteraY, ancho, alto);
@@ -50,6 +52,7 @@ public:
 
 	virtual void draw (BufferedGraphics^ buffer, Sprite_DB^ db){		
 		Bitmap^ bmp = db->getSprite(sprite);
+		//bmp = db->getSprite(Sprites::Error);
 
 		if (visible) {
 			if (useNN) {
@@ -62,6 +65,11 @@ public:
 			Rectangle sprite = Rectangle(ancho * iteraX, alto * iteraY, ancho, alto);
 			Rectangle zoom = Rectangle(x, y, ancho * escala, alto * escala);
 			buffer->Graphics->DrawImage(bmp, zoom, sprite, GraphicsUnit::Pixel);
+
+			if (showHitbox) {
+				buffer->Graphics->DrawRectangle(Pens::Cyan, this->getRectangle());
+				buffer->Graphics->DrawRectangle(Pens::Red, zoom);
+			}
 		}
 	}
 

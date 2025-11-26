@@ -50,6 +50,7 @@ namespace nmspc_SpriteDB {
 			InitializeComponent();
 
 			spr_error = gcnew Bitmap("Imagenes/debugempty.png");
+			
 			spr_haluno = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");	//haluno siempre esta cargado
 
 			switch (lvl)

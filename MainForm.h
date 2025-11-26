@@ -20,6 +20,10 @@ namespace AiParadoxRemake {
 	{
 		//Todo esto es public, consideren hacerlas private
 	private:
+		//No hay necesidad de crear y borrar el buffer en cada frame
+		Graphics^ g;
+		BufferedGraphicsContext^ space;
+		BufferedGraphics^ buffer;
 		
 		Sprite_DB^ spriteDB;
 		Controladora* controladora;
@@ -73,6 +77,10 @@ namespace AiParadoxRemake {
 			//
 			//TODO: Add the constructor code here
 			//
+			g = this->CreateGraphics();
+			space = BufferedGraphicsManager::Current;
+			buffer = space->Allocate(g, this->ClientRectangle);
+
 			spriteDB = gcnew Sprite_DB(2);
 			random = gcnew Random();
 			controladora = new Controladora();
@@ -103,6 +111,11 @@ namespace AiParadoxRemake {
 			{
 				delete components;
 			}
+
+			delete controladora;
+			delete fondo;
+			delete spriteDB;
+			delete buffer, space, g;
 		}
 
 	private: System::Windows::Forms::Timer^ timer1;
@@ -283,9 +296,9 @@ namespace AiParadoxRemake {
 #pragma endregion
 
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Graphics^ g = this->CreateGraphics();
-		BufferedGraphicsContext^ space = BufferedGraphicsManager::Current;
-		BufferedGraphics^ buffer = space->Allocate(g, this->ClientRectangle);
+		//Graphics^ g = this->CreateGraphics();
+		//BufferedGraphicsContext^ space = BufferedGraphicsManager::Current;
+		//BufferedGraphics^ buffer = space->Allocate(g, this->ClientRectangle);
 
 		int ancho = buffer->Graphics->VisibleClipBounds.Width;
 		int alto = buffer->Graphics->VisibleClipBounds.Height;
@@ -295,7 +308,6 @@ namespace AiParadoxRemake {
 		//controladora->moverRocaControladora(buffer);
 		//controladora->aparecerReymundoControladora(buffer);
 		controladora->updateAll(buffer);
-		buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
 		controladora->drawAll(buffer, spriteDB);
 
 
@@ -371,11 +383,9 @@ namespace AiParadoxRemake {
 			tiempoSiguienteRoca = random->Next(1000, 5000);
 		}
 
-		dialogo->dibujar(buffer->Graphics);
+		//dialogo->dibujar(buffer->Graphics);
 
 		buffer->Render(g);
-		delete buffer, space, g;
-
 	}
 
 	private: System::Void MainForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
