@@ -120,10 +120,10 @@ public:
 
 		}
 
-		if (x + dx < 0 || x + dx + ancho > buffer->Graphics->VisibleClipBounds.Width) {
+		if (x + dx < 0 || x + dx + (ancho * escala) > buffer->Graphics->VisibleClipBounds.Width) {
 			dx = 0;
 		}
-		if (y + dy < 0 || y + dy + ancho > buffer->Graphics->VisibleClipBounds.Height) {
+		if (y + dy < 0 || y + dy + (ancho * escala) > buffer->Graphics->VisibleClipBounds.Height) {
 			dy = 0;
 		}
 		x += dx;

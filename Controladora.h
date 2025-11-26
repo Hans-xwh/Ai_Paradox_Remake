@@ -1,5 +1,5 @@
 #pragma once
-#include "Sprite_DB.h"
+#include "Sprite_DB.hpp"
 #include "Personaje.h"
 #include "Agua.h"
 #include <vector>
@@ -17,7 +17,7 @@ class Controladora
 {
 
 private:
-	vector<Agua*>awita;
+	vector<Agua*> awita;
 	Personaje* personaji;
 	Entidad* reymundo;
 	vector<Rocas*>roquita;
@@ -36,7 +36,19 @@ public:
 
 	}
 
-	~Controladora() {}
+	~Controladora() {
+		delete personaji;
+		delete reymundo;
+		for (Agua* awa : awita) {
+			delete awa;
+		}
+		for (Rocas* roca : roquita) {
+			delete roca;
+		}
+		for (Entidad* arbol : arbolitos) {
+			delete arbol;
+		}
+	}
 
 	void moverPersonajeControladora(BufferedGraphics^ buffer) {
 		personaji->moverPersonaje(buffer);

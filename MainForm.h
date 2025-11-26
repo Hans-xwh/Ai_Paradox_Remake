@@ -1,6 +1,6 @@
 #pragma once
 #include "Controladora.h"	//Aqui se importa "Sprite_DB.h"
-#include "Sprite_DB.h"
+#include "Sprite_DB.hpp"
 #include "SegundoForm.h"
 #include "Dialogo.hpp"
 
@@ -115,6 +115,8 @@ namespace AiParadoxRemake {
 			delete controladora;
 			delete fondo;
 			delete spriteDB;
+			delete dialogo;
+			delete random;
 			delete buffer, space, g;
 		}
 

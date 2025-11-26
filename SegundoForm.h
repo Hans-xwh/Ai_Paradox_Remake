@@ -44,6 +44,9 @@ namespace AiParadoxRemake {
 			{
 				delete components;
 			}
+
+			delete fondo2;
+			delete arbol;
 		}
 	private: System::Windows::Forms::Timer^ timer1;
 	protected:

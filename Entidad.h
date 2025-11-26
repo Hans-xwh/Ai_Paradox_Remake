@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Sprite_DB.h"
+#include "Sprite_DB.hpp"
 using nmspc_SpriteDB::Sprite_DB;	//clase Sprite_DB
 using nmspc_SpriteDB::Sprites;	//enum Sprites
 //using namespace nmspc_SpriteDB;
@@ -82,7 +82,7 @@ public:
 	}
 
 	Rectangle getRectangle() {
-		return Rectangle(x, y, ancho, alto);
+		return Rectangle(x, y, ancho * escala, alto * escala);
 	}
 
 	// getters y setters

@@ -123,7 +123,6 @@
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="SegundoForm.cpp" />
-    <ClCompile Include="Sprite_DB.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controladora.h" />
@@ -142,9 +141,7 @@
     <ClInclude Include="SegundoForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Sprite_DB.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
+    <ClInclude Include="Sprite_DB.hpp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
@@ -155,9 +152,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SegundoForm.resx">
       <DependentUpon>SegundoForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sprite_DB.resx">
-      <DependentUpon>Sprite_DB.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
