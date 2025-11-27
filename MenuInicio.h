@@ -116,10 +116,10 @@ namespace AiParadoxRemake {
 			this->button3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Snap ITC", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(247, 264);
+			this->button3->Location = System::Drawing::Point(263, 264);
 			this->button3->Margin = System::Windows::Forms::Padding(4);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(281, 69);
+			this->button3->Size = System::Drawing::Size(255, 70);
 			this->button3->TabIndex = 3;
 			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &MenuInicio::button3_Click);
