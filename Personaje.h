@@ -18,10 +18,12 @@ public:
 		agua = 10;
 		vidas = 10;
 		setTiling(13, 54);
+		sprite = Sprites::Haluno;
 	}
 	~Personaje() { }
 	Direcciones direccion;
-
+	
+	/*	//Usar metodo draw de Entidad
 	void dibujarPersonaje(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		ancho = bmp->Width / 13;
 		alto = bmp->Height / 54;
@@ -29,8 +31,9 @@ public:
 		dibujar(buffer, bmp);
 
 	}
+	*/
 
-	void moverPersonaje(BufferedGraphics^ buffer, Bitmap^ bmp) {
+	void moverPersonaje(BufferedGraphics^ buffer) {
 		if (iteraX >= 0 && iteraX < 3) iteraX++;
 		else iteraX = 0;
 
@@ -117,16 +120,16 @@ public:
 
 		}
 
-		if (x + dx < 0 || x + dx + ancho > buffer->Graphics->VisibleClipBounds.Width) {
+		if (x + dx < 0 || x + dx + (ancho * escala) > buffer->Graphics->VisibleClipBounds.Width) {
 			dx = 0;
 		}
-		if (y + dy < 0 || y + dy + ancho > buffer->Graphics->VisibleClipBounds.Height) {
+		if (y + dy < 0 || y + dy + (ancho * escala) > buffer->Graphics->VisibleClipBounds.Height) {
 			dy = 0;
 		}
 		x += dx;
 		y += dy;
 
-		dibujar(buffer, bmp);
+		//dibujar(buffer);	//NO DIBUJAR EN LA MISMA FUNCIÓN QUE MOVER
 	}
 	void setAgua(int val) {
 		this->agua += val;

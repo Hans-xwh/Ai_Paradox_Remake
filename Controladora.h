@@ -1,4 +1,5 @@
 #pragma once
+#include "Sprite_DB.hpp"
 #include "Personaje.h"
 #include "Agua.h"
 #include <vector>
@@ -7,13 +8,16 @@
 #include "Reymundo.h"
 //#include "arbol.h"
 //holad
-using namespace std;
+using namespace std;		//CUIDADO CON IMPORTAR STD COMPLETO
+using namespace System::Drawing;	//creo que ya se importa pero mejor prevenir que lamentar xd
+using nmspc_SpriteDB::Sprite_DB;	//clase Sprite_DB
+using nmspc_SpriteDB::Sprites;	//enum Sprites
 
 class Controladora
 {
 
 private:
-	vector<Agua*>awita;
+	vector<Agua*> awita;
 	Personaje* personaji;
 	Entidad* reymundo;
 	vector<Rocas*>roquita;
@@ -32,14 +36,27 @@ public:
 
 	}
 
-	~Controladora() {}
-	void moverPersonajeControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		personaji->moverPersonaje(buffer, bmp);
+	~Controladora() {
+		delete personaji;
+		delete reymundo;
+		for (Agua* awa : awita) {
+			delete awa;
+		}
+		for (Rocas* roca : roquita) {
+			delete roca;
+		}
+		for (Entidad* arbol : arbolitos) {
+			delete arbol;
+		}
 	}
 
-	void aparecerReymundoControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		reymundo->dibujar(buffer, bmp);
+	void moverPersonajeControladora(BufferedGraphics^ buffer) {
+		personaji->moverPersonaje(buffer);
 	}
+
+	/*void aparecerReymundoControladora(BufferedGraphics^ buffer) {
+		reymundo->dibujar(buffer);
+	}*/
 
 	Personaje* getPersonaje() {
 		return personaji;
@@ -56,6 +73,7 @@ public:
 	void agregarArbolPosicion(int x, int y) {
 		arbolitos.push_back(new Entidad(x, y));
 	}
+	/*
 	void moverRobotControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		for (size_t i = 0; i < awita.size(); i++) {
 			awita[i]->moverAgua(buffer, bmp);
@@ -71,6 +89,34 @@ public:
 	void dibujarArbolesControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		for (size_t i = 0; i < arbolitos.size(); i++) {
 			arbolitos[i]->dibujar(buffer, bmp);
+		}
+	}
+	*/
+
+	void updateAll(BufferedGraphics^ buffer) {
+
+		//reymundo no se mueve
+		personaji->moverPersonaje(buffer);
+
+		for (Agua* a : awita) {
+			a->moverAgua(buffer);
+		}
+
+		for (Rocas* r : roquita) {
+			r->moverRocas(buffer);
+		}
+	}
+
+	void drawAll(BufferedGraphics^buffer, Sprite_DB^ spriteDb) {
+		personaji->draw(buffer, spriteDb);
+		reymundo->draw(buffer, spriteDb);
+
+		for (Agua* a : awita) {
+			a->draw(buffer, spriteDb);
+		}
+
+		for (Rocas* r : roquita) {
+			r->draw(buffer, spriteDb);
 		}
 	}
 

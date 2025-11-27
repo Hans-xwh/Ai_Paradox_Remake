@@ -141,6 +141,7 @@
     <ClInclude Include="SegundoForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Sprite_DB.hpp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">

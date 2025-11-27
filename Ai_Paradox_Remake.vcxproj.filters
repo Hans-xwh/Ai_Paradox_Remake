@@ -56,5 +56,8 @@
     <ClInclude Include="Dialogo.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Sprite_DB.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

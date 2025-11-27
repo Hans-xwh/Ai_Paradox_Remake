@@ -15,6 +15,7 @@ public:
 		iteraY = 0;
 		setTiling(6, 1);
 		escala = 1;
+		sprite = Sprites::GolemRoca;
 	}
 	void setDireccionRobot(Direcciones dix) {
 		this->direccion = dix;
@@ -40,14 +41,14 @@ public:
 		}
 	}
 
-	void dibujarRocas(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		ancho = bmp->Width / 6;
-		alto = bmp->Height / 1;
+	void dibujarRocas(BufferedGraphics^ buffer) {
+		//ancho = bmp->Width / 6;
+		//alto = bmp->Height / 1;
 
-		dibujar(buffer, bmp);
+		//dibujar(buffer, bmp);
 	}
 
-	void moverRocas(BufferedGraphics^ buffer, Bitmap^ bmp) {
+	void moverRocas(BufferedGraphics^ buffer) {
 		if (iteraX >= 0 && iteraX < 5) iteraX++;
 		else iteraX = 0;
 
@@ -79,7 +80,7 @@ public:
 		x += dx;
 		y += dy;
 
-		dibujar(buffer, bmp);
+		//dibujar(buffer, bmp);
 
 	}
 

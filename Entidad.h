@@ -1,4 +1,9 @@
 #pragma once
+
+#include "Sprite_DB.hpp"
+using nmspc_SpriteDB::Sprite_DB;	//clase Sprite_DB
+using nmspc_SpriteDB::Sprites;	//enum Sprites
+//using namespace nmspc_SpriteDB;
 using namespace System::Drawing;
 
 enum Direcciones{Arriba, Abajo, Derecha, Izquierda, Ninguna, Salto, Plantar};
@@ -13,8 +18,10 @@ protected:
 	Direcciones direccion;
 	bool useNN;
 	bool visible;
+	bool showHitbox;
 	int tilingX;
 	int tilingY;
+	Sprites sprite;
 
 public:
 	Entidad() {}
@@ -33,6 +40,7 @@ public:
 		iteraX = 0;
 		iteraY = 0;
 		useNN = true;
+		showHitbox = true;
 	}
 	/*void dibujarEntidad(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		Rectangle sprite = Rectangle(ancho * iteraX, alto * iteraY, ancho, alto);
@@ -42,7 +50,10 @@ public:
 		y += dy;
 	}*/
 
-	virtual void dibujar(BufferedGraphics^ buffer, Bitmap^ bmp){		
+	virtual void draw (BufferedGraphics^ buffer, Sprite_DB^ db){		
+		Bitmap^ bmp = db->getSprite(sprite);
+		//bmp = db->getSprite(Sprites::Error);
+
 		if (visible) {
 			if (useNN) {
 				buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
@@ -54,11 +65,24 @@ public:
 			Rectangle sprite = Rectangle(ancho * iteraX, alto * iteraY, ancho, alto);
 			Rectangle zoom = Rectangle(x, y, ancho * escala, alto * escala);
 			buffer->Graphics->DrawImage(bmp, zoom, sprite, GraphicsUnit::Pixel);
+
+			if (showHitbox) {
+				buffer->Graphics->DrawRectangle(Pens::Cyan, this->getRectangle());
+				buffer->Graphics->DrawRectangle(Pens::Red, zoom);
+			}
 		}
 	}
 
+	void setSprite(Sprites s, Sprite_DB^ db) {
+		sprite = s;
+
+		Bitmap^ tmp_bmp = db->getSprite(s);
+		ancho = tmp_bmp->Width / tilingX;
+		alto = tmp_bmp->Height / tilingY;
+	}
+
 	Rectangle getRectangle() {
-		return Rectangle(x, y, ancho, alto);
+		return Rectangle(x, y, ancho * escala, alto * escala);
 	}
 
 	// getters y setters
@@ -71,4 +95,10 @@ public:
 	void useNearestNeighbour(bool N) { useNN = N; }
 	void setIteraX(int ix) { iteraX = ix; }
 	void setIteraY(int iy) { iteraY = iy; }
+	int getIteraX() { return iteraX; }
+	int getIteraY() { return iteraY; }
+	int getX() { return x; }
+	int getY() { return y; }
+	void setX(int nx) { x = nx; }
+	void setY(int ny) { y = ny; }
 };

@@ -17,6 +17,7 @@ public:
 		iteraY = 0;
 		setTiling(10, 2);
 		escala = 1;
+		sprite = Sprites::EspirituAgua;
 	}
 	void setDireccionRobot(Direcciones dix){
 		this->direccion = dix;
@@ -47,10 +48,10 @@ public:
 		//ancho = bmp->Width / 13;
 		//alto = bmp->Height / 54;
 
-		dibujar(buffer, bmp);
+		//dibujar(buffer, bmp);
 	}
 
-	void moverAgua(BufferedGraphics^ buffer, Bitmap^ bmp) {
+	void moverAgua(BufferedGraphics^ buffer) {
 		if (iteraX >= 0 && iteraX < 6) iteraX++;
 		else iteraX = 0;
 
@@ -82,6 +83,6 @@ public:
 		x += dx;
 		y += dy;
 
-		dibujar(buffer, bmp);
+		//dibujar(buffer, bmp);
 	}
 };

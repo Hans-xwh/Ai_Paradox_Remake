@@ -1,9 +1,10 @@
 #pragma once
-#include "Controladora.h"
+#include "Controladora.h"	//Aqui se importa "Sprite_DB.h"
+#include "Sprite_DB.hpp"
 #include "SegundoForm.h"
 #include "Dialogo.hpp"
-namespace AiParadoxRemake {
 
+namespace AiParadoxRemake {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -19,21 +20,28 @@ namespace AiParadoxRemake {
 	{
 		//Todo esto es public, consideren hacerlas private
 	private:
-		   Controladora* controladora;
-		   Random^ random;
-		   Bitmap^ fondo;
-		   Bitmap^ sprite;
-		   Bitmap^ spriteRobot;
-		   Bitmap^ spriteRoca;
-		   Bitmap^ spriteReymundo;
-		   Dialogo* dialogo;		//debug
-
-		   bool SoundCamino = false;
-		   bool SoundWaterYRocaActive = false;
-		   int contadorTiempo;
-		   int tiempoSiguienteRobot;
-		   int tiempoSiguienteRoca;
-		   int tiempo;
+		//No hay necesidad de crear y borrar el buffer en cada frame
+		Graphics^ g;
+		BufferedGraphicsContext^ space;
+		BufferedGraphics^ buffer;
+		
+		Sprite_DB^ spriteDB;
+		Controladora* controladora;
+		Random^ random;
+		Bitmap^ fondo;
+		//Bitmap^ sprite;
+		//Borrar
+		//Bitmap^ spriteRobot;
+		//Bitmap^ spriteRoca;
+		//Bitmap^ spriteReymundo;
+		Dialogo* dialogo;		//debug
+		
+		bool SoundCamino = false;
+		bool SoundWaterYRocaActive = false;
+		int contadorTiempo;
+		int tiempoSiguienteRobot;
+		int tiempoSiguienteRoca;
+		int tiempo;
 
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
@@ -54,6 +62,8 @@ namespace AiParadoxRemake {
 		SoundPlayer^ caminando = gcnew SoundPlayer("Audio/SoundCaminando.wav");
 		SoundPlayer^ aguita = gcnew SoundPlayer("Audio/SoundWater.wav");
 		SoundPlayer^ roquita = gcnew SoundPlayer("Audio/SoundRoca.wav");
+	private: System::Windows::Forms::Timer^ timer3;
+	public:
 
 
 	private: System::Windows::Forms::Timer^ timer2;
@@ -67,13 +77,18 @@ namespace AiParadoxRemake {
 			//
 			//TODO: Add the constructor code here
 			//
+			g = this->CreateGraphics();
+			space = BufferedGraphicsManager::Current;
+			buffer = space->Allocate(g, this->ClientRectangle);
+
+			spriteDB = gcnew Sprite_DB(2);
 			random = gcnew Random();
 			controladora = new Controladora();
 			fondo = gcnew Bitmap("Imagenes/fondoSegundoNivel.png");
-			sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
-			spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");
-			spriteRobot = gcnew Bitmap("Imagenes/espirituAgua.png");
-			spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
+			//sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
+			//spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");
+			//spriteRobot = gcnew Bitmap("Imagenes/espirituAgua.png");
+			//spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
 			dialogo = new Dialogo("Bayonneta es el mejor juego");		// Debug
 			dialogo->setHeight(100);
 
@@ -96,6 +111,13 @@ namespace AiParadoxRemake {
 			{
 				delete components;
 			}
+
+			delete controladora;
+			delete fondo;
+			delete spriteDB;
+			delete dialogo;
+			delete random;
+			delete buffer, space, g;
 		}
 
 	private: System::Windows::Forms::Timer^ timer1;
@@ -131,6 +153,7 @@ namespace AiParadoxRemake {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer3 = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -241,6 +264,10 @@ namespace AiParadoxRemake {
 			this->timer2->Interval = 2000;
 			this->timer2->Tick += gcnew System::EventHandler(this, &MainForm::timer2_Tick);
 			// 
+			// timer3
+			// 
+			this->timer3->Tick += gcnew System::EventHandler(this, &MainForm::timer3_Tick);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -271,17 +298,19 @@ namespace AiParadoxRemake {
 #pragma endregion
 
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Graphics^ g = this->CreateGraphics();
-		BufferedGraphicsContext^ space = BufferedGraphicsManager::Current;
-		BufferedGraphics^ buffer = space->Allocate(g, this->ClientRectangle);
+		//Graphics^ g = this->CreateGraphics();
+		//BufferedGraphicsContext^ space = BufferedGraphicsManager::Current;
+		//BufferedGraphics^ buffer = space->Allocate(g, this->ClientRectangle);
 
 		int ancho = buffer->Graphics->VisibleClipBounds.Width;
 		int alto = buffer->Graphics->VisibleClipBounds.Height;
 		buffer->Graphics->DrawImage(fondo, 0, 0, ancho, alto);
-		controladora->moverPersonajeControladora(buffer, sprite);
-		controladora->moverRobotControladora(buffer, spriteRobot);
-		controladora->moverRocaControladora(buffer, spriteRoca);
-		controladora->aparecerReymundoControladora(buffer, spriteReymundo);
+		//controladora->moverPersonajeControladora(buffer);
+		//controladora->moverRobotControladora(buffer);
+		//controladora->moverRocaControladora(buffer);
+		//controladora->aparecerReymundoControladora(buffer);
+		controladora->updateAll(buffer);
+		controladora->drawAll(buffer, spriteDB);
 
 
 		controladora->colision(buffer);
@@ -314,7 +343,7 @@ namespace AiParadoxRemake {
 
 
 		///
-		if (tiempo / 6 == 60) {
+		if (tiempo >= 1200) {
 			timer1->Enabled = false;
 			MessageBox::Show("NO PUDISTE AGARRARLO A TIEMPO!");
 			this->Close();
@@ -356,11 +385,9 @@ namespace AiParadoxRemake {
 			tiempoSiguienteRoca = random->Next(1000, 5000);
 		}
 
-		dialogo->dibujar(buffer->Graphics);
+		//dialogo->dibujar(buffer->Graphics);
 
 		buffer->Render(g);
-		delete buffer, space, g;
-
 	}
 
 	private: System::Void MainForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -420,6 +447,8 @@ private: System::Void MainForm_FormClosing(System::Object^ sender, System::Windo
 	caminando->Stop();
 	aguita->Stop();
 	roquita->Stop();
+}
+private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
