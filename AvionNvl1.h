@@ -72,7 +72,7 @@ namespace AiParadoxRemake {
 			// timer1
 			// 
 			this->timer1->Enabled = true;
-			this->timer1->Interval = 32;
+			this->timer1->Interval = 16;
 			this->timer1->Tick += gcnew System::EventHandler(this, &AvionNvl1::timer1_Tick);
 			// 
 			// AvionNvl1
@@ -101,18 +101,23 @@ namespace AiParadoxRemake {
 		if (e->KeyCode == Keys::W) {
 			ctrlAvion->input(Direcciones::Arriba);
 		}
-		if (e->KeyCode == Keys::A) {
+		else if (e->KeyCode == Keys::A) {
 			ctrlAvion->input(Direcciones::Izquierda);
 		}
-		if (e->KeyCode == Keys::S) {
+		else if (e->KeyCode == Keys::S) {
 			ctrlAvion->input(Direcciones::Abajo);
 		}
-		if (e->KeyCode == Keys::D) {
+		else if (e->KeyCode == Keys::D) {
 			ctrlAvion->input(Direcciones::Derecha);
-		}		
+		}
+		else if (e->KeyCode == Keys::Space) {
+			ctrlAvion->input(Direcciones::Salto);
+		}
 	}
 	private: System::Void AvionNvl1_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		ctrlAvion->input(Direcciones::Ninguna);
+		if (e->KeyCode != Keys::Space) {
+			ctrlAvion->input(Direcciones::Ninguna);
+		}
 	}
 
 	};

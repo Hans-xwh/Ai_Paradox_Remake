@@ -5,16 +5,16 @@
 class HalunoAvion : public Entidad{
 private:
 	Direcciones lastDir;
-	int speed;
 public:
 	HalunoAvion() : Entidad(50, 150) {
 		speed = 10;
 		escala = 1;
 		tilingX = tilingY = 4;
 		sprite = Sprites::AvionH;
+		iteraY = 1;
 	}
 
-	void setDir(Direcciones d) {
+	void setDir(Direcciones d) override {
 		lastDir = direccion;
 		direccion = d;
 	}
@@ -49,5 +49,6 @@ public:
 		}
 	}
 
-
+	int getOffsetedX() { return x + ancho; }
+	int getOffsetedY() { return y + (alto / 2); }
 };

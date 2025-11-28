@@ -89,5 +89,8 @@
     <ClInclude Include="Dev_menu.h">
       <Filter>Forms</Filter>
     </ClInclude>
+    <ClInclude Include="Proyectil.hpp">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

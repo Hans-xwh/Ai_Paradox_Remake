@@ -12,6 +12,7 @@ class Entidad {
 protected:
 	int x, y;
 	int dx, dy;
+	int speed;
 	int ancho, alto;
 	int iteraX, iteraY;
 	float escala;
@@ -33,6 +34,7 @@ public:
 		visible = true;
 		dx = 0;
 		dy = 0;
+		speed = 1;
 		ancho = 0;
 		alto = 0;
 		escala = 1.5;
@@ -73,6 +75,7 @@ public:
 		}
 	}
 
+	void setSprite(Sprites s) { sprite = s; }
 	void setSprite(Sprites s, Sprite_DB^ db) {
 		sprite = s;
 
@@ -101,4 +104,5 @@ public:
 	int getY() { return y; }
 	void setX(int nx) { x = nx; }
 	void setY(int ny) { y = ny; }
+	virtual void setDir(Direcciones d) { direccion = d; }
 };

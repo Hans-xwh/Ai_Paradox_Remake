@@ -146,6 +146,7 @@
     </ClInclude>
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Agua.h" />
+    <ClInclude Include="Proyectil.hpp" />
     <ClInclude Include="Reymundo.h" />
     <ClInclude Include="Rocas.h" />
     <ClInclude Include="SegundoForm.h">

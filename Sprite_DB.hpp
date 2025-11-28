@@ -11,6 +11,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Haluno,
 
 		//Nivel 1
+		Bala1,
 		AvionH,
 
 		//Nivel 2
@@ -30,6 +31,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 
 		//Primer nivel
 		Bitmap^ spr_avion;
+		Bitmap^ spr_bala1;
 
 		//Segundo nivel
 		Bitmap^ spr_agua;
@@ -67,6 +69,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			if (spr_roca) { delete spr_roca; }
 			if (spr_reymundo) { delete spr_reymundo; }
 			if (spr_arbol) { delete spr_arbol; }
+			if (spr_avion) { delete spr_avion; }
+			if (spr_bala1) { delete spr_bala1; }
 		}
 
 		
@@ -75,9 +79,11 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		// LLamar esto desde el formulario de cada nivel, por q creo q la controladora no puede contener un ref class
 		void Init_Nivel1() {
 			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
+			spr_bala1 = gcnew Bitmap("Imagenes/bala1.png");
 		}
 		void Unld_Nivel1() {
 			delete spr_avion;
+			delete spr_bala1;
 		}
 
 
@@ -109,6 +115,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_arbol;
 			case AvionH:
 				return spr_avion;
+			case Bala1:
+				return spr_bala1;
 			case Error:
 				return spr_error;
 			default:
