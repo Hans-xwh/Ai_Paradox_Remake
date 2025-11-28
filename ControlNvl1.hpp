@@ -56,12 +56,13 @@ public:
 	}
 
 	Proyectil* DameBala(int X, int Y) {
-		Proyectil* tmp = new Proyectil(X, Y, false);
-		tmp->setTiling(8, 1);
+		Proyectil* tmp = new Proyectil(X, Y, true);
+		tmp->setTiling(4, 1);
 		tmp->setIteraX(2);
 		tmp->setSprite(Sprites::Bala1);
 		tmp->setDir(Direcciones::Derecha);
-		tmp->setEscala(0.25f);
+		tmp->setEscala(0.5f);
+		tmp->setShowHitbox(false);
 		return tmp;
 	}
 };

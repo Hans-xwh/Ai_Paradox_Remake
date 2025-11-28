@@ -124,6 +124,7 @@
     <ClCompile Include="Dev_menu.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
+    <ClCompile Include="MovingEntity.cpp" />
     <ClCompile Include="SegundoForm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,7 @@
     <ClInclude Include="MenuInicio.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="MovingEntity.hpp" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Agua.h" />
     <ClInclude Include="Proyectil.hpp" />

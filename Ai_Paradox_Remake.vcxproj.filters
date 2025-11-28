@@ -42,6 +42,9 @@
     <ClCompile Include="Dev_menu.cpp">
       <Filter>Forms</Filter>
     </ClCompile>
+    <ClCompile Include="MovingEntity.cpp">
+      <Filter>Header Files\Nivel 1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="Proyectil.hpp">
       <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingEntity.hpp">
+      <Filter>Header Files\Nivel 1</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

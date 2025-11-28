@@ -79,7 +79,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		// LLamar esto desde el formulario de cada nivel, por q creo q la controladora no puede contener un ref class
 		void Init_Nivel1() {
 			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
-			spr_bala1 = gcnew Bitmap("Imagenes/bala1.png");
+			spr_bala1 = gcnew Bitmap("Imagenes/disparo2azul.png");
 		}
 		void Unld_Nivel1() {
 			delete spr_avion;
