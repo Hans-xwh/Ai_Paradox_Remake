@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Dev_menu.h"
 #include "MainForm.h"
 #include "SegundoForm.h"
 
@@ -35,7 +36,8 @@ namespace AiParadoxRemake {
 
 	private:
 		MainForm^ mundo2;
-		SegundoForm^ mundo2parte2;
+	private: System::Windows::Forms::Button^ btn_dev;
+		   SegundoForm^ mundo2parte2;
 
 	protected:
 		/// <summary>
@@ -70,6 +72,7 @@ namespace AiParadoxRemake {
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->btn_dev = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
@@ -116,24 +119,33 @@ namespace AiParadoxRemake {
 			this->button3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Snap ITC", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(263, 264);
-			this->button3->Margin = System::Windows::Forms::Padding(4);
+			this->button3->Location = System::Drawing::Point(197, 214);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(255, 70);
+			this->button3->Size = System::Drawing::Size(191, 57);
 			this->button3->TabIndex = 3;
 			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &MenuInicio::button3_Click);
 			// 
+			// btn_dev
+			// 
+			this->btn_dev->Location = System::Drawing::Point(777, 558);
+			this->btn_dev->Name = L"btn_dev";
+			this->btn_dev->Size = System::Drawing::Size(90, 32);
+			this->btn_dev->TabIndex = 4;
+			this->btn_dev->Text = L"Dev Menu";
+			this->btn_dev->UseVisualStyleBackColor = true;
+			this->btn_dev->Click += gcnew System::EventHandler(this, &MenuInicio::btn_dev_Click);
+			// 
 			// MenuInicio
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1172, 741);
+			this->ClientSize = System::Drawing::Size(879, 602);
+			this->Controls->Add(this->btn_dev);
 			this->Controls->Add(this->button3);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MenuInicio";
 			this->Text = L"MenuInicio";
 			this->Load += gcnew System::EventHandler(this, &MenuInicio::MenuInicio_Load);
@@ -162,6 +174,13 @@ private: System::Void button_Click(System::Object^ sender, System::EventArgs^ e)
 	delete mundo2parte2;
 	this->Show();
 
+}
+private: System::Void btn_dev_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Hide();
+	Dev_menu^ devmenu = gcnew Dev_menu();
+	devmenu->ShowDialog();
+	delete devmenu;
+	this->Show();
 }
 };
 }

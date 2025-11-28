@@ -120,12 +120,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AvionNvl1.cpp" />
+    <ClCompile Include="Dev_menu.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="SegundoForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AvionHaluno.hpp" />
+    <ClInclude Include="AvionNvl1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Controladora.h" />
+    <ClInclude Include="ControlNvl1.hpp" />
+    <ClInclude Include="Dev_menu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Dialogo.hpp" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="MainForm.h">
@@ -144,6 +154,12 @@
     <ClInclude Include="Sprite_DB.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AvionNvl1.resx">
+      <DependentUpon>AvionNvl1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dev_menu.resx">
+      <DependentUpon>Dev_menu.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>

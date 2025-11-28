@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Nivel 1">
+      <UniqueIdentifier>{cbbac134-b5bd-4065-9344-eb428e7be80b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Nivel 2">
+      <UniqueIdentifier>{c2f17a24-0267-4b01-b7c6-09227d207994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Generales">
+      <UniqueIdentifier>{d75e936f-592f-4d04-a8f9-c55bd192e0bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Forms">
+      <UniqueIdentifier>{5f9e28aa-f184-4f97-ab01-877f1c16a558}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainForm.cpp">
@@ -24,40 +36,58 @@
     <ClCompile Include="MenuInicio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AvionNvl1.cpp">
+      <Filter>Header Files\Nivel 1</Filter>
+    </ClCompile>
+    <ClCompile Include="Dev_menu.cpp">
+      <Filter>Forms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entidad.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Personaje.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Controladora.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Agua.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SegundoForm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rocas.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Reymundo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuInicio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Reymundo.h">
+      <Filter>Header Files\Nivel 2</Filter>
+    </ClInclude>
+    <ClInclude Include="Rocas.h">
+      <Filter>Header Files\Nivel 2</Filter>
+    </ClInclude>
+    <ClInclude Include="Agua.h">
+      <Filter>Header Files\Nivel 2</Filter>
+    </ClInclude>
+    <ClInclude Include="Controladora.h">
+      <Filter>Header Files\Nivel 2</Filter>
+    </ClInclude>
     <ClInclude Include="Dialogo.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="Entidad.h">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="Personaje.h">
+      <Filter>Header Files\Generales</Filter>
     </ClInclude>
     <ClInclude Include="Sprite_DB.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="AvionNvl1.h">
+      <Filter>Header Files\Nivel 1</Filter>
+    </ClInclude>
+    <ClInclude Include="AvionHaluno.hpp">
+      <Filter>Header Files\Nivel 1</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlNvl1.hpp">
+      <Filter>Header Files\Nivel 1</Filter>
+    </ClInclude>
+    <ClInclude Include="Dev_menu.h">
+      <Filter>Forms</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

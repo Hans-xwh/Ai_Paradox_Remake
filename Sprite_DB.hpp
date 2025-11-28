@@ -10,6 +10,9 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Error,
 		Haluno,
 
+		//Nivel 1
+		AvionH,
+
 		//Nivel 2
 		EspirituAgua,
 		GolemRoca,
@@ -26,7 +29,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 
 
 		//Primer nivel
-
+		Bitmap^ spr_avion;
 
 		//Segundo nivel
 		Bitmap^ spr_agua;
@@ -69,16 +72,26 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		
 
 		//Inicializan los sprites dependendo de cada nivel.
-		// LLamar esto desde el formulario de cada nivel, por q creo q la controladora no puede contener un form
+		// LLamar esto desde el formulario de cada nivel, por q creo q la controladora no puede contener un ref class
 		void Init_Nivel1() {
-
+			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
 		}
+		void Unld_Nivel1() {
+			delete spr_avion;
+		}
+
 
 		void Init_Nivel2() {
 			spr_roca = gcnew Bitmap("Imagenes/piedresinha.png");
 			spr_agua = gcnew Bitmap("Imagenes/espirituAgua.png");
 			spr_reymundo = gcnew Bitmap("Imagenes/Reymundo.png");
 			spr_arbol = gcnew Bitmap("Imagenes/ArbolSprite.png");
+		}
+		void Unld_Nivel2() {
+			delete spr_roca;
+			delete spr_agua;
+			delete spr_reymundo;
+			delete spr_arbol;
 		}
 
 		Bitmap^ getSprite(Sprites s) {
@@ -94,6 +107,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_reymundo;
 			case Arbol1:
 				return spr_arbol;
+			case AvionH:
+				return spr_avion;
 			case Error:
 				return spr_error;
 			default:
