@@ -16,6 +16,7 @@ protected:
 	int ancho, alto;
 	int iteraX, iteraY;
 	float escala;
+	float colliderScale;
 	Direcciones direccion;
 	bool useNN;
 	bool visible;
@@ -37,6 +38,7 @@ public:
 		speed = 1;
 		ancho = 0;
 		alto = 0;
+		colliderScale = 1;
 		escala = 1.5;
 		tilingX = tilingY = 1;
 		iteraX = 0;
@@ -44,13 +46,6 @@ public:
 		useNN = true;
 		showHitbox = true;
 	}
-	/*void dibujarEntidad(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		Rectangle sprite = Rectangle(ancho * iteraX, alto * iteraY, ancho, alto);
-		Rectangle zoom = Rectangle(x, y, ancho * 1.5, alto * 1.5);
-		buffer->Graphics->DrawImage(bmp, zoom, sprite, GraphicsUnit::Pixel);
-		x += dx;
-		y += dy;
-	}*/
 
 	virtual void draw (BufferedGraphics^ buffer, Sprite_DB^ db){		
 		Bitmap^ bmp = db->getSprite(sprite);
@@ -71,6 +66,7 @@ public:
 			if (showHitbox) {
 				buffer->Graphics->DrawRectangle(Pens::Cyan, this->getRectangle());
 				buffer->Graphics->DrawRectangle(Pens::Red, zoom);
+				buffer->Graphics->DrawRectangle(Pens::Yellow, this->getCollider());
 			}
 		}
 	}
@@ -102,8 +98,21 @@ public:
 	int getIteraY() { return iteraY; }
 	int getX() { return x; }
 	int getY() { return y; }
+	int getOffsetedX() { return x + ancho; }
+	int getOffsetedY() { return y + (alto / 2); }
 	void setX(int nx) { x = nx; }
 	void setY(int ny) { y = ny; }
+	void setSpeed(int S) { speed = S; }
 	void setShowHitbox(bool s) { showHitbox = s; }
 	virtual void setDir(Direcciones d) { direccion = d; }
+	void setColliderScale(float cs) { colliderScale = cs; }	// A menor numero, mayor el tamaño del sprite
+
+	Rectangle getCollider() {
+		return Rectangle(
+			x + (ancho/8 * colliderScale),
+			y + (alto/8 * colliderScale),
+			ancho * escala - (ancho / 4 * colliderScale),
+			alto * escala - (alto / 4 * colliderScale)
+			);
+	}
 };

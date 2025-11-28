@@ -21,7 +21,8 @@ namespace AiParadoxRemake {
 		BufferedGraphics^ bCanvas;
 
 		Sprite_DB^ sprite_db;
-		MnJg_Avion* ctrlAvion;
+
+		   MnJg_Avion* ctrlAvion;
 	public:
 		AvionNvl1(void)
 		{
@@ -77,11 +78,13 @@ namespace AiParadoxRemake {
 			// 
 			// AvionNvl1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1147, 608);
+			this->ClientSize = System::Drawing::Size(1529, 748);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"AvionNvl1";
 			this->Text = L"AvionNvl1";
+			this->Load += gcnew System::EventHandler(this, &AvionNvl1::AvionNvl1_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &AvionNvl1::AvionNvl1_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &AvionNvl1::AvionNvl1_KeyUp);
 			this->ResumeLayout(false);
@@ -92,6 +95,7 @@ namespace AiParadoxRemake {
 		bCanvas->Graphics->Clear(Color::White);
 
 		ctrlAvion->updateAll(bCanvas);
+		ctrlAvion->updateCollisions();
 		ctrlAvion->drawAll(bCanvas, sprite_db);
 
 		bCanvas->Render(g);
@@ -120,5 +124,7 @@ namespace AiParadoxRemake {
 		}
 	}
 
-	};
+	private: System::Void AvionNvl1_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

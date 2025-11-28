@@ -8,6 +8,7 @@ enum Behavior {
 	LinearMove,		//Linear simple
 	RndmBounce,		//Direcciones aleatorias, cambia cuando rebota. Se puede quedar atascado
 	RndmLinear,		//Direcciones y pasos aleatorios.
+	RndmUpDwn,		//Mueve de arriba a abajo en direcciones aleatorias. Rebota si se choca con una pared
 	FollowTarget,	//Sige un X Y, fucnion separada
 	DontMove		//Mpovimiento desacticvado
 };
@@ -18,19 +19,36 @@ protected:
 	Direcciones shootDir;
 	bool active;
 	bool animated;
-	int behavior;
 	int stepsX, stepsY;
-	int targetX, targetY;
+	int targetStepX, targetStepY;
 public:
 	Moving_Entity(int X, int Y, Behavior B = Behavior::LinearMove) : Entidad(X, Y) {
 		active = true;
 		behavior = B;
+		targetStepX = 0;
+		targetStepY = 1;
+		sprite = Sprites::Error;
+
+		if (behavior == Behavior::RndmUpDwn) {
+			System::Random r;
+			targetStepX = r.Next(20, 50);
+			targetStepY = r.Next(20, 50);
+		}
 	}
-	Moving_Entity(int X, int Y, Sprites S) : Entidad(X, Y) {
+	Moving_Entity(int X, int Y, Sprites S, Behavior B = Behavior::LinearMove) : Entidad(X, Y) {
 		sprite = S;
+		behavior = B;
+		targetStepX = 0;
+		targetStepY = 1;
+
+		if (behavior == Behavior::RndmUpDwn) {
+			System::Random r;
+			targetStepX = r.Next(20, 50);
+			targetStepY = r.Next(20, 50);
+		}
 	}
 
-	void doBehavior(BufferedGraphics^ buffer);
+	void doBehavior(int lmX, int lmY);
 	void follow(int X, int Y);
 
 	void autoMove(BufferedGraphics^ buffer) {
@@ -56,7 +74,7 @@ public:
 			break;
 		}
 
-		doBehavior(buffer);
+		doBehavior(buffer->Graphics->VisibleClipBounds.Width, buffer->Graphics->VisibleClipBounds.Height);
 	}
 
 	void setDir(Direcciones D) override {
@@ -65,4 +83,6 @@ public:
 		}
 		direccion = D;
 	}
+
+	void setDy(int DY) { dy = DY; }
 };

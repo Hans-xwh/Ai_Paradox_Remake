@@ -12,7 +12,10 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 
 		//Nivel 1
 		Bala1,
+		Bala2,
 		AvionH,
+		BombardiroN,
+		BombardiroR,
 
 		//Nivel 2
 		EspirituAgua,
@@ -32,6 +35,9 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		//Primer nivel
 		Bitmap^ spr_avion;
 		Bitmap^ spr_bala1;
+		Bitmap^ spr_bala2;
+		Bitmap^ spr_bombardiroN;
+		Bitmap^ spr_bombardiroR;
 
 		//Segundo nivel
 		Bitmap^ spr_agua;
@@ -80,10 +86,16 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		void Init_Nivel1() {
 			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
 			spr_bala1 = gcnew Bitmap("Imagenes/disparo2azul.png");
+			spr_bala2 = gcnew Bitmap("Imagenes/disparoRojopng.png");
+			spr_bombardiroN = gcnew Bitmap("Imagenes/bombardiroN.png");
+			spr_bombardiroR = gcnew Bitmap("Imagenes/bombardiroR.png");
 		}
 		void Unld_Nivel1() {
 			delete spr_avion;
 			delete spr_bala1;
+			delete spr_bala2;
+			delete spr_bombardiroN;
+			delete spr_bombardiroR;
 		}
 
 
@@ -117,6 +129,12 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_avion;
 			case Bala1:
 				return spr_bala1;
+			case Bala2:
+				return spr_bala2;
+			case BombardiroN:
+				return spr_bombardiroN;
+			case BombardiroR:
+				return spr_bombardiroR;
 			case Error:
 				return spr_error;
 			default:

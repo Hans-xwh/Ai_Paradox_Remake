@@ -49,6 +49,5 @@ public:
 		}
 	}
 
-	int getOffsetedX() { return x + ancho; }
-	int getOffsetedY() { return y + (alto / 2); }
+	
 };
