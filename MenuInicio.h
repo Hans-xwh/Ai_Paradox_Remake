@@ -3,7 +3,7 @@
 #include "Dev_menu.h"
 #include "MainForm.h"
 #include "SegundoForm.h"
-
+#include "creditos.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -37,8 +37,9 @@ namespace AiParadoxRemake {
 	private:
 		MainForm^ mundo2;
 	private: System::Windows::Forms::Button^ btn_dev;
+	private: System::Windows::Forms::Button^ button1;
 		   SegundoForm^ mundo2parte2;
-
+		   Creditos^ creditos;
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -73,6 +74,7 @@ namespace AiParadoxRemake {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->btn_dev = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
@@ -117,35 +119,53 @@ namespace AiParadoxRemake {
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->button3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button3.BackgroundImage")));
 			this->button3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Snap ITC", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(197, 214);
+			this->button3->Location = System::Drawing::Point(263, 264);
+			this->button3->Margin = System::Windows::Forms::Padding(4);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(191, 57);
+			this->button3->Size = System::Drawing::Size(248, 66);
 			this->button3->TabIndex = 3;
 			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &MenuInicio::button3_Click);
 			// 
 			// btn_dev
 			// 
-			this->btn_dev->Location = System::Drawing::Point(777, 558);
+			this->btn_dev->Location = System::Drawing::Point(1036, 687);
+			this->btn_dev->Margin = System::Windows::Forms::Padding(4);
 			this->btn_dev->Name = L"btn_dev";
-			this->btn_dev->Size = System::Drawing::Size(90, 32);
+			this->btn_dev->Size = System::Drawing::Size(120, 39);
 			this->btn_dev->TabIndex = 4;
 			this->btn_dev->Text = L"Dev Menu";
 			this->btn_dev->UseVisualStyleBackColor = true;
 			this->btn_dev->Click += gcnew System::EventHandler(this, &MenuInicio::btn_dev_Click);
 			// 
+			// button1
+			// 
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button1->Cursor = System::Windows::Forms::Cursors::Default;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Location = System::Drawing::Point(267, 546);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(244, 99);
+			this->button1->TabIndex = 5;
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MenuInicio::button1_Click);
+			// 
 			// MenuInicio
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(879, 602);
+			this->ClientSize = System::Drawing::Size(1172, 741);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btn_dev);
 			this->Controls->Add(this->button3);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MenuInicio";
 			this->Text = L"MenuInicio";
 			this->Load += gcnew System::EventHandler(this, &MenuInicio::MenuInicio_Load);
@@ -180,6 +200,13 @@ private: System::Void btn_dev_Click(System::Object^ sender, System::EventArgs^ e
 	Dev_menu^ devmenu = gcnew Dev_menu();
 	devmenu->ShowDialog();
 	delete devmenu;
+	this->Show();
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	creditos = gcnew Creditos();
+	this->Hide();
+	creditos->ShowDialog();
+	delete creditos;
 	this->Show();
 }
 };

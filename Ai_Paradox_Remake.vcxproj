@@ -121,6 +121,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AvionNvl1.cpp" />
+    <ClCompile Include="Creditos.cpp" />
     <ClCompile Include="Dev_menu.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
@@ -134,6 +135,9 @@
     </ClInclude>
     <ClInclude Include="Controladora.h" />
     <ClInclude Include="ControlNvl1.hpp" />
+    <ClInclude Include="Creditos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Dev_menu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -160,6 +164,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AvionNvl1.resx">
       <DependentUpon>AvionNvl1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Creditos.resx">
+      <DependentUpon>Creditos.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dev_menu.resx">
       <DependentUpon>Dev_menu.h</DependentUpon>

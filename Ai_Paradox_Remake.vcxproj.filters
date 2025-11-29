@@ -45,6 +45,9 @@
     <ClCompile Include="MovingEntity.cpp">
       <Filter>Header Files\Nivel 1</Filter>
     </ClCompile>
+    <ClCompile Include="Creditos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -100,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="ParalaxManager.hpp">
       <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="Creditos.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
