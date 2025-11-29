@@ -65,8 +65,8 @@ public:
 
 			if (showHitbox) {
 				buffer->Graphics->DrawRectangle(Pens::Cyan, this->getRectangle());
-				buffer->Graphics->DrawRectangle(Pens::Red, zoom);
-				buffer->Graphics->DrawRectangle(Pens::Yellow, this->getCollider());
+				buffer->Graphics->DrawRectangle(Pens::Yellow, zoom);
+				buffer->Graphics->DrawRectangle(Pens::Red, this->getCollider());
 			}
 		}
 	}

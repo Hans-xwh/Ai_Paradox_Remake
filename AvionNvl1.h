@@ -19,10 +19,10 @@ namespace AiParadoxRemake {
 		Graphics^ g;
 		BufferedGraphicsContext^ mybuffer;
 		BufferedGraphics^ bCanvas;
-
+		Random^ r;
 		Sprite_DB^ sprite_db;
-
-		   MnJg_Avion* ctrlAvion;
+		MnJg_Avion* ctrlAvion;
+	private: System::Windows::Forms::Timer^ timer2;
 	public:
 		AvionNvl1(void)
 		{
@@ -32,6 +32,7 @@ namespace AiParadoxRemake {
 			mybuffer = BufferedGraphicsManager::Current;
 			bCanvas = mybuffer->Allocate(g, this->ClientRectangle);
 			
+			r = gcnew Random();
 			sprite_db = gcnew Sprite_DB(1);
 			ctrlAvion = new MnJg_Avion();
 		}
@@ -48,6 +49,7 @@ namespace AiParadoxRemake {
 			}
 
 			delete ctrlAvion;
+			delete r;
 		}
 	private: System::Windows::Forms::Timer^ timer1;
 	protected:
@@ -68,6 +70,7 @@ namespace AiParadoxRemake {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -76,12 +79,17 @@ namespace AiParadoxRemake {
 			this->timer1->Interval = 16;
 			this->timer1->Tick += gcnew System::EventHandler(this, &AvionNvl1::timer1_Tick);
 			// 
+			// timer2
+			// 
+			this->timer2->Enabled = true;
+			this->timer2->Interval = 360;
+			this->timer2->Tick += gcnew System::EventHandler(this, &AvionNvl1::timer2_Tick);
+			// 
 			// AvionNvl1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1529, 748);
-			this->Margin = System::Windows::Forms::Padding(4);
+			this->ClientSize = System::Drawing::Size(1147, 608);
 			this->Name = L"AvionNvl1";
 			this->Text = L"AvionNvl1";
 			this->Load += gcnew System::EventHandler(this, &AvionNvl1::AvionNvl1_Load);
@@ -126,5 +134,12 @@ namespace AiParadoxRemake {
 
 	private: System::Void AvionNvl1_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
+
+private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {	//Control de spawns de drones
+	if (r->Next(0, 100) < 20) {	//10% de probabilidad de spawn cada tick
+		ctrlAvion->addDrone(this->ClientSize.Height-30);
+	}
+
+}
 };
 }

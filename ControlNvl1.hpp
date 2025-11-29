@@ -15,7 +15,8 @@ private:
 	Moving_Entity* bombardino;
 
 	int shootInterval;
-	int shootsCount;
+	int shootCount;
+	int vidaBombardino = 400;
 
 public:
 	MnJg_Avion() {
@@ -24,7 +25,7 @@ public:
 		bombardino->setSprite(Sprites::BombardiroN); bombardino->setTiling(9, 1); bombardino->setSpeed(5);
 		bombardino->setEscala(1), bombardino->setColliderScale(1.75); bombardino->setDy(-1);
 
-		shootInterval = 0;
+		shootInterval = shootCount = 0;
 	}
 	~MnJg_Avion() {
 		delete avion;
@@ -33,12 +34,20 @@ public:
 		for (Proyectil* b : Balas) {
 			delete b;
 		}
+		for (Proyectil* b : balasEnemy) {
+			delete b;
+		}
+		for (Moving_Entity* d : drones) {
+			delete d;
+		}
 	}
 
 	void updateAll(BufferedGraphics^ buffer) {
+		System::Random r;
 		avion->move(buffer);
 		bombardino->autoMove(buffer);
 
+		//Balas amigas
 		for (int i = 0; i < Balas.size(); i++) {
 			Proyectil* b = Balas[i];
 			b->autoMove(buffer);
@@ -50,6 +59,7 @@ public:
 			}
 		}
 
+		//Balas enemigas
 		for (int i = 0; i < balasEnemy.size(); i++) {
 			Proyectil* b = balasEnemy[i];
 			b->autoMove(buffer);
@@ -61,37 +71,87 @@ public:
 			}
 		}
 
-		shootInterval++;
-		if (shootInterval >= 20) {
-			shootInterval = 0;
+		//Drones
+		for (int i = 0; i < drones.size(); i++) {
+			Moving_Entity* d = drones[i];
+			d->autoMove(buffer);
+
+			if (!d->isActive()) {
+				delete d;
+				drones.erase(drones.begin() + i);
+				i--;
+			}
+		}
+
+		//Disparo bombardino
+		shootCount++;
+		if (shootCount >= shootInterval) {
+			shootInterval = r.Next(60, 120);
+			shootCount = 0;
 			balasEnemy.push_back(DameBala(bombardino->getX(), bombardino->getOffsetedY(), Direcciones::Izquierda));
 		}
 	}
 
 	void updateCollisions() {
 		for (int i = 0; i < Balas.size(); i++) {
+			//Balas amigas -> Bombardino
 			if (Balas[i]->getRectangle().IntersectsWith(bombardino->getCollider())) {
 				Balas[i]->setActive(false);
 				bombardino->setSprite(Sprites::BombardiroR);
+				vidaBombardino--;
+			}
 
+			//Balas amigas -> Bombardino
+			for (int j = 0; j < drones.size(); j++) {
+				if (Balas[i]->getRectangle().IntersectsWith(drones[j]->getCollider())) {
+					Balas[i]->setActive(false);
+					drones[j]->setActive(false);
+					delete drones[j];
+					drones.erase(drones.begin() + j);
+					break;
+				}
+			}
+
+			if (Balas[i]->isActive() == false) {
 				delete Balas[i];
 				Balas.erase(Balas.begin() + i);
+				i--;
 			}
 		}
 	}
 
 	void drawAll(BufferedGraphics^ buffer, Sprite_DB^ spriteDb) {
-		avion->draw(buffer, spriteDb);
-		bombardino->draw(buffer, spriteDb);
-
-		for (Proyectil* b : Balas) {
+		for (Moving_Entity* d : drones) {
+			d->draw(buffer, spriteDb);
+		}
+		for (Proyectil* b : Balas) {		//Las balas deben ser lo ultimo en dibujarse
 			b->draw(buffer, spriteDb);
 		}
 		for (Proyectil* b : balasEnemy) {
 			b->draw(buffer, spriteDb);
 		}
 
+		avion->draw(buffer, spriteDb); avion->draw(buffer, spriteDb);
+		bombardino->draw(buffer, spriteDb);
+
 		bombardino->setSprite(Sprites::BombardiroN);
+
+		//// Dibujado interface ////
+		buffer->Graphics->FillRectangle(Brushes::Red,	//Barra de vida bombardiro
+			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 400,
+			25,
+			vidaBombardino * 2,
+			30);
+		buffer->Graphics->DrawRectangle(Pens::Black,			//Marco barra de vida bombardino
+			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 400,
+			25,
+			800,
+			30);	
+		buffer->Graphics->DrawString("Bombardino Crocodilo: Grandisimo hijo de puta", 
+			gcnew System::Drawing::Font("Arial", 16),
+			Brushes::Black,
+			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 200,
+			30);
 	}
 
 	void input(Direcciones d) {
@@ -120,5 +180,18 @@ public:
 		tmp->setEscala(0.5f);
 		//tmp->setShowHitbox(false);
 		return tmp;
+	}
+
+	void addDrone(int lmtY) {
+		System::Random r;
+		Moving_Entity* drone = new Moving_Entity(1150, r.Next(35, lmtY), Sprites::RobotVolador, Behavior::LinearMove);
+		drone->setTiling(12, 1);
+		drone->setDir(Direcciones::Izquierda);
+		drone->setDx(-1);
+		drone->setSpeed(7);
+		drone->setDestroyOnlyExit(true);
+		drone->setEscala(0.5f);
+		//drone->setColliderScale(1.25f);
+		drones.push_back(drone);
 	}
 };

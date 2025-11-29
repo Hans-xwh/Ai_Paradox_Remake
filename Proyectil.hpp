@@ -13,7 +13,5 @@ public:
 
 	
 
-	bool isActive() { return active; }
-	void setActive(bool a) { active = a; }
 	void setAnimated(bool a) { animated = a; }
 };

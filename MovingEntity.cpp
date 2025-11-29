@@ -7,7 +7,7 @@ void Moving_Entity::doBehavior(int lmX, int lmY) {
 
 	switch (behavior) {
 	case Behavior::LinearMove:
-		if (active && x + (dx * speed) > 0 && x + (ancho * escala) + (dx * speed) < lmX) {
+		if (active && x + (dx * speed) + (ancho * escala) > 0 && x + (dx * speed) < lmX) {
 			x += dx * speed;
 		}
 		else {
@@ -19,6 +19,15 @@ void Moving_Entity::doBehavior(int lmX, int lmY) {
 		}
 		else {
 			active = false;
+		}
+		
+		if (destroyOnlyExit && !active) {
+			if (x <= 0 && direccion == Direcciones::Derecha) {
+				active = true;
+			}
+			if (x >= lmX && direccion == Direcciones::Izquierda) {
+				active = true;
+			}
 		}
 		break;
 

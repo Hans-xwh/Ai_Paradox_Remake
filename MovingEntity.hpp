@@ -19,6 +19,7 @@ protected:
 	Direcciones shootDir;
 	bool active;
 	bool animated;
+	bool destroyOnlyExit;		//Permite que la entidad exitas fuera del limite contrario a la direccion de movimiento
 	int stepsX, stepsY;
 	int targetStepX, targetStepY;
 public:
@@ -84,5 +85,9 @@ public:
 		direccion = D;
 	}
 
+	bool isActive() { return active; }
+	void setActive(bool a) { active = a; }
 	void setDy(int DY) { dy = DY; }
+	void setDx(int DX) { dx = DX; }
+	void setDestroyOnlyExit(bool D) { destroyOnlyExit = D; }
 };
