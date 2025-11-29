@@ -24,6 +24,8 @@ namespace AiParadoxRemake {
 		ParalaxManager^ paralax;
 		Sprite_DB^ sprite_db;
 		MnJg_Avion* ctrlAvion;
+		bool pausa = false;
+
 	private: System::Windows::Forms::Timer^ timer2;
 	public:
 		AvionNvl1(void)
@@ -38,6 +40,8 @@ namespace AiParadoxRemake {
 			paralax = gcnew ParalaxManager(1, 2);
 			sprite_db = gcnew Sprite_DB(1);
 			ctrlAvion = new MnJg_Avion();
+
+			//lbl_pausa->Visible = false;
 		}
 
 	protected:
@@ -110,6 +114,22 @@ namespace AiParadoxRemake {
 		ctrlAvion->updateCollisions();
 		ctrlAvion->drawAll(bCanvas, sprite_db);
 
+		//bCanvas->Render(g);
+
+		if (pausa) {
+			this->timer2->Enabled = false;
+			bCanvas->Graphics->FillRectangle(Brushes::White,
+				this->ClientSize.Width / 2 - 100,
+				this->ClientSize.Height / 2 - 50,
+				250, 80);
+			bCanvas->Graphics->DrawString("PAUSA",
+				gcnew Drawing::Font("Arial", 48, Drawing::FontStyle::Bold),
+				Brushes::Black,
+				this->ClientSize.Width / 2 - 100,
+				this->ClientSize.Height / 2 - 50);
+			this->timer1->Enabled = false;
+		}
+
 		bCanvas->Render(g);
 	}
 	///
@@ -133,6 +153,14 @@ namespace AiParadoxRemake {
 	private: System::Void AvionNvl1_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if (e->KeyCode != Keys::Space) {
 			ctrlAvion->input(Direcciones::Ninguna);
+		}
+		if (e->KeyCode == Keys::Escape) {
+			pausa = !pausa;
+			
+			if (!pausa) {
+				this->timer1->Enabled = true;
+				this->timer2->Enabled = true;
+			}
 		}
 	}
 
