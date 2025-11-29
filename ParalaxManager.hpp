@@ -21,9 +21,9 @@ ref class ParalaxManager {
 		float foreX;
 
 		float backFctr = 1;
-		float mid1Fctr = 2;
-		float mid2Fctr = 3;
-		float foreFctr = 4;
+		float mid1Fctr = 1.5;
+		float mid2Fctr = 2;
+		float foreFctr = 5;
 
 		void update(int lmtX) {
 			backX += -scrollSpeed * backFctr;
@@ -60,9 +60,9 @@ public:
 	}
 
 	void init_1() {
-		background = gcnew Bitmap("Imagenes/paralax/citySky.png");
-		midground1 = gcnew Bitmap("Imagenes/paralax/cityMountains.png");
-		midground2 = gcnew Bitmap("Imagenes/paralax/cityBuildings.png");
+		background = gcnew Bitmap("Imagenes/paralax/2/cielo.png");
+		midground1 = gcnew Bitmap("Imagenes/paralax/2/piso.png");
+		midground2 = gcnew Bitmap("Imagenes/paralax/2/edificios.png");
 		foreground = gcnew Bitmap("Imagenes/paralax/cityBush.png");
 	}
 
