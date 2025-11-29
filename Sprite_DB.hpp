@@ -9,6 +9,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		//Todo
 		Error,
 		Haluno,
+		Explosion,
 
 		//Nivel 1
 		Bala1,
@@ -31,6 +32,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		//Para todo el juego
 		Bitmap^ spr_haluno;
 		Bitmap^ spr_error; //Sprite por defecto en caso de error, sacado de source xd
+		Bitmap^ spr_explosion;
 
 
 		//Primer nivel
@@ -83,6 +85,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			if (spr_bombardiroN) { delete spr_bombardiroN; }
 			if (spr_bombardiroR) { delete spr_bombardiroR; }
 			if (spr_robotVolador) { delete spr_robotVolador; }
+			if (spr_explosion) { delete spr_explosion; }
 		}
 
 		
@@ -96,6 +99,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_bombardiroN = gcnew Bitmap("Imagenes/bombardiroN.png");
 			spr_bombardiroR = gcnew Bitmap("Imagenes/bombardiroR.png");
 			spr_robotVolador = gcnew Bitmap("Imagenes/robotVolador.png");
+			spr_explosion = gcnew Bitmap("Imagenes/explosion.png");
 		}
 		void Unld_Nivel1() {
 			delete spr_avion;
@@ -104,6 +108,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			delete spr_bombardiroN;
 			delete spr_bombardiroR;
 			delete spr_robotVolador;
+			delete spr_explosion;
 		}
 
 
@@ -145,6 +150,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_bombardiroR;
 			case RobotVolador:
 				return spr_robotVolador;
+			case Explosion:
+				return spr_explosion;	
 
 			case Error:
 				return spr_error;

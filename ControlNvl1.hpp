@@ -12,6 +12,7 @@ private:
 	std::vector<Proyectil*> Balas;
 	std::vector<Proyectil*> balasEnemy;
 	std::vector<Moving_Entity*> drones;
+	std::vector<Entidad*> explosiones;
 	Moving_Entity* bombardino;
 
 	int shootInterval;
@@ -40,6 +41,9 @@ public:
 		}
 		for (Moving_Entity* d : drones) {
 			delete d;
+		}
+		for (Entidad* e : explosiones) {
+			delete e;
 		}
 	}
 
@@ -234,5 +238,9 @@ public:
 		drone->setEscala(0.5f);
 		//drone->setColliderScale(1.25f);
 		drones.push_back(drone);
+	}
+
+	void addExplosion(int X, int Y) {
+		Entidad* exp = new Entidad(X, Y);
 	}
 };

@@ -85,7 +85,8 @@ namespace AiParadoxRemake {
 	private: System::Void Creditos_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+		this->Hide();
+		this->Close();
 	}
 	};
 }
