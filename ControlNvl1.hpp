@@ -137,7 +137,12 @@ public:
 		bombardino->setSprite(Sprites::BombardiroN);
 
 		//// Dibujado interface ////
-		buffer->Graphics->FillRectangle(Brushes::Red,	//Barra de vida bombardiro
+		buffer->Graphics->FillRectangle(Brushes::SlateGray,	//Barra de vida bombardiro
+			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 400,
+			25,
+			800,
+			30);
+		buffer->Graphics->FillRectangle(Brushes::OrangeRed,	//Barra de vida bombardiro
 			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 400,
 			25,
 			vidaBombardino * 2,
@@ -147,11 +152,11 @@ public:
 			25,
 			800,
 			30);	
-		buffer->Graphics->DrawString("Bombardino Crocodilo: Grandisimo hijo de puta", 
-			gcnew System::Drawing::Font("Arial", 16),
+		buffer->Graphics->DrawString("Bombardino Crocodilo: Protector de Sahur", 
+			gcnew System::Drawing::Font("Arial", 18),
 			Brushes::Black,
 			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 200,
-			30);
+			28);
 	}
 
 	void input(Direcciones d) {

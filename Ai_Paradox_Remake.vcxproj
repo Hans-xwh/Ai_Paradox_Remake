@@ -146,6 +146,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MovingEntity.hpp" />
+    <ClInclude Include="ParalaxManager.hpp" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Agua.h" />
     <ClInclude Include="Proyectil.hpp" />

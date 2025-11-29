@@ -98,5 +98,8 @@
     <ClInclude Include="MovingEntity.hpp">
       <Filter>Header Files\Nivel 1</Filter>
     </ClInclude>
+    <ClInclude Include="ParalaxManager.hpp">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

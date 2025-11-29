@@ -1,5 +1,6 @@
 #pragma once
 #include "ControlNvl1.hpp"
+#include "ParalaxManager.hpp"
 
 namespace AiParadoxRemake {
 
@@ -20,6 +21,7 @@ namespace AiParadoxRemake {
 		BufferedGraphicsContext^ mybuffer;
 		BufferedGraphics^ bCanvas;
 		Random^ r;
+		ParalaxManager^ paralax;
 		Sprite_DB^ sprite_db;
 		MnJg_Avion* ctrlAvion;
 	private: System::Windows::Forms::Timer^ timer2;
@@ -33,6 +35,7 @@ namespace AiParadoxRemake {
 			bCanvas = mybuffer->Allocate(g, this->ClientRectangle);
 			
 			r = gcnew Random();
+			paralax = gcnew ParalaxManager(1, 2);
 			sprite_db = gcnew Sprite_DB(1);
 			ctrlAvion = new MnJg_Avion();
 		}
@@ -101,6 +104,7 @@ namespace AiParadoxRemake {
 #pragma endregion
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		bCanvas->Graphics->Clear(Color::White);
+		paralax->draw(bCanvas);
 
 		ctrlAvion->updateAll(bCanvas);
 		ctrlAvion->updateCollisions();
