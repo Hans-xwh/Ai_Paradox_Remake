@@ -25,6 +25,9 @@
     <Filter Include="Forms">
       <UniqueIdentifier>{5f9e28aa-f184-4f97-ab01-877f1c16a558}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Nivel 1\Forms-1">
+      <UniqueIdentifier>{e4860915-78d7-400d-a399-1f595a39cc1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainForm.cpp">
@@ -36,9 +39,6 @@
     <ClCompile Include="MenuInicio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AvionNvl1.cpp">
-      <Filter>Header Files\Nivel 1</Filter>
-    </ClCompile>
     <ClCompile Include="Dev_menu.cpp">
       <Filter>Forms</Filter>
     </ClCompile>
@@ -47,6 +47,12 @@
     </ClCompile>
     <ClCompile Include="Creditos.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AvionNvl1.cpp">
+      <Filter>Header Files\Nivel 1\Forms-1</Filter>
+    </ClCompile>
+    <ClCompile Include="VictoriaLvl1.cpp">
+      <Filter>Header Files\Nivel 1\Forms-1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,9 +72,6 @@
       <Filter>Header Files\Nivel 2</Filter>
     </ClInclude>
     <ClInclude Include="Agua.h">
-      <Filter>Header Files\Nivel 2</Filter>
-    </ClInclude>
-    <ClInclude Include="Controladora.h">
       <Filter>Header Files\Nivel 2</Filter>
     </ClInclude>
     <ClInclude Include="Dialogo.hpp">
@@ -106,6 +109,15 @@
     </ClInclude>
     <ClInclude Include="Creditos.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controladora_2do.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prop.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VictoriaLvl1.h">
+      <Filter>Header Files\Nivel 1\Forms-1</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -127,6 +127,7 @@
     <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
     <ClCompile Include="SegundoForm.cpp" />
+    <ClCompile Include="VictoriaLvl1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AvionHaluno.hpp" />
@@ -161,6 +162,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Sprite_DB.hpp" />
+    <ClInclude Include="VictoriaLvl1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AvionNvl1.resx">
@@ -180,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SegundoForm.resx">
       <DependentUpon>SegundoForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VictoriaLvl1.resx">
+      <DependentUpon>VictoriaLvl1.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -131,6 +131,14 @@ namespace AiParadoxRemake {
 		}
 
 		bCanvas->Render(g);
+
+		if(ctrlAvion->getVidaBombardino() <= 0){
+			this->timer1->Enabled = false;
+			this->timer2->Enabled = false;
+			this->Hide();
+			MessageBox::Show("¡Has derrotado a Bombardino Crocodilo!\n¡Felicidades, has completado el nivel!");
+			this->Close();
+		}
 	}
 	///
 	private: System::Void AvionNvl1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
@@ -168,7 +176,7 @@ namespace AiParadoxRemake {
 	}
 
 private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {	//Control de spawns de drones
-	if (r->Next(0, 100) < 20) {	//10% de probabilidad de spawn cada tick
+	if (r->Next(0, 100) < 20) {	//20% de probabilidad de spawn cada tick
 		ctrlAvion->addDrone(this->ClientSize.Height-30);
 	}
 }

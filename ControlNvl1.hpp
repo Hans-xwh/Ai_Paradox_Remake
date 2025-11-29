@@ -263,4 +263,8 @@ public:
 		exp->setShowHitbox(false);
 		explosiones.push_back(exp);
 	}
+
+	int getPuntaje() { return puntaje; }
+	int getVidaBombardino() { return vidaBombardino; }
+
 };
