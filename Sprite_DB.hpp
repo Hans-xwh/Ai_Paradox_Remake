@@ -11,7 +11,9 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Haluno,
 		Explosion,
 
-		//Nivel 1
+		//Nivel 1_0
+
+		//Nivel 1_1
 		Bala1,
 		Bala2,
 		AvionH,
@@ -56,8 +58,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_haluno = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");	//haluno siempre esta cargado
 
 			switch (lvl){
-			case 1:
-				Init_Nivel1();
+			case 11:
+				Init_Nivel1_1();
 				break;
 			case 2:
 				Init_Nivel2();
@@ -92,7 +94,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 
 		//Inicializan los sprites dependendo de cada nivel.
 		// LLamar esto desde el formulario de cada nivel, por q creo q la controladora no puede contener un ref class
-		void Init_Nivel1() {
+		void Init_Nivel1_1() {
 			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
 			spr_bala1 = gcnew Bitmap("Imagenes/disparo2azul.png");
 			spr_bala2 = gcnew Bitmap("Imagenes/disparoRojopng.png");
@@ -101,7 +103,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_robotVolador = gcnew Bitmap("Imagenes/robotVolador.png");
 			spr_explosion = gcnew Bitmap("Imagenes/explosion.png");
 		}
-		void Unld_Nivel1() {
+		void Unld_Nivel1_1() {
 			delete spr_avion;
 			delete spr_bala1;
 			delete spr_bala2;

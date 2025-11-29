@@ -38,7 +38,7 @@ namespace AiParadoxRemake {
 			
 			r = gcnew Random();
 			paralax = gcnew ParalaxManager(1, 2);
-			sprite_db = gcnew Sprite_DB(1);
+			sprite_db = gcnew Sprite_DB(11);	//Nivel 1_1
 			ctrlAvion = new MnJg_Avion();
 
 			//lbl_pausa->Visible = false;
@@ -171,7 +171,6 @@ private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) 
 	if (r->Next(0, 100) < 20) {	//10% de probabilidad de spawn cada tick
 		ctrlAvion->addDrone(this->ClientSize.Height-30);
 	}
-
 }
 };
 }
