@@ -1,5 +1,5 @@
 #pragma once
-#include "Controladora.h"	//Aqui se importa "Sprite_DB.h"
+#include "Controladora_2do.h"	//Aqui se importa "Sprite_DB.h"
 #include "Sprite_DB.hpp"
 #include "SegundoForm.h"
 #include "Dialogo.hpp"
@@ -26,7 +26,7 @@ namespace AiParadoxRemake {
 		BufferedGraphics^ buffer;
 		
 		Sprite_DB^ spriteDB;
-		Controladora* controladora;
+		Controladora2do* controladora;
 		Random^ random;
 		Bitmap^ fondo;
 		//Bitmap^ sprite;
@@ -83,7 +83,7 @@ namespace AiParadoxRemake {
 
 			spriteDB = gcnew Sprite_DB(2);
 			random = gcnew Random();
-			controladora = new Controladora();
+			controladora = new Controladora2do();
 			fondo = gcnew Bitmap("Imagenes/fondoSegundoNivel.png");
 			//sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
 			//spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");

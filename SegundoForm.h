@@ -1,5 +1,5 @@
 #pragma once
-#include "Controladora.h"
+#include "Controladora_2do.h"
 #include "Entidad.h"
 namespace AiParadoxRemake {
 

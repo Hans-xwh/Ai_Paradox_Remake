@@ -7,20 +7,23 @@ private:
 	Direcciones ultTecla;
 	int agua;
 	int vidas;
+	int estado;	//0=caminando 1=estatico
 public:
 	Personaje(int x, int y) : Entidad(x, y) {
 		this->x = x;
 		this->y = y;
 		iteraX = 0;
-		iteraY = 1;
+		iteraY = 2;
 		dx = 0;
 		dy = 0;
 		agua = 10;
 		vidas = 10;
-		setTiling(13, 54);
+		setTiling(12, 4);
+		escala = 1;
 		sprite = Sprites::Haluno;
+		estado = 1;
 	}
-	~Personaje() { }
+	~Personaje() {}
 	Direcciones direccion;
 	
 	/*	//Usar metodo draw de Entidad
@@ -34,7 +37,7 @@ public:
 	*/
 
 	void moverPersonaje(BufferedGraphics^ buffer) {
-		if (iteraX >= 0 && iteraX < 3) iteraX++;
+		if (iteraX >= 0 && iteraX < tilingX-1) iteraX++;
 		else iteraX = 0;
 
 		switch (direccion)
@@ -42,53 +45,56 @@ public:
 		case Arriba:
 			dy = -10;
 			dx = 0;
-			iteraY = 0;
+			estado = 0;
 			ultTecla = Arriba;
 			break;
 		case Abajo:
 			dy = 10;
 			dx = 0;
-			iteraY = 2;
+			estado = 0;
 			ultTecla = Abajo;
 			break;
 		case Derecha:
 			dy = 0;
 			dx = 10;
-			iteraY = 3;
+			iteraY = 2;
+			estado = 0;
 			ultTecla = Derecha;
 			break;
 		case Izquierda:
 			dy = 0;
 			dx = -10;
-			iteraY = 1;
+			iteraY = 0;
+			estado = 0;
 			ultTecla = Izquierda;
 			break;
 		case Ninguna:
 			dy = 0;
 			dx = 0;
+			estado = 1;
 			switch (ultTecla)
 			{
 			case Arriba:
-				iteraX = 0;
-				iteraY = 0;
+				//iteraX = 0;
+				//iteraY = 0;
 				break;
 			case Abajo:
-				iteraX = 0;
-				iteraY = 2;
-
+				//iteraX = 0;
+				//iteraY = 2;
 				break;
 			case Derecha:
-				iteraX = 0;
-				iteraY = 3;
+				//iteraX = 0;
+				//iteraY = 3;
 				break;
 			case Izquierda:
-				iteraX = 0;
-				iteraY = 1;
+				//iteraX = 0;
+				//iteraY = 1;
 				break;
 
 			}
 			break;
-		case Salto:
+		/*case Salto:
+			break;
 			dy = 0;
 			dx = 0;
 			if (ultTecla == Arriba) {
@@ -116,7 +122,7 @@ public:
 				ultTecla = Izquierda;
 				
 			}
-			break;
+			break;*/
 
 		}
 
@@ -131,6 +137,31 @@ public:
 
 		//dibujar(buffer);	//NO DIBUJAR EN LA MISMA FUNCIÓN QUE MOVER
 	}
+
+	void draw(BufferedGraphics^ buffer, Sprite_DB^ db) override {
+		Bitmap^ bmp = db->getSprite(sprite);
+		//bmp = db->getSprite(Sprites::Error);
+
+		if (visible) {
+			if (useNN) {
+				buffer->Graphics->InterpolationMode = System::Drawing::Drawing2D::InterpolationMode::NearestNeighbor;
+			}
+
+			ancho = bmp->Width / tilingX;
+			alto = bmp->Height / tilingY;
+
+			Rectangle sprite = Rectangle(ancho * iteraX, alto * (iteraY + estado), ancho, alto);
+			Rectangle zoom = Rectangle(x, y, ancho * escala, alto * escala);
+			buffer->Graphics->DrawImage(bmp, zoom, sprite, GraphicsUnit::Pixel);
+
+			if (showHitbox) {
+				buffer->Graphics->DrawRectangle(Pens::Cyan, this->getRectangle());
+				buffer->Graphics->DrawRectangle(Pens::Yellow, zoom);
+				buffer->Graphics->DrawRectangle(Pens::Red, this->getCollider());
+			}
+		}
+	}
+
 	void setAgua(int val) {
 		this->agua += val;
 	}

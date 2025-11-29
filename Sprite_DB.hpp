@@ -55,7 +55,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 	public:
 		Sprite_DB(int lvl){	//Inicializa los sprites dependiendo del nivel
 			spr_error = gcnew Bitmap("Imagenes/debugempty.png");
-			spr_haluno = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");	//haluno siempre esta cargado
+			spr_haluno = gcnew Bitmap("Imagenes/haluno.png");	//haluno siempre esta cargado
 
 			switch (lvl){
 			case 11:

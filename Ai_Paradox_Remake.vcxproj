@@ -133,7 +133,7 @@
     <ClInclude Include="AvionNvl1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Controladora.h" />
+    <ClInclude Include="Controladora_2do.h" />
     <ClInclude Include="ControlNvl1.hpp" />
     <ClInclude Include="Creditos.h">
       <FileType>CppForm</FileType>

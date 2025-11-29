@@ -13,7 +13,7 @@ using namespace System::Drawing;	//creo que ya se importa pero mejor prevenir qu
 using nmspc_SpriteDB::Sprite_DB;	//clase Sprite_DB
 using nmspc_SpriteDB::Sprites;	//enum Sprites
 
-class Controladora
+class Controladora2do
 {
 
 private:
@@ -28,7 +28,7 @@ private:
 	bool SoundRoca = false;
 
 public:
-	Controladora() {
+	Controladora2do() {
 		srand(time(NULL));
 		personaji = new Personaje(rand() % 250, rand() % 250);
 		reymundo = new Entidad(630, 325); 
@@ -36,7 +36,7 @@ public:
 
 	}
 
-	~Controladora() {
+	~Controladora2do() {
 		delete personaji;
 		delete reymundo;
 		for (Agua* awa : awita) {
