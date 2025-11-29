@@ -4,6 +4,7 @@
 #include "AvionHaluno.hpp"
 #include "Proyectil.hpp"
 #include "MovingEntity.hpp"
+#include "Prop.hpp"
 
 
 class MnJg_Avion {
@@ -12,7 +13,7 @@ private:
 	std::vector<Proyectil*> Balas;
 	std::vector<Proyectil*> balasEnemy;
 	std::vector<Moving_Entity*> drones;
-	std::vector<Entidad*> explosiones;
+	std::vector<Prop*> explosiones;
 	Moving_Entity* bombardino;
 
 	int shootInterval;
@@ -110,11 +111,14 @@ public:
 			//Balas amigas -> Drones
 			for (int j = 0; j < drones.size(); j++) {
 				if (Balas[i]->getCollider().IntersectsWith(drones[j]->getCollider())) {
+					addExplosion(drones[j]->getX(), drones[j]->getY(), drones[j]->getEscala());
+
 					Balas[i]->setActive(false);
 					drones[j]->setActive(false);
 					puntaje += 10;
-					delete drones[j];
-					drones.erase(drones.begin() + j);
+
+					//delete drones[j];
+					//drones.erase(drones.begin() + j);
 					break;
 				}
 			}
@@ -150,6 +154,14 @@ public:
 				i--;
 			}
 		}
+		for (int i = 0; i < explosiones.size(); i++) {
+			if (explosiones[i]->isActive() == false) {
+				delete explosiones[i];
+				explosiones.erase(explosiones.begin() + i);
+				i--;
+			}
+		}
+
 		if (puntaje < 0) puntaje = 0;
 	}
 
@@ -162,6 +174,10 @@ public:
 		}
 		for (Proyectil* b : balasEnemy) {
 			b->draw(buffer, spriteDb);
+		}
+
+		for (int i = 0; i < explosiones.size(); i++) {
+			explosiones[i]->draw(buffer, spriteDb);
 		}
 
 		avion->draw(buffer, spriteDb); avion->draw(buffer, spriteDb);
@@ -240,7 +256,11 @@ public:
 		drones.push_back(drone);
 	}
 
-	void addExplosion(int X, int Y) {
-		Entidad* exp = new Entidad(X, Y);
+	void addExplosion(int X, int Y, int S) {
+		Prop* exp = new Prop(X-80, Y-20, Sprites::Explosion, true, false);
+		exp->setTiling(12, 1);
+		exp->setEscala(S*1.5f);
+		exp->setShowHitbox(false);
+		explosiones.push_back(exp);
 	}
 };

@@ -85,21 +85,21 @@ public:
 	}
 
 	// getters y setters
+	void useNearestNeighbour(bool N) { useNN = N; }
 	bool getVisible() { return visible; }
 	bool getEscala() { return escala; }
-
-	void setVisible(bool vi) { visible = vi; }
-	void setEscala(float es) { escala = es; }
-	void setTiling(int tx, int ty) { tilingX = tx; tilingY = ty; }	// para entidades con spritesheets diferentes
-	void useNearestNeighbour(bool N) { useNN = N; }
-	void setIteraX(int ix) { iteraX = ix; }
-	void setIteraY(int iy) { iteraY = iy; }
 	int getIteraX() { return iteraX; }
 	int getIteraY() { return iteraY; }
 	int getX() { return x; }
 	int getY() { return y; }
 	int getOffsetedX() { return x + ancho; }
 	int getOffsetedY() { return y + (alto / 2); }
+
+	void setVisible(bool vi) { visible = vi; }
+	void setEscala(float es) { escala = es; }
+	void setTiling(int tx, int ty) { tilingX = tx; tilingY = ty; }	// para entidades con spritesheets diferentes
+	void setIteraX(int ix) { iteraX = ix; }
+	void setIteraY(int iy) { iteraY = iy; }
 	void setX(int nx) { x = nx; }
 	void setY(int ny) { y = ny; }
 	void setSpeed(int S) { speed = S; }
