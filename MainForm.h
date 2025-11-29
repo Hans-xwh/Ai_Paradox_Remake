@@ -45,7 +45,7 @@ namespace AiParadoxRemake {
 
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
+
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
@@ -63,6 +63,8 @@ namespace AiParadoxRemake {
 		SoundPlayer^ aguita = gcnew SoundPlayer("Audio/SoundWater.wav");
 		SoundPlayer^ roquita = gcnew SoundPlayer("Audio/SoundRoca.wav");
 	private: System::Windows::Forms::Timer^ timer3;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::Label^ label3;
 	public:
 
 
@@ -144,7 +146,6 @@ namespace AiParadoxRemake {
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -154,7 +155,10 @@ namespace AiParadoxRemake {
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->timer3 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -165,37 +169,35 @@ namespace AiParadoxRemake {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::Color::Transparent;
-			this->label1->Location = System::Drawing::Point(225, 36);
+			this->label1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label1->Font = (gcnew System::Drawing::Font(L"Showcard Gothic", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(174, 27);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(47, 16);
+			this->label1->Size = System::Drawing::Size(98, 26);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Faltan:";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::TopRight;
 			this->label1->Click += gcnew System::EventHandler(this, &MainForm::label1_Click);
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(296, 36);
+			this->label2->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->ForeColor = System::Drawing::SystemColors::Control;
+			this->label2->Location = System::Drawing::Point(278, 36);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(44, 16);
+			this->label2->Size = System::Drawing::Size(47, 17);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"label2";
 			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(29, 473);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(298, 16);
-			this->label3->TabIndex = 2;
-			this->label3->Text = L"RECOLECTA 10 ESPIRITUS DE AGUA Y GANA!";
-			this->label3->Visible = false;
-			this->label3->Click += gcnew System::EventHandler(this, &MainForm::label3_Click);
-			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->pictureBox1->Location = System::Drawing::Point(100, 12);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox1->Name = L"pictureBox1";
@@ -208,36 +210,53 @@ namespace AiParadoxRemake {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(375, 36);
+			this->label4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label4->Font = (gcnew System::Drawing::Font(L"Showcard Gothic", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(346, 29);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(57, 16);
+			this->label4->Size = System::Drawing::Size(102, 26);
 			this->label4->TabIndex = 4;
 			this->label4->Text = L"Tiempo:";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(453, 36);
+			this->label5->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label5->Location = System::Drawing::Point(459, 32);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(44, 16);
+			this->label5->Size = System::Drawing::Size(55, 19);
 			this->label5->TabIndex = 5;
 			this->label5->Text = L"label5";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(541, 36);
+			this->label6->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label6->Font = (gcnew System::Drawing::Font(L"Showcard Gothic", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->label6->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->label6->Location = System::Drawing::Point(613, 27);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(45, 16);
+			this->label6->Size = System::Drawing::Size(82, 26);
 			this->label6->TabIndex = 6;
 			this->label6->Text = L"Vidas:";
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(627, 36);
+			this->label7->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->label7->Location = System::Drawing::Point(701, 34);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(44, 16);
+			this->label7->Size = System::Drawing::Size(55, 19);
 			this->label7->TabIndex = 7;
 			this->label7->Text = L"label7";
 			// 
@@ -258,6 +277,7 @@ namespace AiParadoxRemake {
 			this->label9->Size = System::Drawing::Size(129, 16);
 			this->label9->TabIndex = 9;
 			this->label9->Text = L"PASA ESTE NIVEL..";
+			this->label9->Click += gcnew System::EventHandler(this, &MainForm::label9_Click);
 			// 
 			// timer2
 			// 
@@ -268,11 +288,39 @@ namespace AiParadoxRemake {
 			// 
 			this->timer3->Tick += gcnew System::EventHandler(this, &MainForm::timer3_Tick);
 			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
+			this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->pictureBox2->Location = System::Drawing::Point(546, 11);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(50, 50);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::AutoSize;
+			this->pictureBox2->TabIndex = 10;
+			this->pictureBox2->TabStop = false;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(12, 517);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(300, 19);
+			this->label3->TabIndex = 11;
+			this->label3->Text = L"RECOLECTA 10 ESPIRITUS DE AGUA";
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(989, 545);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
@@ -280,7 +328,6 @@ namespace AiParadoxRemake {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->pictureBox1);
-			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Margin = System::Windows::Forms::Padding(4);
@@ -291,6 +338,7 @@ namespace AiParadoxRemake {
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MainForm::MainForm_KeyUp);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -377,9 +425,11 @@ namespace AiParadoxRemake {
 			int alto = this->ClientSize.Height;
 			int x = rand() % ancho;
 			int y = rand() % alto;
+			int x1 = 40;
+			int y2 = 20;
 
 			controladora->agregarRobotPosicion(x, y);
-			controladora->agregarRocaPosicion(x, y);
+			controladora->agregarRocaPosicion(x1, y2);
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
 			tiempoSiguienteRoca = random->Next(1000, 5000);
@@ -449,6 +499,8 @@ private: System::Void MainForm_FormClosing(System::Object^ sender, System::Windo
 	roquita->Stop();
 }
 private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label9_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
