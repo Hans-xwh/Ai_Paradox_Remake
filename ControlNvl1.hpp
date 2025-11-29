@@ -16,7 +16,8 @@ private:
 
 	int shootInterval;
 	int shootCount;
-	int vidaBombardino = 400;
+	int vidaBombardino = 200;
+	int puntaje = 0;
 
 public:
 	MnJg_Avion() {
@@ -95,17 +96,19 @@ public:
 	void updateCollisions() {
 		for (int i = 0; i < Balas.size(); i++) {
 			//Balas amigas -> Bombardino
-			if (Balas[i]->getRectangle().IntersectsWith(bombardino->getCollider())) {
+			if (Balas[i]->getCollider().IntersectsWith(bombardino->getCollider())) {
 				Balas[i]->setActive(false);
 				bombardino->setSprite(Sprites::BombardiroR);
 				vidaBombardino--;
+				puntaje++;
 			}
 
-			//Balas amigas -> Bombardino
+			//Balas amigas -> Drones
 			for (int j = 0; j < drones.size(); j++) {
-				if (Balas[i]->getRectangle().IntersectsWith(drones[j]->getCollider())) {
+				if (Balas[i]->getCollider().IntersectsWith(drones[j]->getCollider())) {
 					Balas[i]->setActive(false);
 					drones[j]->setActive(false);
+					puntaje += 10;
 					delete drones[j];
 					drones.erase(drones.begin() + j);
 					break;
@@ -118,6 +121,32 @@ public:
 				i--;
 			}
 		}
+
+		for (int i = 0; i < balasEnemy.size(); i++) {
+			//Balas enemigas -> Avion
+			if (balasEnemy[i]->getCollider().IntersectsWith(avion->getCollider())) {
+				balasEnemy[i]->setActive(false);
+				puntaje -= 5;
+			}
+			if (balasEnemy[i]->isActive() == false) {
+				delete balasEnemy[i];
+				balasEnemy.erase(balasEnemy.begin() + i);
+				i--;
+			}
+		}
+		for (int i = 0; i < drones.size(); i++) {
+			//Drones -> Avion
+			if (drones[i]->getCollider().IntersectsWith(avion->getCollider())) {
+				drones[i]->setActive(false);
+				puntaje -= 20;
+			}
+			if (drones[i]->isActive() == false) {
+				delete drones[i];
+				drones.erase(drones.begin() + i);
+				i--;
+			}
+		}
+		if (puntaje < 0) puntaje = 0;
 	}
 
 	void drawAll(BufferedGraphics^ buffer, Sprite_DB^ spriteDb) {
@@ -145,17 +174,24 @@ public:
 		buffer->Graphics->FillRectangle(Brushes::OrangeRed,	//Barra de vida bombardiro
 			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 400,
 			25,
-			vidaBombardino * 2,
+			vidaBombardino * 4,
 			30);
 		buffer->Graphics->DrawRectangle(Pens::Black,			//Marco barra de vida bombardino
 			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 400,
 			25,
 			800,
 			30);	
+		//vida bombardino
 		buffer->Graphics->DrawString("Bombardino Crocodilo: Protector de Sahur", 
 			gcnew System::Drawing::Font("Arial", 18),
 			Brushes::Black,
 			int(buffer->Graphics->VisibleClipBounds.Width / 2) - 200,
+			28);
+		//puntaje
+		buffer->Graphics->DrawString("Puntaje: " + puntaje.ToString(),
+			gcnew System::Drawing::Font("Arial", 18),
+			Brushes::Black,
+			10,
 			28);
 	}
 

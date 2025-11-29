@@ -20,8 +20,8 @@ ref class ParalaxManager {
 		float mid2X;
 		float foreX;
 
-		float backFctr = 1;
-		float mid1Fctr = 1.5;
+		float backFctr = 0.5;
+		float mid1Fctr = 1;
 		float mid2Fctr = 2;
 		float foreFctr = 5;
 
@@ -95,7 +95,7 @@ public:
 			int(buffer->Graphics->VisibleClipBounds.Height * strchFctrY));
 
 
-		//buffer->Graphics->DrawString(mid2X.ToString(), gcnew System::Drawing::Font("Arial", 16), Brushes::Black, 10, 10);
-		buffer->Graphics->DrawString(int(mid2X + (buffer->Graphics->VisibleClipBounds.Width * strchFctrX)).ToString(), gcnew System::Drawing::Font("Arial", 16), Brushes::Black, 10, 30);
+		//debug mostart posicion de la imagen complementaria
+		//buffer->Graphics->DrawString(int(mid2X + (buffer->Graphics->VisibleClipBounds.Width * strchFctrX)).ToString(), gcnew System::Drawing::Font("Arial", 16), Brushes::Black, 10, 30);
 	}
 };
