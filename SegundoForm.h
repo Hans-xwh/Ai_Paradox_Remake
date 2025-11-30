@@ -78,13 +78,12 @@ namespace AiParadoxRemake {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(990, 545);
+			this->ClientSize = System::Drawing::Size(1159, 545);
+			this->KeyPreview = true;
 			this->Name = L"SegundoForm";
 			this->Text = L"SegundoForm";
 			this->Load += gcnew System::EventHandler(this, &SegundoForm::SegundoForm_Load);
 			this->ResumeLayout(false);
-			this->KeyPreview = true;
-			this->KeyDown += gcnew KeyEventHandler(this, &SegundoForm::OnKeyDown);
 
 		}
 #pragma endregion
