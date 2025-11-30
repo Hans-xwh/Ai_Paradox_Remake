@@ -2,15 +2,14 @@
 
 #include "Entidad.h"
 
-class HalunoTercer : public Entidad {
+class HalunoTercer : public Entidad {   //NO HAY NECESIDAD DE CREAR ESTA CLASE -HW 
 private:
 	Direcciones lastDir;
 public:
 	HalunoTercer() : Entidad(150, 5) {
 		escala = 1;
-		tilingY = 4;
-        tilingX = 4;
-		sprite = Sprites::AvionH;
+        this->setTiling(12, 4);
+		sprite = Sprites::Haluno;
 		speed = 10;
 		iteraY = 1;
 	}

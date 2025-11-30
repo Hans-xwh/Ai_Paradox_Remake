@@ -7,11 +7,13 @@
 #include "Prop.hpp"
 #include "Balanza.h"
 #include "Moneda.h"
+#include "Personaje.h"
 
 
 class MnJg_Nivel3 {
 private:
-	HalunoTercer* halunito;
+	//HalunoTercer* halunito;
+	Personaje* halunito;
 	std::vector<Moneda*> monedas;
 	std::vector<Balanza*> balanzas;
 
@@ -21,7 +23,9 @@ private:
 
 public:
 	MnJg_Nivel3() {
-		halunito = new HalunoTercer();
+		//halunito = new HalunoTercer();
+		halunito = new Personaje(150, 100);
+		halunito->setSpeed(10);
 		victoria = false;
 	}
 	~MnJg_Nivel3() {
@@ -39,7 +43,7 @@ public:
 
 	void updateAll(BufferedGraphics^ buffer) {
 		System::Random r;
-		halunito->move(buffer);
+		halunito->moverPersonaje(buffer);
 
 		//Monedas que caen a la balanza
 		for (int i = 0; i < monedas.size(); i++) {
@@ -89,12 +93,11 @@ public:
 	}
 
 	void input(Direcciones d) {
-		if (d != Direcciones::Salto) {
-			halunito->setDir(d);
-		}
-		else {
+		if (d == Direcciones::Salto) {
 			monedas.push_back(DameMonedas(halunito->getOffsetedX(), halunito->getOffsetedY()));
+			
 		}
+		halunito->direccion = d;	//Noelia pero que es esto xd
 	}
 
 	Moneda* DameMonedas(int X, int Y, Direcciones dir = Direcciones::Abajo) {
