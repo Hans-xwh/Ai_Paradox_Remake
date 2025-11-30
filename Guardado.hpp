@@ -3,8 +3,6 @@
 #include <fstream>
 #include <iostream>
 
-
-
 //PROHIBIDO IMPORTAR STD COMPLETO
 //using namespace std;
 using std::fstream;
@@ -54,6 +52,19 @@ public:
 		}
 		records.close();
 		return 0;
+	}
+
+	GameSave* readSave(int lvl) {
+		if (lvl <= 0) lvl = 1;
+		ifstream records("save/save.bin", ios::binary | ios::in);
+		offset = (lvl - 1) * sizeof(GameSave);
+
+		if (records.is_open()) {
+			records.seekg(offset, ios::beg);
+			GameSave* tmpSave;
+			//tmpSave = records.read()
+		}
+
 	}
 
 	void setName(char c1, char c2, char c3) { save.nombre[0] = c1, save.nombre[1] = c2, save.nombre[2] = c3; }

@@ -3,6 +3,7 @@
 
 #include "AvionNvl1.h"
 #include "VictoriaLvl1.h"
+#include "Ranking.h"
 #include "Guardado.hpp"
 
 
@@ -43,6 +44,7 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Button^ Btn_Avion;
 	private: System::Windows::Forms::Button^ btn_avionWin;
 	private: System::Windows::Forms::Button^ btn_initData;
+	private: System::Windows::Forms::Button^ btn_ranking;
 
 	protected:
 
@@ -62,6 +64,7 @@ namespace AiParadoxRemake {
 			this->Btn_Avion = (gcnew System::Windows::Forms::Button());
 			this->btn_avionWin = (gcnew System::Windows::Forms::Button());
 			this->btn_initData = (gcnew System::Windows::Forms::Button());
+			this->btn_ranking = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// Btn_Avion
@@ -95,11 +98,22 @@ namespace AiParadoxRemake {
 			this->btn_initData->UseVisualStyleBackColor = true;
 			this->btn_initData->Click += gcnew System::EventHandler(this, &Dev_menu::btn_initData_Click);
 			// 
+			// btn_ranking
+			// 
+			this->btn_ranking->Location = System::Drawing::Point(371, 450);
+			this->btn_ranking->Name = L"btn_ranking";
+			this->btn_ranking->Size = System::Drawing::Size(127, 42);
+			this->btn_ranking->TabIndex = 3;
+			this->btn_ranking->Text = L"Ver Ranking";
+			this->btn_ranking->UseVisualStyleBackColor = true;
+			this->btn_ranking->Click += gcnew System::EventHandler(this, &Dev_menu::btn_ranking_Click);
+			// 
 			// Dev_menu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(510, 528);
+			this->Controls->Add(this->btn_ranking);
 			this->Controls->Add(this->btn_initData);
 			this->Controls->Add(this->btn_avionWin);
 			this->Controls->Add(this->Btn_Avion);
@@ -128,5 +142,12 @@ namespace AiParadoxRemake {
 		gestor->initSaveFile();
 		delete gestor;
 	}
+private: System::Void btn_ranking_Click(System::Object^ sender, System::EventArgs^ e) {
+	Ranking^ ranking = gcnew Ranking();
+	this->Hide();
+	ranking->ShowDialog();
+	delete ranking;
+	this->Show();
+}
 };
 }

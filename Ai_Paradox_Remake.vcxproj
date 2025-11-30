@@ -197,6 +197,9 @@
     <EmbeddedResource Include="MenuInicio.resx">
       <DependentUpon>MenuInicio.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ranking.resx">
+      <DependentUpon>Ranking.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SegundoForm.resx">
       <DependentUpon>SegundoForm.h</DependentUpon>
     </EmbeddedResource>
