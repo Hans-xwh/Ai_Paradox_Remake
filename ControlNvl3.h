@@ -24,7 +24,7 @@ private:
 public:
 	MnJg_Nivel3() {
 		//halunito = new HalunoTercer();
-		halunito = new Personaje(150, 100);
+		halunito = new Personaje(400, 60);
 		halunito->setSpeed(10);
 		victoria = false;
 	}
@@ -94,7 +94,7 @@ public:
 
 	void input(Direcciones d) {
 		if (d == Direcciones::Salto) {
-			monedas.push_back(DameMonedas(halunito->getOffsetedX(), halunito->getOffsetedY()));
+			monedas.push_back(DameMonedas(halunito->getOffsetedX() - 40, halunito->getOffsetedY() - 20));
 			
 		}
 		halunito->direccion = d;	//Noelia pero que es esto xd
@@ -111,8 +111,8 @@ public:
 	void addBalanzaDoble(BufferedGraphics^ buffer) {
 		int H = buffer->Graphics->VisibleClipBounds.Height;
 
-		Balanza* b1 = new Balanza(200, H - 150);
-		Balanza* b2 = new Balanza(600, H - 150);
+		Balanza* b1 = new Balanza(200, H - 181);
+		Balanza* b2 = new Balanza(600, H - 181);
 
 		b1->setSprite(Sprites::Balanza);
 		b2->setSprite(Sprites::Balanza);

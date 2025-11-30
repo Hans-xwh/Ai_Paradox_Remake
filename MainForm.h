@@ -265,18 +265,16 @@ namespace AiParadoxRemake {
 			this->label8->AutoSize = true;
 			this->label8->Location = System::Drawing::Point(808, 400);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(170, 16);
+			this->label8->Size = System::Drawing::Size(0, 16);
 			this->label8->TabIndex = 8;
-			this->label8->Text = L"PARA HABLAR CONMIGO!";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Location = System::Drawing::Point(825, 384);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(129, 16);
+			this->label9->Size = System::Drawing::Size(0, 16);
 			this->label9->TabIndex = 9;
-			this->label9->Text = L"PASA ESTE NIVEL..";
 			this->label9->Click += gcnew System::EventHandler(this, &MainForm::label9_Click);
 			// 
 			// timer2
