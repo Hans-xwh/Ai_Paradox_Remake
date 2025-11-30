@@ -26,10 +26,12 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		GolemRoca,
 		Reymundo,
 		Arbol1,
+		Arbolsabio,
 
 		//Nivel 3
 		moneditas,
 		Balanza,
+		
 	};
 
 	public ref class Sprite_DB : public System::Windows::Forms::Form
@@ -53,6 +55,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Bitmap^ spr_agua;
 		Bitmap^ spr_roca;
 		Bitmap^ spr_reymundo;
+		Bitmap^ spr_arbolsabio;
 
 		Bitmap^ spr_arbol;
 
@@ -102,6 +105,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			if (spr_explosion) { delete spr_explosion; }
 			if (spr_moneditas) { delete spr_moneditas;}
 			if (spr_balanza) { delete spr_balanza; }
+			if (spr_arbolsabio) { delete spr_arbolsabio; }
 		}
 
 		
@@ -134,12 +138,14 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_agua = gcnew Bitmap("Imagenes/espirituAgua.png");
 			spr_reymundo = gcnew Bitmap("Imagenes/Reymundo.png");
 			spr_arbol = gcnew Bitmap("Imagenes/ArbolSprite.png");
-		}
+			spr_arbolsabio = gcnew Bitmap("Imagenes/arbolitosabiduria.png");	
+	}
 		void Unld_Nivel2() {
 			delete spr_roca;
 			delete spr_agua;
 			delete spr_reymundo;
 			delete spr_arbol;
+			delete spr_arbolsabio;
 		}
 
 		void Init_Nivel3() {
