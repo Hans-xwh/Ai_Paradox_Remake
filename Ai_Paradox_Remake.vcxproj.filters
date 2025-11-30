@@ -131,6 +131,9 @@
     <ClInclude Include="Moneda.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AudioManager.hpp">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VictoriaLvl1.resx">

@@ -2,6 +2,7 @@
 #include "VictoriaLvl1.h"
 #include "ControlNvl1.hpp"
 #include "ParalaxManager.hpp"
+#include "AudioManager.hpp"
 
 namespace AiParadoxRemake {
 
@@ -24,6 +25,7 @@ namespace AiParadoxRemake {
 		Random^ r;
 		ParalaxManager^ paralax;
 		Sprite_DB^ sprite_db;
+		AudioMngr^ audio;
 		MnJg_Avion* ctrlAvion;
 		bool pausa = false;
 
@@ -41,6 +43,10 @@ namespace AiParadoxRemake {
 			paralax = gcnew ParalaxManager(1, 2);
 			sprite_db = gcnew Sprite_DB(11);	//Nivel 1_1
 			ctrlAvion = new MnJg_Avion();
+
+			audio = gcnew AudioMngr();
+			//Channel1 reservado para la musica
+			audio->init_Channel2("Audio/projectile.wav");
 
 			//lbl_pausa->Visible = false;
 		}
@@ -60,6 +66,7 @@ namespace AiParadoxRemake {
 			delete r;
 			delete sprite_db;
 			delete paralax;
+			delete audio;
 			delete mybuffer;
 			delete bCanvas;
 			delete g;
@@ -163,7 +170,7 @@ namespace AiParadoxRemake {
 			ctrlAvion->input(Direcciones::Derecha);
 		}
 		else if (e->KeyCode == Keys::Space) {
-			ctrlAvion->input(Direcciones::Salto);
+			ctrlAvion->input(Direcciones::Salto, audio);
 		}
 	}
 	private: System::Void AvionNvl1_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {

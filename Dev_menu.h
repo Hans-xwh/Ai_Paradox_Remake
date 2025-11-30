@@ -125,7 +125,7 @@ namespace AiParadoxRemake {
 	}
 	private: System::Void btn_initData_Click(System::Object^ sender, System::EventArgs^ e) {
 		Guardado* gestor = new Guardado();
-		gestor->initSateveFile();
+		gestor->initSaveFile();
 		delete gestor;
 	}
 };

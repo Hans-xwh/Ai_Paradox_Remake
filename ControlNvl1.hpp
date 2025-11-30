@@ -5,6 +5,7 @@
 #include "Proyectil.hpp"
 #include "MovingEntity.hpp"
 #include "Prop.hpp"
+#include "AudioManager.hpp"
 
 
 class MnJg_Avion {
@@ -215,11 +216,12 @@ public:
 			28);
 	}
 
-	void input(Direcciones d) {
+	void input(Direcciones d, AudioMngr^ A=nullptr) {
 		if (d != Direcciones::Salto) {
 			avion->setDir(d);
 		}
 		else if (d == Direcciones::Salto) {
+			if (A) { A->Channel2_Play(); }
 			Balas.push_back(DameBala(avion->getOffsetedX(), avion->getOffsetedY()));
 		}
 	}

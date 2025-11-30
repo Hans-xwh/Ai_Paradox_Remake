@@ -131,6 +131,7 @@
     <ClCompile Include="VictoriaLvl1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioManager.hpp" />
     <ClInclude Include="AvionHaluno.hpp" />
     <ClInclude Include="AvionNvl1.h">
       <FileType>CppForm</FileType>
