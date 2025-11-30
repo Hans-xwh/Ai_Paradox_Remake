@@ -1,4 +1,5 @@
 #pragma once
+#include "Guardado.hpp"
 
 namespace AiParadoxRemake {
 
@@ -154,7 +155,14 @@ namespace AiParadoxRemake {
 	}
 private: System::Void btn_save_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (puntaje >= 0) {
+		Guardado* myGame = new Guardado();
+		myGame->setNivel(1);
+		myGame->setPuntaje(puntaje);
+		myGame->setName('X', 'W', 'H');
+		myGame->WriteRecord();
+
 		this->btn_save->Text = "Partida guardada!";
+		delete myGame;
 	}
 	else
 	{

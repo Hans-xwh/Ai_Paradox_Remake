@@ -58,6 +58,11 @@ namespace AiParadoxRemake {
 
 			delete ctrlAvion;
 			delete r;
+			delete sprite_db;
+			delete paralax;
+			delete mybuffer;
+			delete bCanvas;
+			delete g;
 		}
 	private: System::Windows::Forms::Timer^ timer1;
 	protected:
