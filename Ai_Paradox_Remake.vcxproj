@@ -176,7 +176,9 @@
     </ClInclude>
     <ClInclude Include="Sprite_DB.hpp" />
     <ClInclude Include="TercerForm.h" />
-    <ClInclude Include="VictoriaLvl1.h" />
+    <ClInclude Include="VictoriaLvl1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AvionNvl1.resx">
