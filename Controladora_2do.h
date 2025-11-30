@@ -115,7 +115,6 @@ public:
 	void drawAll(BufferedGraphics^buffer, Sprite_DB^ spriteDb) {
 		personaji->draw(buffer, spriteDb);
 		reymundo->draw(buffer, spriteDb);
-		arbolsabio->draw(buffer, spriteDb);
 
 		for (Agua* a : awita) {
 			a->draw(buffer, spriteDb);
