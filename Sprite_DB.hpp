@@ -26,6 +26,10 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		GolemRoca,
 		Reymundo,
 		Arbol1,
+
+		//Nivel 3
+		moneditas,
+		Balanza,
 	};
 
 	public ref class Sprite_DB : public System::Windows::Forms::Form
@@ -52,6 +56,10 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 
 		Bitmap^ spr_arbol;
 
+		//Tercer nivel
+		Bitmap^ spr_moneditas;
+		Bitmap^ spr_balanza;
+
 	public:
 		Sprite_DB(int lvl){	//Inicializa los sprites dependiendo del nivel
 			spr_error = gcnew Bitmap("Imagenes/debugempty.png");
@@ -64,6 +72,10 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			case 2:
 				Init_Nivel2();
 				break;
+			case 3:
+				Init_Nivel3();
+				break;
+
 			default:
 				//No sean flojos inicialicen bien 
 				break;
@@ -88,6 +100,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			if (spr_bombardiroR) { delete spr_bombardiroR; }
 			if (spr_robotVolador) { delete spr_robotVolador; }
 			if (spr_explosion) { delete spr_explosion; }
+			if (spr_moneditas) { delete spr_moneditas;}
+			if (spr_balanza) { delete spr_balanza; }
 		}
 
 		
@@ -115,6 +129,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 
 
 		void Init_Nivel2() {
+
 			spr_roca = gcnew Bitmap("Imagenes/piedresinha.png");
 			spr_agua = gcnew Bitmap("Imagenes/espirituAgua.png");
 			spr_reymundo = gcnew Bitmap("Imagenes/Reymundo.png");
@@ -125,6 +140,18 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			delete spr_agua;
 			delete spr_reymundo;
 			delete spr_arbol;
+		}
+
+		void Init_Nivel3() {
+			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
+			spr_moneditas = gcnew Bitmap("Imagenes/moneditas.png");
+			spr_balanza = gcnew Bitmap("Imagenes/Balanza.png");
+		}
+
+		void Unld_Nivel3() {
+			delete spr_avion;
+			delete spr_moneditas;
+			delete spr_balanza;
 		}
 
 		Bitmap^ getSprite(Sprites s) {
@@ -153,7 +180,11 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			case RobotVolador:
 				return spr_robotVolador;
 			case Explosion:
-				return spr_explosion;	
+				return spr_explosion;
+			case Balanza:
+				return spr_balanza;
+			case moneditas:
+				return spr_moneditas;
 
 			case Error:
 				return spr_error;

@@ -4,6 +4,7 @@
 #include "MainForm.h"
 #include "SegundoForm.h"
 #include "creditos.h"
+#include "TercerForm.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -39,6 +40,8 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Button^ btn_dev;
 	private: System::Windows::Forms::Button^ button1;
 		   SegundoForm^ mundo2parte2;
+		   TercerForm^ mundo3;
+	private: System::Windows::Forms::Button^ button4;
 		   Creditos^ creditos;
 	protected:
 		/// <summary>
@@ -75,6 +78,7 @@ namespace AiParadoxRemake {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->btn_dev = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
@@ -154,6 +158,16 @@ namespace AiParadoxRemake {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MenuInicio::button1_Click);
 			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(716, 532);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->TabIndex = 6;
+			this->button4->Text = L"button4";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MenuInicio::button4_Click);
+			// 
 			// MenuInicio
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -162,6 +176,7 @@ namespace AiParadoxRemake {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1172, 741);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btn_dev);
 			this->Controls->Add(this->button3);
@@ -207,6 +222,14 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	this->Hide();
 	creditos->ShowDialog();
 	delete creditos;
+	this->Show();
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	mundo3 = gcnew TercerForm();
+	this->Hide();
+	mundo3->ShowDialog();
+	delete mundo3;
 	this->Show();
 }
 };
