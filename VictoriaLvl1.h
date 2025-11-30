@@ -161,6 +161,15 @@ private: System::Void btn_save_Click(System::Object^ sender, System::EventArgs^ 
 		myGame->setName('X', 'W', 'H');
 		myGame->WriteRecord();
 
+		myGame->setNivel(2);
+		myGame->setPuntaje(468);
+		myGame->setName("Sex");
+		myGame->WriteRecord();
+		myGame->setNivel(3);
+		myGame->setPuntaje(369);
+		myGame->setName('N', 'V', '3');
+		myGame->WriteRecord();
+
 		this->btn_save->Text = "Partida guardada!";
 		delete myGame;
 	}
@@ -168,7 +177,7 @@ private: System::Void btn_save_Click(System::Object^ sender, System::EventArgs^ 
 	{
 		this->btn_save->Text = "No se ha podido guardar";
 	}
-	this->btn_save->Enabled = false;
+	//this->btn_save->Enabled = false;
 }
 };
 }
