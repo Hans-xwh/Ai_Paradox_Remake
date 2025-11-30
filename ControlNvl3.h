@@ -108,14 +108,17 @@ public:
 	void addBalanzaDoble(BufferedGraphics^ buffer) {
 		int H = buffer->Graphics->VisibleClipBounds.Height;
 
-		Balanza* b1 = new Balanza(200, H - 100);
-		Balanza* b2 = new Balanza(600, H - 100);
+		Balanza* b1 = new Balanza(200, H - 150);
+		Balanza* b2 = new Balanza(600, H - 150);
 
 		b1->setSprite(Sprites::Balanza);
 		b2->setSprite(Sprites::Balanza);
 
 		b1->setTiling(4, 1);
-		b2->setTiling(4, 1);
+		b2->setTiling(4, 2);
+
+		b1->setIteraY(0);
+		b2->setIteraY(1);
 
 		balanzas.push_back(b1);
 		balanzas.push_back(b2);
