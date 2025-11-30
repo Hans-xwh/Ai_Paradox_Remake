@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AvionNvl1.h"
+#include "VictoriaLvl1.h"
 
 namespace AiParadoxRemake {
 
@@ -37,6 +38,7 @@ namespace AiParadoxRemake {
 			}
 		}
 	private: System::Windows::Forms::Button^ Btn_Avion;
+	private: System::Windows::Forms::Button^ btn_avionWin;
 	protected:
 
 	private:
@@ -53,6 +55,7 @@ namespace AiParadoxRemake {
 		void InitializeComponent(void)
 		{
 			this->Btn_Avion = (gcnew System::Windows::Forms::Button());
+			this->btn_avionWin = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// Btn_Avion
@@ -65,11 +68,22 @@ namespace AiParadoxRemake {
 			this->Btn_Avion->UseVisualStyleBackColor = true;
 			this->Btn_Avion->Click += gcnew System::EventHandler(this, &Dev_menu::Btn_Avion_Click);
 			// 
+			// btn_avionWin
+			// 
+			this->btn_avionWin->Location = System::Drawing::Point(21, 69);
+			this->btn_avionWin->Name = L"btn_avionWin";
+			this->btn_avionWin->Size = System::Drawing::Size(127, 42);
+			this->btn_avionWin->TabIndex = 1;
+			this->btn_avionWin->Text = L"Victoria Avion";
+			this->btn_avionWin->UseVisualStyleBackColor = true;
+			this->btn_avionWin->Click += gcnew System::EventHandler(this, &Dev_menu::btn_avionWin_Click);
+			// 
 			// Dev_menu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(510, 528);
+			this->Controls->Add(this->btn_avionWin);
 			this->Controls->Add(this->Btn_Avion);
 			this->Name = L"Dev_menu";
 			this->Text = L"Dev_menu";
@@ -82,6 +96,13 @@ namespace AiParadoxRemake {
 		AvionNvl1^ frm_avion = gcnew AvionNvl1();
 		frm_avion->ShowDialog();
 		delete frm_avion;
+		this->Show();
+	}
+	private: System::Void btn_avionWin_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		VictoriaLvl1^ frm_victoria = gcnew VictoriaLvl1(-1);	//-1 no guarda la partida
+		frm_victoria->ShowDialog();
+		delete frm_victoria;
 		this->Show();
 	}
 	};

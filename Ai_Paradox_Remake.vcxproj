@@ -144,6 +144,7 @@
     </ClInclude>
     <ClInclude Include="Dialogo.hpp" />
     <ClInclude Include="Entidad.h" />
+    <ClInclude Include="Guardado.hpp" />
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
