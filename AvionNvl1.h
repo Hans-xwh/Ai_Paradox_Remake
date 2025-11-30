@@ -1,4 +1,5 @@
 #pragma once
+#include "VictoriaLvl1.h"
 #include "ControlNvl1.hpp"
 #include "ParalaxManager.hpp"
 
@@ -136,7 +137,9 @@ namespace AiParadoxRemake {
 			this->timer1->Enabled = false;
 			this->timer2->Enabled = false;
 			this->Hide();
-			MessageBox::Show("¡Has derrotado a Bombardino Crocodilo!\n¡Felicidades, has completado el nivel!");
+			VictoriaLvl1^ win = gcnew VictoriaLvl1(ctrlAvion->getPuntaje());
+			win->ShowDialog();
+			delete win;
 			this->Close();
 		}
 	}
