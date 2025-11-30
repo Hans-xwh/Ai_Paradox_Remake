@@ -12,6 +12,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Explosion,
 
 		//Nivel 1_0
+		Eprom,
+		Robot,
 
 		//Nivel 1_1
 		Bala1,
@@ -42,8 +44,11 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Bitmap^ spr_error; //Sprite por defecto en caso de error, sacado de source xd
 		Bitmap^ spr_explosion;
 
+		//Primer nivel - 0
+		Bitmap^ spr_robot;
+		Bitmap^ spr_eprom;
 
-		//Primer nivel
+		//Primer nivel - 1
 		Bitmap^ spr_avion;
 		Bitmap^ spr_bala1;
 		Bitmap^ spr_bala2;
@@ -69,6 +74,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_haluno = gcnew Bitmap("Imagenes/haluno.png");	//haluno siempre esta cargado
 
 			switch (lvl){
+			case 10:
+				Init_Nivel1_0();
 			case 11:
 				Init_Nivel1_1();
 				break;
@@ -106,12 +113,18 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			if (spr_moneditas) { delete spr_moneditas;}
 			if (spr_balanza) { delete spr_balanza; }
 			if (spr_arbolsabio) { delete spr_arbolsabio; }
+			if (spr_robot) { delete spr_robot; }
+			if (spr_eprom) { delete spr_eprom; }
 		}
 
 		
 
 		//Inicializan los sprites dependendo de cada nivel.
 		// LLamar esto desde el formulario de cada nivel, por q creo q la controladora no puede contener un ref class
+		void Init_Nivel1_0() {
+			spr_eprom = gcnew Bitmap("Imagenes/nvl_1_0/eprom.png");
+			spr_robot = gcnew Bitmap("Imagenes/nvl_1_0/robot.png");
+		}
 		void Init_Nivel1_1() {
 			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
 			spr_bala1 = gcnew Bitmap("Imagenes/disparo2azul.png");
@@ -120,6 +133,10 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_bombardiroR = gcnew Bitmap("Imagenes/bombardiroR.png");
 			spr_robotVolador = gcnew Bitmap("Imagenes/robotVolador.png");
 			spr_explosion = gcnew Bitmap("Imagenes/explosion.png");
+		}
+		void Unld_Nivel1_0() {
+			delete spr_eprom;
+			delete spr_robot;
 		}
 		void Unld_Nivel1_1() {
 			delete spr_avion;
@@ -193,6 +210,10 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_moneditas;
 			case ArbolSabio:
 				return spr_arbolsabio;
+			case Robot:
+				return spr_robot;
+			case Eprom:
+				return spr_eprom;
 
 			case Error:
 				return spr_error;
