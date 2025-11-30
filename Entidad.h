@@ -44,7 +44,7 @@ public:
 		iteraX = 0;
 		iteraY = 0;
 		useNN = true;
-		showHitbox = true;
+		showHitbox = false;
 	}
 
 	virtual void draw (BufferedGraphics^ buffer, Sprite_DB^ db){		

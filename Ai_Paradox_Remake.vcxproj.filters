@@ -54,6 +54,9 @@
     <ClCompile Include="VictoriaLvl1.cpp">
       <Filter>Header Files\Nivel 1\Forms-1</Filter>
     </ClCompile>
+    <ClCompile Include="TercerForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -119,8 +122,19 @@
     <ClInclude Include="VictoriaLvl1.h">
       <Filter>Header Files\Nivel 1\Forms-1</Filter>
     </ClInclude>
-    <ClInclude Include="Guardado.hpp">
-      <Filter>Header Files\Generales</Filter>
+    <ClInclude Include="Balanza.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ControlNvl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Moneda.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="VictoriaLvl1.resx">
+      <Filter>Header Files\Nivel 1\Forms-1</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
