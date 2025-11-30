@@ -17,10 +17,12 @@ private:
 
 	int shootInterval;
 	int shootCount;
+	bool victoria = false;
 
 public:
 	MnJg_Nivel3() {
 		halunito = new HalunoTercer();
+		victoria = false;
 	}
 	~MnJg_Nivel3() {
 		delete halunito;
@@ -67,6 +69,10 @@ public:
 					break;
 				}
 			}
+		}
+
+		if (comprobarSiGano()) {
+			victoria = true;
 		}
 	}
 
@@ -115,5 +121,16 @@ public:
 		balanzas.push_back(b2);
 	}
 
+
+	bool comprobarSiGano() {
+		if (balanzas.size() >= 2) {
+			if (balanzas[0]->getspriteActualBalanza() >= 3 && balanzas[1]->getspriteActualBalanza() >= 3) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool getVictoria() { return victoria;  }
 };
 

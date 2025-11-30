@@ -2,6 +2,7 @@
 #include "ControlNvl3.h"
 #include "Entidad.h"
 #include "Sprite_DB.hpp"
+#include "FinalForm.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -25,6 +26,7 @@ namespace AiParadoxRemake {
 		Sprite_DB^ sprite_db;
 		Bitmap^ fondo;
 		bool pausa;
+
 	public:
 		TercerForm(void)
 		{
@@ -38,11 +40,12 @@ namespace AiParadoxRemake {
 			bCanvas = mybuffer->Allocate(g, this->ClientRectangle);
 			sprite_db = gcnew Sprite_DB(3);
 
-			fondo = gcnew Bitmap("Imagenes/fondoNivel3.png");
+			fondo = gcnew Bitmap("Imagenes/fondoNivel3.jpg");
 			juegoNivel3 = new MnJg_Nivel3();
 			juegoNivel3->addBalanzaDoble(bCanvas);
 
 			pausa = false;
+
 		}
 
 	protected:
@@ -61,7 +64,6 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Timer^ timer1;
 	protected:
 	private: System::ComponentModel::IContainer^ components;
-
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -110,6 +112,7 @@ namespace AiParadoxRemake {
 		juegoNivel3->updateCollisions();
 		juegoNivel3->drawAll(bCanvas, sprite_db);
 
+
 		if (pausa) {
 			timer1->Enabled = false;
 			bCanvas->Graphics->FillRectangle(Brushes::White,
@@ -140,6 +143,13 @@ namespace AiParadoxRemake {
 private: System::Void KeyUp1(System::Object^ sender, KeyEventArgs^ e) {
 	if (e->KeyCode == Keys::A || e->KeyCode == Keys::D) {
 		juegoNivel3->input(Direcciones::Ninguna);
+	}
+	if (e->KeyCode == Keys::Escape) {
+		pausa = !pausa;
+
+		if (!pausa) {
+			this->timer1->Enabled = true;
+		}
 	}
 }
 	};
