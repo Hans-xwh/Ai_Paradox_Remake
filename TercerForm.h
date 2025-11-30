@@ -112,7 +112,12 @@ namespace AiParadoxRemake {
 		juegoNivel3->updateCollisions();
 		juegoNivel3->drawAll(bCanvas, sprite_db);
 
+		if (juegoNivel3->getVictoria()) {
+			FinalForm^ final = gcnew FinalForm();
+			final->ShowDialog();
 
+			this->Close();
+		}
 		if (pausa) {
 			timer1->Enabled = false;
 			bCanvas->Graphics->FillRectangle(Brushes::White,
