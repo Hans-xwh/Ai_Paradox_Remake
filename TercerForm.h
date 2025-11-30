@@ -25,7 +25,9 @@ namespace AiParadoxRemake {
 		MnJg_Nivel3* juegoNivel3;
 		Sprite_DB^ sprite_db;
 		Bitmap^ fondo;
-		bool pausa;
+	private: System::Windows::Forms::Label^ label1;
+
+		   bool pausa;
 
 	public:
 		TercerForm(void)
@@ -78,7 +80,9 @@ namespace AiParadoxRemake {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(TercerForm::typeid));
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -86,18 +90,33 @@ namespace AiParadoxRemake {
 			this->timer1->Enabled = true;
 			this->timer1->Tick += gcnew System::EventHandler(this, &TercerForm::timer1_Tick);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->label1->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->label1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1.Image")));
+			this->label1->Location = System::Drawing::Point(241, 19);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(735, 64);
+			this->label1->TabIndex = 0;
+			this->label1->Text = resources->GetString(L"label1.Text");
+			this->label1->Click += gcnew System::EventHandler(this, &TercerForm::label1_Click);
+			// 
 			// TercerForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1173, 461);
+			this->Controls->Add(this->label1);
 			this->Name = L"TercerForm";
 			this->Text = L"TercerForm";
 			this->Load += gcnew System::EventHandler(this, &TercerForm::TercerForm_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &TercerForm::KeyDown1);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &TercerForm::KeyUp1);
 			this->ResumeLayout(false);
-		
+			this->PerformLayout();
+
 		}
 #pragma endregion
 	private: System::Void TercerForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -160,5 +179,7 @@ private: System::Void KeyUp1(System::Object^ sender, KeyEventArgs^ e) {
 		}
 	}
 }
-	};
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
