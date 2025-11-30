@@ -127,6 +127,7 @@
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
+    <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="SegundoForm.cpp" />
     <ClCompile Include="TercerForm.cpp" />
     <ClCompile Include="VictoriaLvl1.cpp" />
@@ -165,6 +166,9 @@
     <ClInclude Include="Agua.h" />
     <ClInclude Include="Prop.hpp" />
     <ClInclude Include="Proyectil.hpp" />
+    <ClInclude Include="Ranking.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Reymundo.h" />
     <ClInclude Include="Rocas.h" />
     <ClInclude Include="SegundoForm.h">

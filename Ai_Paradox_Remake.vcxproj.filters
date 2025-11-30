@@ -63,6 +63,9 @@
     <ClCompile Include="FinalForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ranking.cpp">
+      <Filter>Forms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="TercerForm.h">
       <Filter>Header Files\Nivel 3</Filter>
+    </ClInclude>
+    <ClInclude Include="Ranking.h">
+      <Filter>Forms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
