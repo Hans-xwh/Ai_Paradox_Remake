@@ -1,10 +1,16 @@
 #pragma once
 
 #include <vector>
+#include <fstream>
 #include "Personaje.h"
 #include "MovingEntity.hpp"
 #include "Prop.hpp"
 #include "AudioManager.hpp"
+
+using std::ifstream;
+using std::fstream;
+using std::ofstream;
+using std::ios;
 
 class MnJg_Robots {
 private:
@@ -32,6 +38,7 @@ public:
 		for (Prop* c : chips) {
 			c->draw(buffer, spriteDb);
 		}
+		haluno->draw(buffer, spriteDb);
 	}
 
 	void updateAll(BufferedGraphics^ buffer) {
@@ -50,5 +57,9 @@ public:
 		exp->setEscala(S * 1.5f);
 		exp->setShowHitbox(false);
 		//explosiones.push_back(exp);
+	}
+
+	void loadRobots() {
+
 	}
 };

@@ -21,7 +21,9 @@ namespace AiParadoxRemake {
 		BufferedGraphics^ bCanvas;
 		Random^ r;
 		MnJg_Robots* ctrlRobots;
-		Sprite_DB^ sprite_db;
+	private: System::Windows::Forms::Timer^ RbtSpawn;
+	private: System::Windows::Forms::Timer^ ChipSpawn;
+		   Sprite_DB^ sprite_db;
 	public:
 		Nvl10(void)
 		{
@@ -74,6 +76,8 @@ namespace AiParadoxRemake {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->RbtSpawn = (gcnew System::Windows::Forms::Timer(this->components));
+			this->ChipSpawn = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// timer1
@@ -89,6 +93,8 @@ namespace AiParadoxRemake {
 			this->Name = L"Nvl10";
 			this->Text = L"Nvl10";
 			this->Load += gcnew System::EventHandler(this, &Nvl10::Nvl10_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Nvl10::Nvl10_KeyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Nvl10::Nvl10_KeyUp);
 			this->ResumeLayout(false);
 
 		}
@@ -96,10 +102,33 @@ namespace AiParadoxRemake {
 	private: System::Void Nvl10_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		bCanvas->Graphics->Clear(Color::White);
+
 		ctrlRobots->updateAll(bCanvas);
 		ctrlRobots->drawAll(bCanvas, sprite_db);
 
 		bCanvas->Render(g);
 	}
-	};
+	private: System::Void Nvl10_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		switch (e->KeyCode) {
+		case Keys::A:
+			ctrlRobots->input(Direcciones::Izquierda);
+			break;
+		case Keys::D:
+			ctrlRobots->input(Direcciones::Derecha);
+			break;
+		case Keys::W:
+			ctrlRobots->input(Direcciones::Arriba);
+			break;
+		case Keys::S:
+			ctrlRobots->input(Direcciones::Abajo);
+			break;
+		case Keys::Space:
+			ctrlRobots->input(Direcciones::Salto);
+		}
+	}
+	private: System::Void Nvl10_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		ctrlRobots->input(Direcciones::Ninguna);
+	}
+};
 }
