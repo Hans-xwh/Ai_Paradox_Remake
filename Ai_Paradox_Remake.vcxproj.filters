@@ -13,17 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Nivel 1">
-      <UniqueIdentifier>{cbbac134-b5bd-4065-9344-eb428e7be80b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Nivel 2">
-      <UniqueIdentifier>{c2f17a24-0267-4b01-b7c6-09227d207994}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Generales">
       <UniqueIdentifier>{d75e936f-592f-4d04-a8f9-c55bd192e0bc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Forms">
       <UniqueIdentifier>{5f9e28aa-f184-4f97-ab01-877f1c16a558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Nivel 3">
+      <UniqueIdentifier>{7e11b676-d092-49f8-8a89-a8903eb7341e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Nivel 2">
+      <UniqueIdentifier>{c2f17a24-0267-4b01-b7c6-09227d207994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Nivel 1">
+      <UniqueIdentifier>{cbbac134-b5bd-4065-9344-eb428e7be80b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Nivel 1\Forms-1">
       <UniqueIdentifier>{e4860915-78d7-400d-a399-1f595a39cc1c}</UniqueIdentifier>
@@ -55,6 +58,9 @@
       <Filter>Header Files\Nivel 1\Forms-1</Filter>
     </ClCompile>
     <ClCompile Include="TercerForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FinalForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,31 +119,40 @@
     <ClInclude Include="Creditos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Controladora_2do.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Prop.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VictoriaLvl1.h">
       <Filter>Header Files\Nivel 1\Forms-1</Filter>
     </ClInclude>
-    <ClInclude Include="Balanza.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ControlNvl3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Moneda.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AudioManager.hpp">
       <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="FinalForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Balanza.h">
+      <Filter>Header Files\Nivel 3</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlNvl3.h">
+      <Filter>Header Files\Nivel 3</Filter>
+    </ClInclude>
+    <ClInclude Include="Controladora_2do.h">
+      <Filter>Header Files\Nivel 2</Filter>
+    </ClInclude>
+    <ClInclude Include="Moneda.h">
+      <Filter>Header Files\Nivel 3</Filter>
+    </ClInclude>
+    <ClInclude Include="Prop.hpp">
+      <Filter>Header Files\Generales</Filter>
+    </ClInclude>
+    <ClInclude Include="TercerForm.h">
+      <Filter>Header Files\Nivel 3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="VictoriaLvl1.resx">
       <Filter>Header Files\Nivel 1\Forms-1</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TercerForm.resx">
+      <Filter>Header Files\Nivel 3</Filter>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -113,8 +113,11 @@ namespace AiParadoxRemake {
 		juegoNivel3->drawAll(bCanvas, sprite_db);
 
 		if (juegoNivel3->getVictoria()) {
+			this->Hide();
+			this->timer1->Enabled = false;
 			FinalForm^ final = gcnew FinalForm();
 			final->ShowDialog();
+			delete final;
 
 			this->Close();
 		}

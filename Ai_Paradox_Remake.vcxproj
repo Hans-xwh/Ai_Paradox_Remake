@@ -171,6 +171,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Sprite_DB.hpp" />
+    <ClInclude Include="TercerForm.h" />
     <ClInclude Include="VictoriaLvl1.h" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +196,7 @@
     <EmbeddedResource Include="SegundoForm.resx">
       <DependentUpon>SegundoForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TercerForm.resx" />
     <EmbeddedResource Include="VictoriaLvl1.resx" />
   </ItemGroup>
   <ItemGroup>
