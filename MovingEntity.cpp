@@ -62,6 +62,25 @@ void Moving_Entity::doBehavior(int lmX, int lmY) {
 	}
 }
 
-void Moving_Entity::follow(int X, int Y) {
+void Moving_Entity::follow(int tX, int tY) {
 	if (behavior != Behavior::FollowTarget) return;
+
+	if (x < tX) {
+		dx = 1;
+	} else if (x > tX) {
+		dx = -1;
+	} else {
+		dx = 0;
+	}
+
+	if (y < tY) {
+		dy = 1;
+	} else if (y > tY) {
+		dy = -1;
+	} else {
+		dy = 0;
+	}
+
+	x += dx * speed;
+	y += dy * speed;
 }
