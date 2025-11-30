@@ -127,6 +127,7 @@
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
+    <ClCompile Include="Nvl1-0.cpp" />
     <ClCompile Include="Ranking.cpp" />
     <ClCompile Include="SegundoForm.cpp" />
     <ClCompile Include="TercerForm.cpp" />
@@ -161,6 +162,9 @@
     </ClInclude>
     <ClInclude Include="Moneda.h" />
     <ClInclude Include="MovingEntity.hpp" />
+    <ClInclude Include="Nvl1-0.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ParalaxManager.hpp" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Agua.h" />
@@ -175,7 +179,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Sprite_DB.hpp" />
-    <ClInclude Include="TercerForm.h" />
+    <ClInclude Include="TercerForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="VictoriaLvl1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuInicio.resx">
       <DependentUpon>MenuInicio.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nvl1-0.resx">
+      <DependentUpon>Nvl1-0.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ranking.resx">
       <DependentUpon>Ranking.h</DependentUpon>
