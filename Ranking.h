@@ -1,4 +1,5 @@
 #pragma once
+#include "Guardado.hpp"
 
 namespace AiParadoxRemake {
 
@@ -27,6 +28,10 @@ namespace AiParadoxRemake {
 			//TODO: Add the constructor code here
 			//
 			saveMngr = new Guardado();
+			nvl1 = saveMngr->readSave(1);
+			nvl2 = saveMngr->readSave(2);
+			nvl3 = saveMngr->readSave(3);
+
 		}
 
 	protected:
@@ -54,11 +59,13 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ lbl_Name1;
 	private: System::Windows::Forms::Label^ lbl_Ptj1;
-	private: System::Windows::Forms::Label^ lbl_ptj2;
+	private: System::Windows::Forms::Label^ lbl_Ptj2;
+
 	private: System::Windows::Forms::Label^ lbl_Name2;
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label12;
-	private: System::Windows::Forms::Label^ lbl_ptj3;
+	private: System::Windows::Forms::Label^ lbl_Ptj3;
+
 	private: System::Windows::Forms::Label^ lbl_Name3;
 	private: System::Windows::Forms::Label^ label15;
 	private: System::Windows::Forms::Label^ label16;
@@ -85,11 +92,11 @@ namespace AiParadoxRemake {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->lbl_Name1 = (gcnew System::Windows::Forms::Label());
 			this->lbl_Ptj1 = (gcnew System::Windows::Forms::Label());
-			this->lbl_ptj2 = (gcnew System::Windows::Forms::Label());
+			this->lbl_Ptj2 = (gcnew System::Windows::Forms::Label());
 			this->lbl_Name2 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->lbl_ptj3 = (gcnew System::Windows::Forms::Label());
+			this->lbl_Ptj3 = (gcnew System::Windows::Forms::Label());
 			this->lbl_Name3 = (gcnew System::Windows::Forms::Label());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label16 = (gcnew System::Windows::Forms::Label());
@@ -184,16 +191,16 @@ namespace AiParadoxRemake {
 			this->lbl_Ptj1->TabIndex = 7;
 			this->lbl_Ptj1->Text = L"XXX";
 			// 
-			// lbl_ptj2
+			// lbl_Ptj2
 			// 
-			this->lbl_ptj2->AutoSize = true;
-			this->lbl_ptj2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbl_Ptj2->AutoSize = true;
+			this->lbl_Ptj2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl_ptj2->Location = System::Drawing::Point(478, 358);
-			this->lbl_ptj2->Name = L"lbl_ptj2";
-			this->lbl_ptj2->Size = System::Drawing::Size(52, 24);
-			this->lbl_ptj2->TabIndex = 11;
-			this->lbl_ptj2->Text = L"XXX";
+			this->lbl_Ptj2->Location = System::Drawing::Point(478, 358);
+			this->lbl_Ptj2->Name = L"lbl_Ptj2";
+			this->lbl_Ptj2->Size = System::Drawing::Size(52, 24);
+			this->lbl_Ptj2->TabIndex = 11;
+			this->lbl_Ptj2->Text = L"XXX";
 			// 
 			// lbl_Name2
 			// 
@@ -228,16 +235,16 @@ namespace AiParadoxRemake {
 			this->label12->TabIndex = 8;
 			this->label12->Text = L"Nombre: ";
 			// 
-			// lbl_ptj3
+			// lbl_Ptj3
 			// 
-			this->lbl_ptj3->AutoSize = true;
-			this->lbl_ptj3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lbl_Ptj3->AutoSize = true;
+			this->lbl_Ptj3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbl_ptj3->Location = System::Drawing::Point(781, 358);
-			this->lbl_ptj3->Name = L"lbl_ptj3";
-			this->lbl_ptj3->Size = System::Drawing::Size(52, 24);
-			this->lbl_ptj3->TabIndex = 15;
-			this->lbl_ptj3->Text = L"XXX";
+			this->lbl_Ptj3->Location = System::Drawing::Point(781, 358);
+			this->lbl_Ptj3->Name = L"lbl_Ptj3";
+			this->lbl_Ptj3->Size = System::Drawing::Size(52, 24);
+			this->lbl_Ptj3->TabIndex = 15;
+			this->lbl_Ptj3->Text = L"XXX";
 			// 
 			// lbl_Name3
 			// 
@@ -279,11 +286,11 @@ namespace AiParadoxRemake {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(884, 601);
-			this->Controls->Add(this->lbl_ptj3);
+			this->Controls->Add(this->lbl_Ptj3);
 			this->Controls->Add(this->lbl_Name3);
 			this->Controls->Add(this->label15);
 			this->Controls->Add(this->label16);
-			this->Controls->Add(this->lbl_ptj2);
+			this->Controls->Add(this->lbl_Ptj2);
 			this->Controls->Add(this->lbl_Name2);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->label12);
@@ -297,6 +304,7 @@ namespace AiParadoxRemake {
 			this->Controls->Add(this->label1);
 			this->Name = L"Ranking";
 			this->Text = L"Ranking";
+			this->Load += gcnew System::EventHandler(this, &Ranking::Ranking_Load);
 			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Ranking::Ranking_Paint);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -306,7 +314,17 @@ namespace AiParadoxRemake {
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void Ranking_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
-
 	}
+private: System::Void Ranking_Load(System::Object^ sender, System::EventArgs^ e) {
+	this->lbl_Name1->Text = gcnew String(nvl1->nombre);
+	this->lbl_Ptj1->Text = gcnew String(nvl1->puntaje.ToString());
+
+	this->lbl_Name2->Text = gcnew String(nvl2->nombre);
+	this->lbl_Ptj2->Text = gcnew String(nvl2->puntaje.ToString());
+
+	this->lbl_Name3->Text = gcnew String(nvl3->nombre);
+	this->lbl_Ptj3->Text = gcnew String(nvl3->puntaje.ToString());
+}
+
 };
 }

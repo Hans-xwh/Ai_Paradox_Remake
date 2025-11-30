@@ -5,14 +5,15 @@
 
 //PROHIBIDO IMPORTAR STD COMPLETO
 //using namespace std;
+using std::ifstream;
 using std::fstream;
 using std::ios;
 
 struct GameSave
 {
-	char nombre[3] = { 'x','x','x' };
+	char nombre[4] = { '-','-','-',0 };
 	int nivel = -1;
-	int puntaje = -456;
+	int puntaje = 000;
 };
 
 class Guardado {
@@ -61,8 +62,13 @@ public:
 
 		if (records.is_open()) {
 			records.seekg(offset, ios::beg);
-			GameSave* tmpSave;
-			//tmpSave = records.read()
+			GameSave* tmpSave = new GameSave;
+			records.read((char*)tmpSave, sizeof(GameSave));
+			return tmpSave;
+			records.close();
+		}
+		else {
+			return &save;
 		}
 
 	}
@@ -74,6 +80,9 @@ public:
 		save.nombre[0] = N[0];
 		save.nombre[1] = N[1];
 		save.nombre[2] = N[2];
+		save.nombre[3] = char(0);
 	}
+
+	std::string translateName(GameSave*){}
 
 };
