@@ -21,12 +21,27 @@ public:
 	}
 	~ReymundoS() { }
 
+};
 
-	/*void dibujarReymundo(BufferedGraphics^ buffer, Bitmap^ bmp) {
-		ancho = bmp->Width / 13;
-		alto = bmp->Height / 54;
 
-		dibujar(buffer, bmp);
-	}*/
+class ArbolSabio : public Entidad {
+private:
+    int spriteActual;
 
+public:
+    ArbolSabio(int X, int Y) : Entidad(X, Y) {
+        spriteActual = 0;
+        setSprite(Sprites::ArbolSabio);
+        setEscala(5.0f);
+        setTiling(14, 1);
+        setIteraY(0);
+        setIteraX(0);
+    }
+
+    ~ArbolSabio() {}
+
+    void siguienteSprite() {
+        spriteActual = (spriteActual + 1) % 14;
+        setIteraX(spriteActual);
+    }
 };

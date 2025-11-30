@@ -26,7 +26,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		GolemRoca,
 		Reymundo,
 		Arbol1,
-		Arbolsabio,
+		ArbolSabio,
 
 		//Nivel 3
 		moneditas,
@@ -138,7 +138,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_agua = gcnew Bitmap("Imagenes/espirituAgua.png");
 			spr_reymundo = gcnew Bitmap("Imagenes/Reymundo.png");
 			spr_arbol = gcnew Bitmap("Imagenes/ArbolSprite.png");
-			spr_arbolsabio = gcnew Bitmap("Imagenes/arbolitosabiduria.png");	
+			spr_arbolsabio = gcnew Bitmap("Imagenes/ArbolSabio.png");	
 	}
 		void Unld_Nivel2() {
 			delete spr_roca;
@@ -191,6 +191,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_balanza;
 			case moneditas:
 				return spr_moneditas;
+			case ArbolSabio:
+				return spr_arbolsabio;
 
 			case Error:
 				return spr_error;

@@ -42,6 +42,7 @@ namespace AiParadoxRemake {
 		   SegundoForm^ mundo2parte2;
 		   TercerForm^ mundo3;
 	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Button^ button5;
 		   Creditos^ creditos;
 	protected:
 		/// <summary>
@@ -79,6 +80,7 @@ namespace AiParadoxRemake {
 			this->btn_dev = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
@@ -168,6 +170,16 @@ namespace AiParadoxRemake {
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MenuInicio::button4_Click);
 			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(716, 423);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(75, 23);
+			this->button5->TabIndex = 7;
+			this->button5->Text = L"button5";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MenuInicio::button5_Click);
+			// 
 			// MenuInicio
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -176,6 +188,7 @@ namespace AiParadoxRemake {
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1172, 741);
+			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btn_dev);
@@ -231,6 +244,15 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	mundo3->ShowDialog();
 	delete mundo3;
 	this->Show();
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	mundo2parte2 = gcnew SegundoForm();
+	this->Hide();
+	mundo2parte2->ShowDialog();
+	delete mundo2parte2;
+	this->Show();
+
 }
 };
 }

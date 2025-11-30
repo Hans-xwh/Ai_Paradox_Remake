@@ -120,4 +120,9 @@
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>En una reunión se presenta un dato sorprendente: 
+“El 95% de los estudiantes que usaron el software X mejoraron sus notas.”
+¿Cuál sería la mejor pregunta crítica para evaluar la validez de esa afirmación?</value>
+  </data>
 </root>

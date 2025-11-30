@@ -19,9 +19,9 @@ class Controladora2do
 private:
 	vector<Agua*> awita;
 	Personaje* personaji;
+	ArbolSabio* arbolsabio;
 	Entidad* reymundo;
 	vector<Rocas*>roquita;
-	vector<Entidad*> arbolitos;
 
 	// sonidos
 	bool SoundWater = false;
@@ -32,6 +32,7 @@ public:
 		srand(time(NULL));
 		personaji = new Personaje(rand() % 250, rand() % 250);
 		reymundo = new Entidad(630, 325); 
+		arbolsabio = new ArbolSabio(0, 5);
 		reymundo->setTiling(13, 54); reymundo->setIteraY(2);
 
 	}
@@ -45,9 +46,7 @@ public:
 		for (Rocas* roca : roquita) {
 			delete roca;
 		}
-		for (Entidad* arbol : arbolitos) {
-			delete arbol;
-		}
+
 	}
 
 	void moverPersonajeControladora(BufferedGraphics^ buffer) {
@@ -70,9 +69,7 @@ public:
 		roquita.push_back(new Rocas(x, y));
 	}
 
-	void agregarArbolPosicion(int x, int y) {
-		arbolitos.push_back(new Entidad(x, y));
-	}
+
 	/*
 	void moverRobotControladora(BufferedGraphics^ buffer, Bitmap^ bmp) {
 		for (size_t i = 0; i < awita.size(); i++) {
@@ -95,7 +92,6 @@ public:
 
 	void updateAll(BufferedGraphics^ buffer) {
 
-		//reymundo no se mueve
 		personaji->moverPersonaje(buffer);
 
 		for (Agua* a : awita) {
@@ -105,11 +101,21 @@ public:
 		for (Rocas* r : roquita) {
 			r->moverRocas(buffer);
 		}
+
+
+	}
+
+	void updateArbol(BufferedGraphics^ buffer) {
+		arbolsabio->siguienteSprite();
+
+		arbolsabio->siguienteSprite();
+
 	}
 
 	void drawAll(BufferedGraphics^buffer, Sprite_DB^ spriteDb) {
 		personaji->draw(buffer, spriteDb);
 		reymundo->draw(buffer, spriteDb);
+		arbolsabio->draw(buffer, spriteDb);
 
 		for (Agua* a : awita) {
 			a->draw(buffer, spriteDb);
@@ -118,6 +124,12 @@ public:
 		for (Rocas* r : roquita) {
 			r->draw(buffer, spriteDb);
 		}
+
+	}
+
+	void drawArbol(BufferedGraphics^ buffer, Sprite_DB^ spriteDb) {
+		arbolsabio->draw(buffer, spriteDb);
+
 	}
 
 	void colision(BufferedGraphics^ buffer) {
@@ -172,6 +184,11 @@ public:
 	}
 	void resetSounds() {
 		SoundRoca = SoundWater = false;
+	}
+
+
+	ArbolSabio* getArbol() {
+		return arbolsabio;
 	}
 };
 
