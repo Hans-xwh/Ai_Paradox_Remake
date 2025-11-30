@@ -91,13 +91,13 @@ namespace AiParadoxRemake {
 			//spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");
 			//spriteRobot = gcnew Bitmap("Imagenes/espirituAgua.png");
 			//spriteReymundo = gcnew Bitmap("Imagenes/Reymundo.png");
-			dialogo = new Dialogo("Bayonneta es el mejor juego");		// Debug
+			dialogo = new Dialogo("Bayonneta decadencia");		// Debug
 			dialogo->setHeight(100);
 
 
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
-			tiempoSiguienteRoca = random->Next(1000, 5000);
+			tiempoSiguienteRoca = 15000 ;
 	
 
 			tiempo = 0;
@@ -431,8 +431,8 @@ namespace AiParadoxRemake {
 			controladora->agregarRobotPosicion(x, y);
 			controladora->agregarRocaPosicion(x1, y2);
 			contadorTiempo = 0;
-			tiempoSiguienteRobot = random->Next(1000, 5000);
-			tiempoSiguienteRoca = random->Next(1000, 5000);
+			tiempoSiguienteRobot = random->Next(5000, 10000);
+			tiempoSiguienteRoca = 15000;
 		}
 
 		//dialogo->dibujar(buffer->Graphics);

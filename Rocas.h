@@ -52,6 +52,10 @@ public:
 		if (iteraX >= 0 && iteraX < 5) iteraX++;
 		else iteraX = 0;
 
+		dy = 0;
+		dx = 0;
+
+
 		switch (direccion) {
 		case Arriba:
 			dx = -10;
