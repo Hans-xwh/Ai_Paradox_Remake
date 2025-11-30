@@ -140,6 +140,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Balanza.h" />
+    <ClInclude Include="Control1_0.hpp" />
     <ClInclude Include="Controladora_2do.h" />
     <ClInclude Include="ControlNvl1.hpp" />
     <ClInclude Include="ControlNvl3.h" />

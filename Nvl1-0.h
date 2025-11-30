@@ -57,9 +57,12 @@ namespace AiParadoxRemake {
 			this->ClientSize = System::Drawing::Size(1127, 566);
 			this->Name = L"Nvl10";
 			this->Text = L"Nvl10";
+			this->Load += gcnew System::EventHandler(this, &Nvl10::Nvl10_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void Nvl10_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }
