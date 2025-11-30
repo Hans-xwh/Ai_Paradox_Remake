@@ -1,4 +1,5 @@
 #pragma once
+#include "Control1_0.hpp"
 
 namespace AiParadoxRemake {
 
@@ -14,6 +15,13 @@ namespace AiParadoxRemake {
 	/// </summary>
 	public ref class Nvl10 : public System::Windows::Forms::Form
 	{
+	private:
+		Graphics^ g;
+		BufferedGraphicsContext^ mybuffer;
+		BufferedGraphics^ bCanvas;
+		Random^ r;
+		MnJg_Robots* ctrlRobots;
+		Sprite_DB^ sprite_db;
 	public:
 		Nvl10(void)
 		{
@@ -21,6 +29,13 @@ namespace AiParadoxRemake {
 			//
 			//TODO: Add the constructor code here
 			//
+			g = this->CreateGraphics();
+			mybuffer = BufferedGraphicsManager::Current;
+			bCanvas = mybuffer->Allocate(g, this->ClientRectangle);
+
+			r = gcnew Random();
+			sprite_db = gcnew Sprite_DB(10);
+			ctrlRobots = new MnJg_Robots();
 		}
 
 	protected:
@@ -33,13 +48,22 @@ namespace AiParadoxRemake {
 			{
 				delete components;
 			}
+			delete mybuffer;
+			delete bCanvas;
+			delete g;
+			delete r;
+			delete sprite_db;
+			delete ctrlRobots;
 		}
+	private: System::Windows::Forms::Timer^ timer1;
+	protected:
+	private: System::ComponentModel::IContainer^ components;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -48,7 +72,14 @@ namespace AiParadoxRemake {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
+			// 
+			// timer1
+			// 
+			this->timer1->Enabled = true;
+			this->timer1->Tick += gcnew System::EventHandler(this, &Nvl10::timer1_Tick);
 			// 
 			// Nvl10
 			// 
@@ -63,6 +94,12 @@ namespace AiParadoxRemake {
 		}
 #pragma endregion
 	private: System::Void Nvl10_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		ctrlRobots->updateAll(bCanvas);
+		ctrlRobots->drawAll(bCanvas, sprite_db);
+
+		bCanvas->Render(g);
 	}
 	};
 }

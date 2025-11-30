@@ -13,7 +13,7 @@ private:
 	std::vector<Prop*> chips;
 public:
 	MnJg_Robots() {
-
+		haluno = new Personaje(10,20);
 	}
 	~MnJg_Robots() {
 		delete haluno;
@@ -32,5 +32,23 @@ public:
 		for (Prop* c : chips) {
 			c->draw(buffer, spriteDb);
 		}
+	}
+
+	void updateAll(BufferedGraphics^ buffer) {
+		haluno->moverPersonaje(buffer);
+	}
+
+	void input(Direcciones d, AudioMngr^ A = nullptr) {
+		if (d != Direcciones::Salto) {
+			haluno->direccion = d;
+		}
+	}
+
+	void addExplosion(int X, int Y, int S) {
+		Prop* exp = new Prop(X - 80, Y - 20, Sprites::Explosion, true, false);
+		exp->setTiling(12, 1);
+		exp->setEscala(S * 1.5f);
+		exp->setShowHitbox(false);
+		//explosiones.push_back(exp);
 	}
 };

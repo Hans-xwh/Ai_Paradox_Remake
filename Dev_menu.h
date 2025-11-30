@@ -5,6 +5,7 @@
 #include "VictoriaLvl1.h"
 #include "Ranking.h"
 #include "Guardado.hpp"
+#include "Nvl1-0.h"
 
 
 namespace AiParadoxRemake {
@@ -45,6 +46,8 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Button^ btn_avionWin;
 	private: System::Windows::Forms::Button^ btn_initData;
 	private: System::Windows::Forms::Button^ btn_ranking;
+	private: System::Windows::Forms::Button^ btn_robots;
+
 
 	protected:
 
@@ -65,6 +68,7 @@ namespace AiParadoxRemake {
 			this->btn_avionWin = (gcnew System::Windows::Forms::Button());
 			this->btn_initData = (gcnew System::Windows::Forms::Button());
 			this->btn_ranking = (gcnew System::Windows::Forms::Button());
+			this->btn_robots = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// Btn_Avion
@@ -108,11 +112,22 @@ namespace AiParadoxRemake {
 			this->btn_ranking->UseVisualStyleBackColor = true;
 			this->btn_ranking->Click += gcnew System::EventHandler(this, &Dev_menu::btn_ranking_Click);
 			// 
+			// btn_robots
+			// 
+			this->btn_robots->Location = System::Drawing::Point(21, 117);
+			this->btn_robots->Name = L"btn_robots";
+			this->btn_robots->Size = System::Drawing::Size(127, 42);
+			this->btn_robots->TabIndex = 4;
+			this->btn_robots->Text = L"Minijuego Robots";
+			this->btn_robots->UseVisualStyleBackColor = true;
+			this->btn_robots->Click += gcnew System::EventHandler(this, &Dev_menu::btn_robots_Click);
+			// 
 			// Dev_menu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(510, 528);
+			this->Controls->Add(this->btn_robots);
 			this->Controls->Add(this->btn_ranking);
 			this->Controls->Add(this->btn_initData);
 			this->Controls->Add(this->btn_avionWin);
@@ -147,6 +162,13 @@ private: System::Void btn_ranking_Click(System::Object^ sender, System::EventArg
 	this->Hide();
 	ranking->ShowDialog();
 	delete ranking;
+	this->Show();
+}
+private: System::Void btn_robots_Click(System::Object^ sender, System::EventArgs^ e) {
+	Nvl10^ robots = gcnew Nvl10();
+	this->Hide();
+	robots->ShowDialog();
+	delete robots;
 	this->Show();
 }
 };
