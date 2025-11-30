@@ -16,7 +16,7 @@ namespace AiParadoxRemake {
 	public ref class SegundoForm : public System::Windows::Forms::Form
 	{
 		Bitmap^ fondo2;
-		Entidad* arbol;
+		Entidad* arbolsabio;
 		//Bitmap^ spriteArbol; //Borrar
 	public:
 		SegundoForm(void)
@@ -28,10 +28,10 @@ namespace AiParadoxRemake {
 			fondo2 = gcnew Bitmap("Imagenes/fondoSegundoSegundo.png");
 			//spriteArbol = gcnew Bitmap("Imagenes/ArbolSprite.png"); //Borrar
 
-			arbol = new Entidad(0, 0);
-			arbol->setTiling(5, 1);
-			arbol->setEscala(0.3);
-			arbol->setVisible(true);
+			arbolsabio = new Entidad(0, 0);
+			arbolsabio->setTiling(5, 1);
+			arbolsabio->setEscala(0.3);
+			arbolsabio->setVisible(true);
 		}
 
 	protected:
@@ -46,7 +46,7 @@ namespace AiParadoxRemake {
 			}
 
 			delete fondo2;
-			delete arbol;
+			delete arbolsabio;
 		}
 	private: System::Windows::Forms::Timer^ timer1;
 	protected:
@@ -100,10 +100,10 @@ namespace AiParadoxRemake {
 
 		//int anchoFrame = spriteArbol->Width / 5;
 		//int altoFrame = spriteArbol->Height;
-		float scale = arbol->getEscala();
+		float scale = arbolsabio->getEscala();
 
-		arbol->setX(ancho / 2);
-		arbol->setY(alto / 2);
+		arbolsabio->setX(ancho / 2);
+		arbolsabio->setY(alto / 2);
 
 		//arbol->draw(buffer, spriteArbol);
 
@@ -113,8 +113,8 @@ namespace AiParadoxRemake {
 	}
 	private: System::Void OnKeyDown(System::Object^ sender, KeyEventArgs^ e) {
 		if (e->KeyCode == Keys::F) {
-			if (arbol->getIteraX() < 4)
-				arbol->setIteraX(arbol->getIteraX() + 1);
+			if (arbolsabio->getIteraX() < 4)
+				arbolsabio->setIteraX(arbolsabio->getIteraX() + 1);
 		}
 	}
 	};
