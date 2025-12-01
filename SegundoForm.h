@@ -5,6 +5,8 @@
 #include "Sprite_DB.hpp"
 #include "TercerForm.h"
 #include "FormNivel2.h"
+#include "FormLose1.h"
+
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -104,8 +106,9 @@ namespace AiParadoxRemake {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(306, 67);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"A) “¿El software X es bonito y fácil de usar\?”\n";
+			this->button1->Text = L"A) Sí, el progreso siempre es bueno.";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &SegundoForm::button1_Click);
 			// 
 			// button2
 			// 
@@ -119,7 +122,7 @@ namespace AiParadoxRemake {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(306, 67);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"B) “¿Cuántos estudiantes participaron y cómo se seleccionaron\?”";
+			this->button2->Text = L"B) No, debemos analizar evidencia y consecuencias antes de asumir eso.\n";
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &SegundoForm::button2_Click);
 			// 
@@ -135,8 +138,9 @@ namespace AiParadoxRemake {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(306, 67);
 			this->button3->TabIndex = 2;
-			this->button3->Text = L"C) “¿A cuántos estudiantes les gustó el software\?”";
+			this->button3->Text = L"C) No importa, igual nada cambia.";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &SegundoForm::button3_Click);
 			// 
 			// label1
 			// 
@@ -147,11 +151,12 @@ namespace AiParadoxRemake {
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::Black;
 			this->label1->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->label1->Location = System::Drawing::Point(464, 188);
+			this->label1->Location = System::Drawing::Point(639, 192);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(595, 57);
+			this->label1->Size = System::Drawing::Size(410, 38);
 			this->label1->TabIndex = 3;
-			this->label1->Text = resources->GetString(L"label1.Text");
+			this->label1->Text = L"¿Podemos asumir que todas las acciones humanas son\r\n positivas para el planeta so"
+				L"lo porque son “progreso”\?";
 			// 
 			// pictureBox1
 			// 
@@ -225,6 +230,14 @@ namespace AiParadoxRemake {
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
 }
 };
 }

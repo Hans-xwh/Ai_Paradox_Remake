@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TercerForm.h"
+#include "FormConexionTercerNivel.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -104,7 +104,7 @@ namespace AiParadoxRemake {
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
 		this->Hide();
-		TercerForm^ ultim = gcnew TercerForm();
+		FormConexionTercerNivel^ ultim = gcnew FormConexionTercerNivel();
 		ultim->ShowDialog();
 		delete ultim;
 
