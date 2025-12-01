@@ -29,6 +29,7 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
+
 		   Controladora2do* controladora;
 
 		//Bitmap^ spriteArbol; //Borrar
@@ -160,14 +161,13 @@ namespace AiParadoxRemake {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
-			this->pictureBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->pictureBox1->Location = System::Drawing::Point(12, 12);
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(101, 12);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(595, 129);
-			this->pictureBox1->TabIndex = 5;
+			this->pictureBox1->Size = System::Drawing::Size(419, 73);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 4;
 			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &SegundoForm::pictureBox1_Click);
 			// 
 			// SegundoForm
 			// 
