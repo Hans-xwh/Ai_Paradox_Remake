@@ -125,6 +125,7 @@
     <ClCompile Include="Dev_menu.cpp" />
     <ClCompile Include="FinalForm.cpp" />
     <ClCompile Include="FormConexionNivel2.cpp" />
+    <ClCompile Include="FormEmpiezoNivel2.cpp" />
     <ClCompile Include="FormNivel2.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
@@ -158,6 +159,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FormConexionNivel2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormEmpiezoNivel2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FormNivel2.h">
@@ -211,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormConexionNivel2.resx">
       <DependentUpon>FormConexionNivel2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmpiezoNivel2.resx">
+      <DependentUpon>FormEmpiezoNivel2.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNivel2.resx">
       <DependentUpon>FormNivel2.h</DependentUpon>
