@@ -56,9 +56,10 @@ namespace AiParadoxRemake {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(422, 522);
+			this->button1->Location = System::Drawing::Point(379, 508);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(180, 47);
+			this->button1->Size = System::Drawing::Size(240, 71);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Volver";
 			this->button1->UseVisualStyleBackColor = true;
@@ -66,19 +67,23 @@ namespace AiParadoxRemake {
 			// 
 			// Instrucciones
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1016, 581);
+			this->ClientSize = System::Drawing::Size(1355, 579);
 			this->Controls->Add(this->button1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"Instrucciones";
 			this->Text = L"Instrucciones";
+			this->Load += gcnew System::EventHandler(this, &Instrucciones::Instrucciones_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
+	}
+	private: System::Void Instrucciones_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
