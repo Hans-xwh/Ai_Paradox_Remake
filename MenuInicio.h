@@ -5,6 +5,8 @@
 #include "SegundoForm.h"
 #include "creditos.h"
 #include "TercerForm.h"
+#include "Instrucciones.h"
+
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -43,6 +45,7 @@ namespace AiParadoxRemake {
 		   TercerForm^ mundo3;
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ button6;
 		   Creditos^ creditos;
 	protected:
 		/// <summary>
@@ -81,6 +84,7 @@ namespace AiParadoxRemake {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
@@ -128,20 +132,18 @@ namespace AiParadoxRemake {
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Snap ITC", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(263, 264);
-			this->button3->Margin = System::Windows::Forms::Padding(4);
+			this->button3->Location = System::Drawing::Point(197, 214);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(248, 66);
+			this->button3->Size = System::Drawing::Size(186, 54);
 			this->button3->TabIndex = 3;
 			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &MenuInicio::button3_Click);
 			// 
 			// btn_dev
 			// 
-			this->btn_dev->Location = System::Drawing::Point(1036, 687);
-			this->btn_dev->Margin = System::Windows::Forms::Padding(4);
+			this->btn_dev->Location = System::Drawing::Point(777, 558);
 			this->btn_dev->Name = L"btn_dev";
-			this->btn_dev->Size = System::Drawing::Size(120, 39);
+			this->btn_dev->Size = System::Drawing::Size(90, 32);
 			this->btn_dev->TabIndex = 4;
 			this->btn_dev->Text = L"Dev Menu";
 			this->btn_dev->UseVisualStyleBackColor = true;
@@ -153,18 +155,20 @@ namespace AiParadoxRemake {
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button1->Cursor = System::Windows::Forms::Cursors::Default;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Location = System::Drawing::Point(267, 546);
+			this->button1->Location = System::Drawing::Point(200, 444);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(244, 99);
+			this->button1->Size = System::Drawing::Size(183, 80);
 			this->button1->TabIndex = 5;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MenuInicio::button1_Click);
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(716, 532);
+			this->button4->Location = System::Drawing::Point(537, 432);
+			this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(75, 23);
+			this->button4->Size = System::Drawing::Size(56, 19);
 			this->button4->TabIndex = 6;
 			this->button4->Text = L"button4";
 			this->button4->UseVisualStyleBackColor = true;
@@ -172,28 +176,39 @@ namespace AiParadoxRemake {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(716, 423);
+			this->button5->Location = System::Drawing::Point(537, 344);
+			this->button5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(75, 23);
+			this->button5->Size = System::Drawing::Size(56, 19);
 			this->button5->TabIndex = 7;
 			this->button5->Text = L"button5";
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &MenuInicio::button5_Click);
 			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(209, 329);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(174, 75);
+			this->button6->TabIndex = 8;
+			this->button6->Text = L"Instrucciones";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MenuInicio::button6_Click);
+			// 
 			// MenuInicio
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(1172, 741);
+			this->ClientSize = System::Drawing::Size(879, 602);
+			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btn_dev);
 			this->Controls->Add(this->button3);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MenuInicio";
 			this->Text = L"MenuInicio";
 			this->Load += gcnew System::EventHandler(this, &MenuInicio::MenuInicio_Load);
@@ -253,6 +268,13 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 	delete mundo2parte2;
 	this->Show();
 
+}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	Instrucciones^ inst = gcnew Instrucciones();
+	this->Hide();
+	inst->ShowDialog();
+	delete inst;
+	this->Show();
 }
 };
 }

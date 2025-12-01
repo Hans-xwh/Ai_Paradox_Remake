@@ -131,6 +131,7 @@
     <ClCompile Include="FormNivel2.cpp" />
     <ClCompile Include="FormPreguntaPrimerNivel.cpp" />
     <ClCompile Include="FormTungExplota.cpp" />
+    <ClCompile Include="Instrucciones.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
@@ -184,6 +185,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Guardado.hpp" />
+    <ClInclude Include="Instrucciones.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -249,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTungExplota.resx">
       <DependentUpon>FormTungExplota.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Instrucciones.resx">
+      <DependentUpon>Instrucciones.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
