@@ -47,6 +47,9 @@ namespace AiParadoxRemake {
 
 			audio = gcnew AudioMngr();
 			//Channel1 reservado para la musica
+			audio->init_Channel1("Audio/Skyforce.mp3"); 
+			audio->Channel1_Volume(35);
+			audio->Channel1_Play(); 
 			audio->init_Channel2("Audio/projectile.wav");
 
 			//lbl_pausa->Visible = false;
@@ -67,7 +70,7 @@ namespace AiParadoxRemake {
 			delete r;
 			delete sprite_db;
 			delete paralax;
-			delete audio;
+			if (audio) { delete audio; }
 			delete mybuffer;
 			delete bCanvas;
 			delete g;
@@ -128,6 +131,11 @@ namespace AiParadoxRemake {
 		ctrlAvion->updateCollisions();
 		ctrlAvion->drawAll(bCanvas, sprite_db);
 
+		//Loop musica
+		if (audio->getChannel(1)->playState != WMPLib::WMPPlayState::wmppsPlaying) {
+			audio->Channel1_Play();
+		}
+
 		//bCanvas->Render(g);
 
 		if (pausa) {
@@ -151,6 +159,9 @@ namespace AiParadoxRemake {
 			this->timer2->Enabled = false;
 			this->Hide();
 			VictoriaLvl1^ win = gcnew VictoriaLvl1(ctrlAvion->getPuntaje());
+			audio->Channel1_Stop();
+			audio->Channel2_Stop();
+			delete audio;
 			win->ShowDialog();
 			delete win;
 			this->Close();

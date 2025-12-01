@@ -66,7 +66,7 @@ public:
 	}
 
 	void Channel1_Play() { Channel1->Ctlcontrols->stop(); Channel1->Ctlcontrols->play(); }
-	void Channel2_Play() { Channel2->Ctlcontrols->play(); }
+	void Channel2_Play() { Channel2->Ctlcontrols->stop(); Channel2->Ctlcontrols->play(); }
 	void Channel3_Play() { Channel3->Ctlcontrols->stop(); Channel3->Ctlcontrols->play(); }
 	void Channel4_Play() { Channel4->Ctlcontrols->stop(); Channel4->Ctlcontrols->play(); }
 	void Channel5_Play() { Channel5->Ctlcontrols->stop(); Channel5->Ctlcontrols->play(); }
