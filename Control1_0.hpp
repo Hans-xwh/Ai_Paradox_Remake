@@ -6,6 +6,8 @@
 #include "MovingEntity.hpp"
 #include "Prop.hpp"
 #include "AudioManager.hpp"
+#include "AvionNvl1.h"
+
 
 using std::ifstream;
 using std::fstream;
@@ -15,6 +17,9 @@ using std::ios;
 class MnJg_Robots {
 private:
 	Personaje* haluno;
+	Prop* puerta;
+	bool state = false;
+
 	//Parte 2
 	std::vector<Moving_Entity*> robots;
 	std::vector<Prop*> chips;
@@ -27,7 +32,8 @@ private:
 
 public:
 	MnJg_Robots() {
-		haluno = new Personaje(10,20);
+		puerta = new Prop(1050, 250, Sprites::Puerta); puerta->setEscala(2);
+		haluno = new Personaje(10, 20); haluno->setShowHitbox(true);
 		aliado = new Prop(400, 450, Sprites::Robot);
 		avion = new Prop(600, 450, Sprites::AvionStop);
 		avion->setEscala(0.75);
@@ -56,7 +62,55 @@ public:
 		for (Prop* t : tornillos) {
 			t->draw(buffer, spriteDb);
 		}
+		puerta->draw(buffer, spriteDb);
 		haluno->draw(buffer, spriteDb);
+	}
+
+	bool collision1() {
+		if (puerta->getRectangle().IntersectsWith(haluno->getCollider())) {
+			state = !state;
+			haluno->setX(10); haluno->setY(20);
+		}
+
+		return state;
+	}
+
+	void colision2() {
+		for (int i = 0; i < chips.size(); i++) {
+			if (haluno->getCollider().IntersectsWith(chips[i]->getRectangle())) {
+				chp++;
+				chips[i]->setActive(false);
+			}
+		}
+		for (int i = 0; i < tornillos.size(); i++) {
+			if (haluno->getCollider().IntersectsWith(tornillos[i]->getRectangle())) {
+				trn++;
+				tornillos[i]->setActive(false);
+			}
+		}
+		for (int i = 0; i < chips.size(); i++) {
+			if (!chips[i]->isActive()) {
+				delete chips[i];
+				chips.erase(chips.begin() + i);
+				i--;
+			}
+		}
+		for (int i = 0; i < tornillos.size(); i++) {
+			if (!tornillos[i]->isActive()) {
+				delete tornillos[i];
+				tornillos.erase(tornillos.begin() + i);
+				i--;
+			}
+		}
+	}
+
+	bool colision3() {
+		if (!state && (chp + trn) == 11 && avion->getRectangle().IntersectsWith(haluno->getCollider())) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	void updateAll(BufferedGraphics^ buffer) {
@@ -64,6 +118,7 @@ public:
 		for (Moving_Entity* r : robots) {
 			r->follow(haluno->getX(), haluno->getY());
 		}
+		colision2();
 	}
 
 	void input(Direcciones d, AudioMngr^ A = nullptr) {
@@ -151,6 +206,7 @@ public:
 	//// Parte 1 ////
 	void drawAll2(BufferedGraphics^ buffer, Sprite_DB^ spriteDb) {
 		aliado->draw(buffer, spriteDb);
+		puerta->draw(buffer, spriteDb);
 		avion->draw(buffer, spriteDb);
 
 		haluno->draw(buffer, spriteDb);

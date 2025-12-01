@@ -16,6 +16,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Robot,
 		Tornillo,
 		AvionStop,
+		Puerta,
 
 		//Nivel 1_1
 		Bala1,
@@ -45,6 +46,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Bitmap^ spr_haluno;
 		Bitmap^ spr_error; //Sprite por defecto en caso de error, sacado de source xd
 		Bitmap^ spr_explosion;
+		Bitmap^ spr_puerta;
 
 		//Primer nivel - 0
 		Bitmap^ spr_robot;
@@ -121,6 +123,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			if (spr_eprom) { delete spr_eprom; }
 			if (spr_tornillo) {delete spr_tornillo;}
 			if (spr_avionStop) { delete spr_avionStop; }
+			if (spr_puerta) { delete spr_puerta; }
 		}
 
 		
@@ -132,6 +135,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_robot = gcnew Bitmap("Imagenes/nvl_1_0/robot.png");
 			spr_tornillo = gcnew Bitmap("Imagenes/nvl_1_0/tornillo.png");
 			spr_avionStop = gcnew Bitmap("Imagenes/nvl_1_0/avionsinhaluno.png");
+			spr_puerta = gcnew Bitmap("Imagenes/nvl_1_0/door.png");
 		}
 		void Init_Nivel1_1() {
 			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
@@ -229,6 +233,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_tornillo;
 			case AvionStop:
 				return spr_avionStop;
+			case Puerta:
+				return spr_puerta;
 
 			case Error:
 				return spr_error;

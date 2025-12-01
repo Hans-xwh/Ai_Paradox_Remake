@@ -115,6 +115,17 @@ namespace AiParadoxRemake {
 		ctrlRobots->drawAll(bCanvas, sprite_db);
 
 		bCanvas->Render(g);
+
+		if (ctrlRobots->collision1()) {
+			this->timer2->Enabled = false;
+			this->timer1->Enabled = true;
+			return;
+		}
+		else {
+			this->timer2->Enabled = true;
+			this->timer1->Enabled = false;
+			return;
+		}
 	}
 	private: System::Void Nvl10_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		switch (e->KeyCode) {
@@ -142,6 +153,7 @@ private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) 
 
 	ctrlRobots->updateAll2(bCanvas);
 
+
 	bCanvas->Graphics->DrawImage(txtb,
 		310,
 		270,
@@ -152,6 +164,30 @@ private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) 
 	ctrlRobots->drawAll2(bCanvas, sprite_db);
 
 	bCanvas->Render(g);
+
+	if (ctrlRobots->colision3()) {
+		this->Hide();
+		this->timer1->Enabled = false;
+		this->timer2->Enabled = false;
+		sprite_db->Unld_Nivel1_0();
+		//this->~Nvl10();	//No estoy seguro de que esto sea seguro
+		AvionNvl1^ frm11 = gcnew AvionNvl1;
+		frm11->ShowDialog();
+		delete frm11;
+
+		this->Close();
+	}
+
+	if (ctrlRobots->collision1()) {
+		this->timer2->Enabled = false;
+		this->timer1->Enabled = true;
+		return;
+	}
+	else {
+		this->timer2->Enabled = true;
+		this->timer1->Enabled = false;
+		return;
+	}
 }
 };
 }
