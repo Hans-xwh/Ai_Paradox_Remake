@@ -65,20 +65,32 @@ void Moving_Entity::doBehavior(int lmX, int lmY) {
 void Moving_Entity::follow(int tX, int tY) {
 	if (behavior != Behavior::FollowTarget) return;
 
-	if (x < tX) {
-		dx = 1;
-	} else if (x > tX) {
-		dx = -1;
-	} else {
-		dx = 0;
-	}
+	if (animated && iteraX >= 0 && iteraX < tilingX - 1) iteraX++;
+	else if (animated) iteraX = 0;
+
 
 	if (y < tY) {
 		dy = 1;
-	} else if (y > tY) {
+		direccion = Direcciones::Abajo;
+	}
+	else if (y > tY) {
 		dy = -1;
-	} else {
+		direccion = Direcciones::Arriba;
+	}
+	else {
 		dy = 0;
+	}
+
+	if (x < tX) {
+		dx = 1;
+		iteraY = 0;
+		direccion = Direcciones::Derecha;
+	} else if (x > tX) {
+		dx = -1;
+		iteraY = 1;
+		direccion = Direcciones::Izquierda;
+	} else {
+		dx = 0;
 	}
 
 	x += dx * speed;

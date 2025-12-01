@@ -21,8 +21,9 @@ namespace AiParadoxRemake {
 		BufferedGraphics^ bCanvas;
 		Random^ r;
 		MnJg_Robots* ctrlRobots;
-	private: System::Windows::Forms::Timer^ RbtSpawn;
-	private: System::Windows::Forms::Timer^ ChipSpawn;
+	private: System::Windows::Forms::Timer^ timer2;
+
+
 		   Sprite_DB^ sprite_db;
 	public:
 		Nvl10(void)
@@ -76,13 +77,13 @@ namespace AiParadoxRemake {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
-			this->RbtSpawn = (gcnew System::Windows::Forms::Timer(this->components));
-			this->ChipSpawn = (gcnew System::Windows::Forms::Timer(this->components));
+			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// timer1
 			// 
 			this->timer1->Enabled = true;
+			this->timer1->Interval = 25;
 			this->timer1->Tick += gcnew System::EventHandler(this, &Nvl10::timer1_Tick);
 			// 
 			// Nvl10
