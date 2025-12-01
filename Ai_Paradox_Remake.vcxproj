@@ -129,6 +129,7 @@
     <ClCompile Include="FormEmpiezoNivel2.cpp" />
     <ClCompile Include="FormLose1.cpp" />
     <ClCompile Include="FormNivel2.cpp" />
+    <ClCompile Include="FormPreguntaPrimerNivel.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
@@ -173,6 +174,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FormNivel2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormPreguntaPrimerNivel.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Guardado.hpp" />
@@ -235,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormNivel2.resx">
       <DependentUpon>FormNivel2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPreguntaPrimerNivel.resx">
+      <DependentUpon>FormPreguntaPrimerNivel.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
