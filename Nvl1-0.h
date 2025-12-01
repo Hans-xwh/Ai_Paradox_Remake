@@ -21,10 +21,9 @@ namespace AiParadoxRemake {
 		BufferedGraphics^ bCanvas;
 		Random^ r;
 		MnJg_Robots* ctrlRobots;
+		Bitmap^ txtb;
+		Sprite_DB^ sprite_db;
 	private: System::Windows::Forms::Timer^ timer2;
-
-
-		   Sprite_DB^ sprite_db;
 	public:
 		Nvl10(void)
 		{
@@ -39,6 +38,7 @@ namespace AiParadoxRemake {
 			r = gcnew Random();
 			sprite_db = gcnew Sprite_DB(10);
 			ctrlRobots = new MnJg_Robots();
+			txtb = gcnew Bitmap("Imagenes/nvl_1_0/comic.png");
 		}
 
 	protected:
@@ -57,6 +57,7 @@ namespace AiParadoxRemake {
 			delete r;
 			delete sprite_db;
 			delete ctrlRobots;
+			delete txtb;
 		}
 	private: System::Windows::Forms::Timer^ timer1;
 	protected:
@@ -82,9 +83,14 @@ namespace AiParadoxRemake {
 			// 
 			// timer1
 			// 
-			this->timer1->Enabled = true;
 			this->timer1->Interval = 25;
 			this->timer1->Tick += gcnew System::EventHandler(this, &Nvl10::timer1_Tick);
+			// 
+			// timer2
+			// 
+			this->timer2->Enabled = true;
+			this->timer2->Interval = 25;
+			this->timer2->Tick += gcnew System::EventHandler(this, &Nvl10::timer2_Tick);
 			// 
 			// Nvl10
 			// 
@@ -131,5 +137,21 @@ namespace AiParadoxRemake {
 	private: System::Void Nvl10_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		ctrlRobots->input(Direcciones::Ninguna);
 	}
+private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
+	bCanvas->Graphics->Clear(Color::White);
+
+	ctrlRobots->updateAll2(bCanvas);
+
+	bCanvas->Graphics->DrawImage(txtb,
+		310,
+		270,
+		500,
+		200);
+
+	
+	ctrlRobots->drawAll2(bCanvas, sprite_db);
+
+	bCanvas->Render(g);
+}
 };
 }

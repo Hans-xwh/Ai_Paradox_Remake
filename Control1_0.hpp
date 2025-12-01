@@ -12,20 +12,29 @@ using std::fstream;
 using std::ofstream;
 using std::ios;
 
-struct pair {
-	int X;
-	int Y;
-};
-
 class MnJg_Robots {
 private:
 	Personaje* haluno;
+	//Parte 2
 	std::vector<Moving_Entity*> robots;
 	std::vector<Prop*> chips;
+	std::vector<Prop*> tornillos;
+	int chp, trn;
+
+	//Parte 1
+	Prop* aliado;
+	Prop* avion;
+
 public:
 	MnJg_Robots() {
 		haluno = new Personaje(10,20);
+		aliado = new Prop(400, 450, Sprites::Robot);
+		avion = new Prop(600, 450, Sprites::AvionStop);
+		avion->setEscala(0.75);
+		aliado->setTiling(7, 2);
+		aliado->setEscala(0.25);
 		loadProps();
+		chp = trn = 0;
 	}
 	~MnJg_Robots() {
 		delete haluno;
@@ -43,6 +52,9 @@ public:
 		}
 		for (Prop* c : chips) {
 			c->draw(buffer, spriteDb);
+		}
+		for (Prop* t : tornillos) {
+			t->draw(buffer, spriteDb);
 		}
 		haluno->draw(buffer, spriteDb);
 	}
@@ -74,7 +86,7 @@ public:
 		ifstream file;
 		string myLine;
 
-		file.open("config/robots.txt", ios::in);
+		file.open("config/robots.csv", ios::in);
 		if (file.is_open() || true) {
 			int tmpX, tmpY;
 			char trash;
@@ -85,13 +97,24 @@ public:
 		}
 		file.close();
 
-		file.open("config/chips.txt", ios::in);
+		file.open("config/chips.csv", ios::in);
 		if (file.is_open() || true) {
 			int tmpX, tmpY;
 			char trash;
 
 			while (file >> tmpX >> trash >> tmpY) {
 				addChip(tmpX, tmpY);
+			}
+		}
+		file.close();
+
+		file.open("config/tornillos.csv", ios::in);
+		if (file.is_open() || true) {
+			int tmpX, tmpY;
+			char trash;
+
+			while (file >> tmpX >> trash >> tmpY) {
+				addTornillo(tmpX, tmpY);
 			}
 		}
 		file.close();
@@ -114,5 +137,50 @@ public:
 		tmp->setEscala(0.25);
 		tmp->setShowHitbox(true);
 		chips.push_back(tmp);
+	}
+
+	void addTornillo(int X, int Y) {
+		Prop* tmp = new Prop(X, Y, Sprites::Tornillo);
+		tmp->setTiling(1, 1);
+		tmp->setEscala(0.125);
+		tmp->setShowHitbox(true);
+		tornillos.push_back(tmp);
+	}
+
+
+	//// Parte 1 ////
+	void drawAll2(BufferedGraphics^ buffer, Sprite_DB^ spriteDb) {
+		aliado->draw(buffer, spriteDb);
+		avion->draw(buffer, spriteDb);
+
+		haluno->draw(buffer, spriteDb);
+		if (chp == 5 && trn == 6) {
+			buffer->Graphics->DrawString("Felicidades, sube al avíon!",
+				gcnew System::Drawing::Font("Arial", 16),
+				Brushes::Black,
+				350,
+				330);
+		}
+		else {
+			buffer->Graphics->DrawString("Para reparar el avion, debes recolectar: ",
+				gcnew System::Drawing::Font("Arial", 16),
+				Brushes::Black,
+				350,
+				330);
+			buffer->Graphics->DrawString(int(6 - trn).ToString() + " Tornillos ",
+				gcnew System::Drawing::Font("Arial", 14),
+				Brushes::Black,
+				350,
+				350);
+			buffer->Graphics->DrawString(int(5 - chp).ToString() + " Chips ",
+				gcnew System::Drawing::Font("Arial", 14),
+				Brushes::Black,
+				350,
+				370);
+		}
+	}
+
+	void updateAll2(BufferedGraphics^ buffer) {
+		haluno->moverPersonaje(buffer);
 	}
 };

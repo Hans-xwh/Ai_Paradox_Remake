@@ -14,6 +14,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		//Nivel 1_0
 		Eprom,
 		Robot,
+		Tornillo,
+		AvionStop,
 
 		//Nivel 1_1
 		Bala1,
@@ -47,6 +49,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		//Primer nivel - 0
 		Bitmap^ spr_robot;
 		Bitmap^ spr_eprom;
+		Bitmap^ spr_tornillo;
+		Bitmap^ spr_avionStop;
 
 		//Primer nivel - 1
 		Bitmap^ spr_avion;
@@ -115,6 +119,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			if (spr_arbolsabio) { delete spr_arbolsabio; }
 			if (spr_robot) { delete spr_robot; }
 			if (spr_eprom) { delete spr_eprom; }
+			if (spr_tornillo) {delete spr_tornillo;}
+			if (spr_avionStop) { delete spr_avionStop; }
 		}
 
 		
@@ -124,6 +130,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		void Init_Nivel1_0() {
 			spr_eprom = gcnew Bitmap("Imagenes/nvl_1_0/eprom.png");
 			spr_robot = gcnew Bitmap("Imagenes/nvl_1_0/robot.png");
+			spr_tornillo = gcnew Bitmap("Imagenes/nvl_1_0/tornillo.png");
+			spr_avionStop = gcnew Bitmap("Imagenes/nvl_1_0/avionsinhaluno.png");
 		}
 		void Init_Nivel1_1() {
 			spr_avion = gcnew Bitmap("Imagenes/AVIONHALUNO.png");
@@ -137,6 +145,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		void Unld_Nivel1_0() {
 			delete spr_eprom;
 			delete spr_robot;
+			delete spr_tornillo;
+			delete spr_avionStop;
 		}
 		void Unld_Nivel1_1() {
 			delete spr_avion;
@@ -146,6 +156,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			delete spr_bombardiroR;
 			delete spr_robotVolador;
 			delete spr_explosion;
+			
 		}
 
 
@@ -214,6 +225,10 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_robot;
 			case Eprom:
 				return spr_eprom;
+			case Tornillo:
+				return spr_tornillo;
+			case AvionStop:
+				return spr_avionStop;
 
 			case Error:
 				return spr_error;
