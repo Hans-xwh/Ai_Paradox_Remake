@@ -65,6 +65,7 @@ namespace AiParadoxRemake {
 			this->pictureBox1->Size = System::Drawing::Size(1313, 697);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &FinalForm::pictureBox1_Click);
 			// 
 			// label1
 			// 
@@ -92,5 +93,7 @@ namespace AiParadoxRemake {
 
 		}
 #pragma endregion
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

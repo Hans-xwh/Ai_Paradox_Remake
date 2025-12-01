@@ -66,6 +66,15 @@
     <ClCompile Include="Ranking.cpp">
       <Filter>Forms</Filter>
     </ClCompile>
+    <ClCompile Include="FormConexionNivel2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Nvl1-0.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FormNivel2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -151,6 +160,21 @@
     </ClInclude>
     <ClInclude Include="Ranking.h">
       <Filter>Forms</Filter>
+    </ClInclude>
+    <ClInclude Include="Control1_0.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormConexionNivel2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Guardado.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Nvl1-0.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FormNivel2.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

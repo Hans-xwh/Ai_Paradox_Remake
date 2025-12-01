@@ -4,6 +4,7 @@
 #include "Reymundo.h"
 #include "Sprite_DB.hpp"
 #include "TercerForm.h"
+#include "FormNivel2.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -214,9 +215,9 @@ namespace AiParadoxRemake {
 
 		this->Hide();
 		this->timer1->Enabled = false;
-		TercerForm^ tercer = gcnew TercerForm();
-		tercer->ShowDialog();
-		delete tercer;
+		FormNivel2^ ultim = gcnew FormNivel2();
+		ultim->ShowDialog();
+		delete ultim;
 
 		this->Close();
 
