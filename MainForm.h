@@ -87,7 +87,7 @@ namespace AiParadoxRemake {
 			spriteDB = gcnew Sprite_DB(2);
 			random = gcnew Random();
 			controladora = new Controladora2do();
-			fondo = gcnew Bitmap("Imagenes/fondoSegundoNivel.png");
+			fondo = gcnew Bitmap("Imagenes/fondoSegundoNivel.jpg");
 			//sprite = gcnew Bitmap("Imagenes/ProtagonistaHombre.png");
 			//spriteRoca = gcnew Bitmap("Imagenes/piedresinha.png");
 			//spriteRobot = gcnew Bitmap("Imagenes/espirituAgua.png");

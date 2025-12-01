@@ -39,6 +39,9 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Button^ button1;
 	protected:
 
+
+	protected:
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -61,30 +64,28 @@ namespace AiParadoxRemake {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(-202, -157);
+			this->pictureBox1->Location = System::Drawing::Point(-132, -20);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(1737, 912);
-			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->Size = System::Drawing::Size(1304, 727);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &FormConexionNivel2::pictureBox1_Click);
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::RosyBrown;
-			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
-			this->button1->Location = System::Drawing::Point(825, 38);
+			this->button1->Location = System::Drawing::Point(815, 49);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(162, 64);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Siguiente";
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &FormConexionNivel2::button1_Click);
+			this->button1->Size = System::Drawing::Size(191, 72);
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"SIGUIENTE";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &FormConexionNivel2::button1_Click_1);
 			// 
 			// FormConexionNivel2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1035, 651);
+			this->ClientSize = System::Drawing::Size(1047, 631);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"FormConexionNivel2";
@@ -97,6 +98,8 @@ namespace AiParadoxRemake {
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
 		this->Hide();
 		SegundoForm^ segundo = gcnew SegundoForm();

@@ -39,6 +39,9 @@ namespace AiParadoxRemake {
 	protected:
 	private: System::Windows::Forms::Button^ button1;
 
+	protected:
+
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -61,21 +64,22 @@ namespace AiParadoxRemake {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(-154, -15);
+			this->pictureBox1->Location = System::Drawing::Point(-12, 3);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(1304, 705);
-			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->Size = System::Drawing::Size(1127, 665);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(894, 42);
+			this->button1->Location = System::Drawing::Point(871, 524);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(193, 71);
-			this->button1->TabIndex = 1;
+			this->button1->Size = System::Drawing::Size(196, 81);
+			this->button1->TabIndex = 3;
 			this->button1->Text = L"PASAR AL SIGUIENTE NIVEL";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &FormNivel2::button1_Click);
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &FormNivel2::button1_Click_1);
 			// 
 			// FormNivel2
 			// 
@@ -93,6 +97,11 @@ namespace AiParadoxRemake {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
+
+	}
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
 		this->Hide();
 		TercerForm^ ultim = gcnew TercerForm();
