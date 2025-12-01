@@ -66,7 +66,7 @@ namespace AiParadoxRemake {
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(-132, -20);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(1304, 727);
+			this->pictureBox1->Size = System::Drawing::Size(1430, 724);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 2;
 			this->pictureBox1->TabStop = false;
@@ -85,7 +85,7 @@ namespace AiParadoxRemake {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1047, 631);
+			this->ClientSize = System::Drawing::Size(1149, 629);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"FormConexionNivel2";
