@@ -3,6 +3,7 @@
 #include "Sprite_DB.hpp"
 #include "SegundoForm.h"
 #include "Dialogo.hpp"
+#include "FormConexionNivel2.h"
 
 namespace AiParadoxRemake {
 	using namespace System;
@@ -97,7 +98,7 @@ namespace AiParadoxRemake {
 
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(1000, 5000);
-			tiempoSiguienteRoca = 15000 ;
+			tiempoSiguienteRoca = 1100 ;
 	
 
 			tiempo = 0;
@@ -401,8 +402,8 @@ namespace AiParadoxRemake {
 
 			//conexion para la segunda parte del segundo nivel
 
-			SegundoForm^ segundoForm = gcnew SegundoForm();
-			segundoForm->ShowDialog();
+			FormConexionNivel2^ medio = gcnew FormConexionNivel2();
+			medio->ShowDialog();
 
 			this->Close();
 		}
@@ -430,7 +431,7 @@ namespace AiParadoxRemake {
 			controladora->agregarRocaPosicion(x1, y2);
 			contadorTiempo = 0;
 			tiempoSiguienteRobot = random->Next(5000, 10000);
-			tiempoSiguienteRoca = 15000;
+			tiempoSiguienteRoca = 1100;
 		}
 
 		//dialogo->dibujar(buffer->Graphics);

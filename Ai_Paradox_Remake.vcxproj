@@ -124,6 +124,7 @@
     <ClCompile Include="Creditos.cpp" />
     <ClCompile Include="Dev_menu.cpp" />
     <ClCompile Include="FinalForm.cpp" />
+    <ClCompile Include="FormConexionNivel2.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
     <ClCompile Include="MovingEntity.cpp" />
@@ -153,6 +154,9 @@
     <ClInclude Include="Dialogo.hpp" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="FinalForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormConexionNivel2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Guardado.hpp" />
@@ -200,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FinalForm.resx">
       <DependentUpon>FinalForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConexionNivel2.resx">
+      <DependentUpon>FormConexionNivel2.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
