@@ -1,4 +1,5 @@
 #pragma once
+#include "FormEmpiezoNivel2.h";
 
 namespace AiParadoxRemake {
 
@@ -24,7 +25,7 @@ namespace AiParadoxRemake {
 			//TODO: agregar código de constructor aquí
 			//
 
-			fondo1 = gcnew Bitmap("Imagenes/bosquesinho.png");
+			fondo1 = gcnew Bitmap("Imagenes/fondo1.jpg");
 
 		}
 
@@ -76,6 +77,7 @@ namespace AiParadoxRemake {
 			// 
 			// timer1
 			// 
+			this->timer1->Enabled = true;
 			this->timer1->Tick += gcnew System::EventHandler(this, &FormPreguntaPrimerNivel::timer1_Tick);
 			// 
 			// label1
@@ -108,6 +110,7 @@ namespace AiParadoxRemake {
 			this->button3->TabIndex = 6;
 			this->button3->Text = L"C) No, la IA puede cometer errores y debe verificarse la información.\r\n";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &FormPreguntaPrimerNivel::button3_Click);
 			// 
 			// button2
 			// 
@@ -190,5 +193,17 @@ namespace AiParadoxRemake {
 		delete space;
 		delete g;
 	}
-	};
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+		this->Hide();
+		FormEmpiezoNivel2^ empiezo = gcnew FormEmpiezoNivel2();
+		empiezo->ShowDialog();
+		delete empiezo;
+
+		this->Close();
+		
+
+	}
+};
 }
