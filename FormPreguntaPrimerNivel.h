@@ -1,5 +1,5 @@
 #pragma once
-#include "FormEmpiezoNivel2.h";
+#include "FormTungExplota.h";
 
 namespace AiParadoxRemake {
 
@@ -197,7 +197,7 @@ namespace AiParadoxRemake {
 
 
 		this->Hide();
-		FormEmpiezoNivel2^ empiezo = gcnew FormEmpiezoNivel2();
+		FormTungExplota^ empiezo = gcnew FormTungExplota();
 		empiezo->ShowDialog();
 		delete empiezo;
 

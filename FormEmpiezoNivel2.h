@@ -73,7 +73,7 @@ namespace AiParadoxRemake {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(193, 78);
 			this->button1->TabIndex = 1;
-			this->button1->Text = L"EMPEZAR NIVEL 2";
+			this->button1->Text = L"EMPEZAR";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &FormEmpiezoNivel2::button1_Click);
 			// 
