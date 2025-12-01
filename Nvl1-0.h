@@ -23,6 +23,8 @@ namespace AiParadoxRemake {
 		MnJg_Robots* ctrlRobots;
 		Bitmap^ txtb;
 		Sprite_DB^ sprite_db;
+		Bitmap^ fondo1;
+		Bitmap^ fondo2;
 	private: System::Windows::Forms::Timer^ timer2;
 	public:
 		Nvl10(void)
@@ -39,6 +41,9 @@ namespace AiParadoxRemake {
 			sprite_db = gcnew Sprite_DB(10);
 			ctrlRobots = new MnJg_Robots();
 			txtb = gcnew Bitmap("Imagenes/nvl_1_0/comic.png");
+
+			fondo1 = gcnew Bitmap("Imagenes/fondos/Futurista1.jpg");
+			fondo2 = gcnew Bitmap("Imagenes/fondos/Futurista2.jpg");
 		}
 
 	protected:
@@ -58,6 +63,8 @@ namespace AiParadoxRemake {
 			delete sprite_db;
 			delete ctrlRobots;
 			delete txtb;
+			delete fondo1;
+			delete fondo2;
 		}
 	private: System::Windows::Forms::Timer^ timer1;
 	protected:
@@ -110,6 +117,7 @@ namespace AiParadoxRemake {
 	}
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		bCanvas->Graphics->Clear(Color::White);
+		bCanvas->Graphics->DrawImage(fondo1, 0, 0, this->ClientRectangle.Width, this->ClientRectangle.Height);
 
 		ctrlRobots->updateAll(bCanvas);
 		ctrlRobots->drawAll(bCanvas, sprite_db);
@@ -150,6 +158,7 @@ namespace AiParadoxRemake {
 	}
 private: System::Void timer2_Tick(System::Object^ sender, System::EventArgs^ e) {
 	bCanvas->Graphics->Clear(Color::White);
+	bCanvas->Graphics->DrawImage(fondo2, 0, 0, this->ClientRectangle.Width, this->ClientRectangle.Height);
 
 	ctrlRobots->updateAll2(bCanvas);
 

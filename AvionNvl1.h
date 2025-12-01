@@ -27,6 +27,7 @@ namespace AiParadoxRemake {
 		Sprite_DB^ sprite_db;
 		AudioMngr^ audio;
 		MnJg_Avion* ctrlAvion;
+
 		bool pausa = false;
 
 	private: System::Windows::Forms::Timer^ timer2;
