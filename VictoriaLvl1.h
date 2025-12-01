@@ -1,5 +1,6 @@
 #pragma once
 #include "Guardado.hpp"
+#include "FormPreguntaPrimerNivel.h"
 
 namespace AiParadoxRemake {
 
@@ -151,6 +152,9 @@ namespace AiParadoxRemake {
 	}
 	private: System::Void btn_next_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
+		FormPreguntaPrimerNivel^ empiezo = gcnew FormPreguntaPrimerNivel();
+		empiezo->ShowDialog();
+		delete empiezo;
 		this->Close();
 	}
 private: System::Void btn_save_Click(System::Object^ sender, System::EventArgs^ e) {

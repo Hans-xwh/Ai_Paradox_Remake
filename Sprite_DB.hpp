@@ -25,6 +25,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		BombardiroN,
 		BombardiroR,
 		RobotVolador,
+		TungTung,
 
 		//Nivel 2
 		EspirituAgua,
@@ -61,6 +62,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 		Bitmap^ spr_bombardiroN;
 		Bitmap^ spr_bombardiroR;
 		Bitmap^ spr_robotVolador;
+		Bitmap^ spr_tungtung;
 
 		//Segundo nivel
 		Bitmap^ spr_agua;
@@ -124,6 +126,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			if (spr_tornillo) {delete spr_tornillo;}
 			if (spr_avionStop) { delete spr_avionStop; }
 			if (spr_puerta) { delete spr_puerta; }
+			if (spr_tungtung) { delete spr_tungtung;  }
 		}
 
 		
@@ -145,6 +148,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			spr_bombardiroR = gcnew Bitmap("Imagenes/bombardiroR.png");
 			spr_robotVolador = gcnew Bitmap("Imagenes/robotVolador.png");
 			spr_explosion = gcnew Bitmap("Imagenes/explosion.png");
+			spr_tungtung = gcnew Bitmap("Imagenes/tungtung.png");
 		}
 		void Unld_Nivel1_0() {
 			delete spr_eprom;
@@ -160,6 +164,7 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 			delete spr_bombardiroR;
 			delete spr_robotVolador;
 			delete spr_explosion;
+			delete spr_tungtung;
 			
 		}
 
@@ -235,6 +240,8 @@ namespace nmspc_SpriteDB {	//uso de namespce por que si xd
 				return spr_avionStop;
 			case Puerta:
 				return spr_puerta;
+			case TungTung:
+				return spr_tungtung;
 
 			case Error:
 				return spr_error;
