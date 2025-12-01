@@ -125,7 +125,9 @@
     <ClCompile Include="Dev_menu.cpp" />
     <ClCompile Include="FinalForm.cpp" />
     <ClCompile Include="FormConexionNivel2.cpp" />
+    <ClCompile Include="FormConexionTercerNivel.cpp" />
     <ClCompile Include="FormEmpiezoNivel2.cpp" />
+    <ClCompile Include="FormLose1.cpp" />
     <ClCompile Include="FormNivel2.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="MenuInicio.cpp" />
@@ -161,7 +163,13 @@
     <ClInclude Include="FormConexionNivel2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FormConexionTercerNivel.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FormEmpiezoNivel2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="FormLose1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FormNivel2.h">
@@ -216,8 +224,14 @@
     <EmbeddedResource Include="FormConexionNivel2.resx">
       <DependentUpon>FormConexionNivel2.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormConexionTercerNivel.resx">
+      <DependentUpon>FormConexionTercerNivel.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEmpiezoNivel2.resx">
       <DependentUpon>FormEmpiezoNivel2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLose1.resx">
+      <DependentUpon>FormLose1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNivel2.resx">
       <DependentUpon>FormNivel2.h</DependentUpon>
