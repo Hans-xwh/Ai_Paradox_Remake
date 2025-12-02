@@ -56,9 +56,13 @@ namespace AiParadoxRemake {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(284, 413);
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->Font = (gcnew System::Drawing::Font(L"Bernard MT Condensed", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(393, 491);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(180, 58);
+			this->button1->Size = System::Drawing::Size(224, 74);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Volver";
 			this->button1->UseVisualStyleBackColor = true;
@@ -66,12 +70,13 @@ namespace AiParadoxRemake {
 			// 
 			// Instrucciones
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(767, 470);
+			this->ClientSize = System::Drawing::Size(1023, 578);
 			this->Controls->Add(this->button1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"Instrucciones";
 			this->Text = L"Instrucciones";
 			this->Load += gcnew System::EventHandler(this, &Instrucciones::Instrucciones_Load);

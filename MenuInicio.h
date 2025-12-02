@@ -44,9 +44,10 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Button^ button1;
 		   SegundoForm^ mundo2parte2;
 		   TercerForm^ mundo3;
-
-
 	private: System::Windows::Forms::Button^ button6;
+
+
+
 		   Creditos^ creditos;
 	protected:
 		/// <summary>
@@ -131,18 +132,20 @@ namespace AiParadoxRemake {
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Snap ITC", 22.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(197, 214);
+			this->button3->Location = System::Drawing::Point(263, 263);
+			this->button3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(186, 54);
+			this->button3->Size = System::Drawing::Size(248, 66);
 			this->button3->TabIndex = 3;
 			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &MenuInicio::button3_Click);
 			// 
 			// btn_dev
 			// 
-			this->btn_dev->Location = System::Drawing::Point(777, 558);
+			this->btn_dev->Location = System::Drawing::Point(1036, 687);
+			this->btn_dev->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btn_dev->Name = L"btn_dev";
-			this->btn_dev->Size = System::Drawing::Size(90, 32);
+			this->btn_dev->Size = System::Drawing::Size(120, 39);
 			this->btn_dev->TabIndex = 4;
 			this->btn_dev->Text = L"Dev Menu";
 			this->btn_dev->UseVisualStyleBackColor = true;
@@ -154,36 +157,40 @@ namespace AiParadoxRemake {
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button1->Cursor = System::Windows::Forms::Cursors::Default;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Location = System::Drawing::Point(200, 444);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(267, 546);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(183, 80);
+			this->button1->Size = System::Drawing::Size(244, 98);
 			this->button1->TabIndex = 5;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MenuInicio::button1_Click);
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(209, 329);
+			this->button6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button6.BackgroundImage")));
+			this->button6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button6->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button6->Location = System::Drawing::Point(279, 404);
+			this->button6->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(174, 75);
+			this->button6->Size = System::Drawing::Size(232, 92);
 			this->button6->TabIndex = 8;
-			this->button6->Text = L"Instrucciones";
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &MenuInicio::button6_Click);
 			// 
 			// MenuInicio
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(879, 602);
+			this->ClientSize = System::Drawing::Size(1172, 741);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btn_dev);
 			this->Controls->Add(this->button3);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"MenuInicio";
 			this->Text = L"MenuInicio";
 			this->Load += gcnew System::EventHandler(this, &MenuInicio::MenuInicio_Load);
