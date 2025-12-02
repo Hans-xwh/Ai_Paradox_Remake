@@ -6,6 +6,7 @@
 #include "creditos.h"
 #include "TercerForm.h"
 #include "Instrucciones.h"
+#include "Intro.h"
 
 namespace AiParadoxRemake {
 
@@ -43,8 +44,8 @@ namespace AiParadoxRemake {
 	private: System::Windows::Forms::Button^ button1;
 		   SegundoForm^ mundo2parte2;
 		   TercerForm^ mundo3;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::Button^ button5;
+
+
 	private: System::Windows::Forms::Button^ button6;
 		   Creditos^ creditos;
 	protected:
@@ -82,8 +83,6 @@ namespace AiParadoxRemake {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->btn_dev = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
@@ -156,34 +155,12 @@ namespace AiParadoxRemake {
 			this->button1->Cursor = System::Windows::Forms::Cursors::Default;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Location = System::Drawing::Point(200, 444);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(183, 80);
 			this->button1->TabIndex = 5;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MenuInicio::button1_Click);
-			// 
-			// button4
-			// 
-			this->button4->Location = System::Drawing::Point(537, 432);
-			this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(56, 19);
-			this->button4->TabIndex = 6;
-			this->button4->Text = L"button4";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &MenuInicio::button4_Click);
-			// 
-			// button5
-			// 
-			this->button5->Location = System::Drawing::Point(537, 344);
-			this->button5->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(56, 19);
-			this->button5->TabIndex = 7;
-			this->button5->Text = L"button5";
-			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &MenuInicio::button5_Click);
 			// 
 			// button6
 			// 
@@ -204,8 +181,6 @@ namespace AiParadoxRemake {
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(879, 602);
 			this->Controls->Add(this->button6);
-			this->Controls->Add(this->button5);
-			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btn_dev);
 			this->Controls->Add(this->button3);
@@ -220,10 +195,10 @@ namespace AiParadoxRemake {
 #pragma endregion
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {	//Boton mundo 2
 		
-		mundo2 = gcnew MainForm();
+		Intro^ intro = gcnew Intro();
 		this->Hide();
-		mundo2->ShowDialog();
-		delete mundo2;
+		intro->ShowDialog();
+		delete intro;
 		this->Show();
 	}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {

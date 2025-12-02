@@ -33,7 +33,7 @@ private:
 public:
 	MnJg_Robots() {
 		puerta = new Prop(1050, 250, Sprites::Puerta); puerta->setEscala(2);
-		haluno = new Personaje(10, 20); haluno->setShowHitbox(true);
+		haluno = new Personaje(10, 20); //haluno->setShowHitbox(true);
 		aliado = new Prop(400, 450, Sprites::Robot);
 		avion = new Prop(600, 450, Sprites::AvionStop);
 		avion->setEscala(0.75);
@@ -181,7 +181,7 @@ public:
 		tmp->setTiling(7, 2);
 		tmp->setEscala(0.25);
 		tmp->setSpeed(1);
-		tmp->setShowHitbox(true);
+		//tmp->setShowHitbox(true);
 		robots.push_back(tmp);
 		tmp->setColliderScale(0.25);
 	}
@@ -190,7 +190,7 @@ public:
 		Prop* tmp = new Prop(X, Y, Sprites::Eprom);
 		tmp->setTiling(1, 1);
 		tmp->setEscala(0.25);
-		tmp->setShowHitbox(true);
+		//tmp->setShowHitbox(true);
 		chips.push_back(tmp);
 	}
 
@@ -198,7 +198,7 @@ public:
 		Prop* tmp = new Prop(X, Y, Sprites::Tornillo);
 		tmp->setTiling(1, 1);
 		tmp->setEscala(0.125);
-		tmp->setShowHitbox(true);
+		//tmp->setShowHitbox(true);
 		tornillos.push_back(tmp);
 	}
 

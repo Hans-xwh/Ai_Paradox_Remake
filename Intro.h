@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Nvl1-0.h"
 namespace AiParadoxRemake {
 
 	using namespace System;
@@ -10,12 +10,12 @@ namespace AiParadoxRemake {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for Instrucciones
+	/// Summary for Intro
 	/// </summary>
-	public ref class Instrucciones : public System::Windows::Forms::Form
+	public ref class Intro : public System::Windows::Forms::Form
 	{
 	public:
-		Instrucciones(void)
+		Intro(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace AiParadoxRemake {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Instrucciones()
+		~Intro()
 		{
 			if (components)
 			{
@@ -50,39 +50,44 @@ namespace AiParadoxRemake {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Instrucciones::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Intro::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(284, 413);
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(236)), static_cast<System::Int32>(static_cast<System::Byte>(227)),
+				static_cast<System::Int32>(static_cast<System::Byte>(196)));
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(857, 595);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(180, 58);
+			this->button1->Size = System::Drawing::Size(254, 74);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Volver";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Instrucciones::button1_Click);
+			this->button1->Text = L"Iniciar Juego";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &Intro::button1_Click);
 			// 
-			// Instrucciones
+			// Intro
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->ClientSize = System::Drawing::Size(767, 470);
+			this->ClientSize = System::Drawing::Size(1264, 681);
 			this->Controls->Add(this->button1);
-			this->Name = L"Instrucciones";
-			this->Text = L"Instrucciones";
-			this->Load += gcnew System::EventHandler(this, &Instrucciones::Instrucciones_Load);
+			this->Name = L"Intro";
+			this->Text = L"Intro";
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Nvl10^ nvl = gcnew Nvl10();
+		this->Hide();
+		nvl->ShowDialog();
+		delete nvl;
 		this->Close();
-	}
-	private: System::Void Instrucciones_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }
